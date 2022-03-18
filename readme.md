@@ -1,6 +1,6 @@
 ## Supermecado Pulini
 
-Tudos as documentações, projetos e banco de dados para a matéria de Laboratório e Engenharia de Software
+Tudas as documentações, projetos e banco de dados para a matéria de Laboratório e Engenharia de Software
 
 -----
 #### Documentação
