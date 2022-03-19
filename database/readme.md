@@ -8,7 +8,7 @@ O banco de dados será levantando através do Docker com a imagem pública no [d
 Entre na raiz do projeto execute o seguinte comando
 
 ````
-make database
+sudo docker-compose up -d
 ````
 
 - Segundo passo
