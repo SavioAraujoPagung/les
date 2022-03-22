@@ -56,6 +56,7 @@ create table usuarios (
 	id serial primary key not null,
 	nome varchar (50),
 	cpf varchar (50),
+	biometria varchar (250),
 	dataCriacao Date
 );
 

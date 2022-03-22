@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Dcef7EO5SiFzU4Bp3m0H" name="Class-Diagram">
-        <mxGraphModel dx="1930" dy="371" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1556" dy="59" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -55,7 +55,7 @@
                 <mxCell id="S-Hjr__sGHiVeBRLjz34-31" value="- clientes: Cliente [ ]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="S-Hjr__sGHiVeBRLjz34-28" vertex="1">
                     <mxGeometry y="78" width="301" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="JDibzJuqZjrdw8Xa0AFR-1" value="- criacao: Date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="S-Hjr__sGHiVeBRLjz34-28">
+                <mxCell id="JDibzJuqZjrdw8Xa0AFR-1" value="- criacao: Date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="S-Hjr__sGHiVeBRLjz34-28" vertex="1">
                     <mxGeometry y="104" width="301" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="S-Hjr__sGHiVeBRLjz34-32" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="S-Hjr__sGHiVeBRLjz34-28" vertex="1">
@@ -164,7 +164,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="kFB_qkcKPqT-YVKiUvlK" name="Relational-Model">
-        <mxGraphModel dx="1179" dy="532" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1156" dy="459" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="uYseQhOXm8jbEEvP4bBF-0"/>
                 <mxCell id="uYseQhOXm8jbEEvP4bBF-1" parent="uYseQhOXm8jbEEvP4bBF-0"/>
@@ -320,7 +320,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="e4zoealngovYDXdgk-5r" name="Use-Cases">
-        <mxGraphModel dx="1130" dy="771" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="756" dy="459" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="QwotVeIr8CflA6v3SFp1-0"/>
                 <mxCell id="QwotVeIr8CflA6v3SFp1-1" parent="QwotVeIr8CflA6v3SFp1-0"/>
@@ -412,7 +412,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="8MbszGmuiUUjhjoZCmIH" name="MER">
-        <mxGraphModel dx="1130" dy="771" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="756" dy="459" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="UWpq1fJreOAUmKiAFOr0-0"/>
                 <mxCell id="UWpq1fJreOAUmKiAFOr0-1" parent="UWpq1fJreOAUmKiAFOr0-0"/>
