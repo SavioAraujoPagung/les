@@ -20,6 +20,7 @@ public class Usuario {
     private Long id;
     private String nome;
 	private String cpf;
+	private Date datacriacao;
     //private String email;
     //private String telefone;
     //private Long codRFID;
@@ -43,6 +44,13 @@ public class Usuario {
 	}
     public void setCPF(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getDataCriacao) {
+		return datacriacao;
+	}
+    public void setDataCriacao(Date datacriacao) {
+		this.datacriacao = datacriacao;
 	}
 
    /* public String getEmail() {
