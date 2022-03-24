@@ -4,8 +4,8 @@ package com.les.crudusuario.model;
 import lombok.Getter;
 //import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.sql.Date;
+import java.util.Date;
+//import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -15,7 +15,7 @@ import javax.persistence.*;
 //@AllArgsConstructor
 //@NoArgsConstructor
 @Entity
-@Table
+@Table(name="usuarios")
 public class Usuario {
     
     @Id
@@ -23,6 +23,7 @@ public class Usuario {
     private Long id;
     private String nome;
 	private String cpf;
+	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date datacriacao;
     //private String email;
     //private String telefone;
