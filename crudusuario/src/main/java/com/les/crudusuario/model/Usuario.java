@@ -4,8 +4,10 @@ package com.les.crudusuario.model;
 import lombok.Getter;
 //import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.util.Date;
 //import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -25,6 +27,15 @@ public class Usuario {
 	private String cpf;
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date datacriacao;
+
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="funcionalidades_usuarios",
+		joinColumns={@JoinColumn(name="id_usuario",
+		referencedColumnName="id")},
+		inverseJoinColumns={@JoinColumn(name="id_funcionalidade",
+		referencedColumnName="id")}
+	)
+    private List<Funcionalidade> funcionalidadeList;
     //private String email;
     //private String telefone;
     //private Long codRFID;
