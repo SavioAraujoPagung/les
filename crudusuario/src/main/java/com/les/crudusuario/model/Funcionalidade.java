@@ -5,7 +5,7 @@ import lombok.Getter;
 //import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+//import java.util.List;
 
 //import java.sql.Date;
 import javax.persistence.*;
@@ -20,14 +20,14 @@ public class Funcionalidade {
     private Long id;
     private String nome;
     
-	@OneToMany(cascade=CascadeType.ALL)
+	/*@OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="funcionalidades_usuarios",
 		joinColumns={@JoinColumn(name="id_funcionalidade",
 		referencedColumnName="id")},
 		inverseJoinColumns={@JoinColumn(name="id_usuario",
 		referencedColumnName="id")}
 	)
-    private List<Usuario> usuarioList;
+    private List<Usuario> usuarioList;*/
     
     public Long getId() {
 		return id;

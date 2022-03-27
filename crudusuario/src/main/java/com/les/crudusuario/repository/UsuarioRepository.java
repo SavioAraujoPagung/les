@@ -9,10 +9,11 @@ import org.springframework.data.repository.query.Param;
 
 import com.les.crudusuario.model.Usuario;
 
-public interface UsuarioRepository extends JpaRepository <Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository <Usuario, Long > {
 
-    @Query(value ="select  * from usuarios u inner join funcionalidades_usuarios fu on u.id = fu.id_usuario", nativeQuery = true)
-    public List<Usuario> findAllUsers();
+    @Query(value ="SELECT count(*) FROM funcionalidades_usuarios WHERE id_usuario=:id and id_funcionalidade=1", nativeQuery = true)
+    //public Boolean findPermission(@Param("id") Integer id);
+    public Long findPermission(@Param("id") Integer id);
 
 
     @Query("SELECT t FROM Usuario t where t.id > :id")

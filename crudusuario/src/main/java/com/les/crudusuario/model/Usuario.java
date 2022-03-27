@@ -28,17 +28,17 @@ public class Usuario {
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date datacriacao;
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@ManyToMany
     @JoinTable(name="funcionalidades_usuarios",
-		joinColumns={@JoinColumn(name="id_usuario",
-		referencedColumnName="id")},
-		inverseJoinColumns={@JoinColumn(name="id_funcionalidade",
-		referencedColumnName="id")}
+		joinColumns=@JoinColumn(name="id_usuario"),
+		inverseJoinColumns=@JoinColumn(name="id_funcionalidade")	
 	)
     private List<Funcionalidade> funcionalidadeList;
     //private String email;
     //private String telefone;
     //private Long codRFID;
+
+	
 
     public Long getId() {
 		return id;

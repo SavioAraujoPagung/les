@@ -7,7 +7,9 @@ import com.les.crudusuario.model.Usuario;
 import com.les.crudusuario.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -28,8 +31,16 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @PostMapping("/insert")
-    public Usuario saveUser(@RequestBody Usuario user){
-        return this.usuarioRepository.save(user);
+    public ResponseEntity <?> saveUser(@RequestBody Usuario user, @RequestParam(value = "id_user") String idUser,
+    Model model){
+        if(usuarioRepository.findPermission(Integer.parseInt(idUser)) > 0){
+            Usuario inserted = this.usuarioRepository.save(user);
+            return new ResponseEntity<>(inserted, HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        }
+
+        
     }
 
     @GetMapping("/get/id/{id}")
@@ -54,7 +65,11 @@ public class UsuarioController {
     }
 
     @PutMapping(value="/upd/{id}")
-    public ResponseEntity <?> updateUser(@PathVariable("id") long id, @RequestBody Usuario user) {
+    public ResponseEntity <?> updateUser(@PathVariable("id") long id, @RequestBody Usuario user, @RequestParam(value = "id_user") String idUser,
+    Model model) {
+        if(usuarioRepository.findPermission(Integer.parseInt(idUser)) == 0){
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        }
         return usuarioRepository.findById(id)
            .map(record -> {
                record.setNome(user.getNome());
@@ -66,7 +81,14 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/del/{id}")
-    public ResponseEntity <?> deleteUser (@PathVariable("id") Long id){
+    public ResponseEntity <?> deleteUser (@PathVariable("id") Long id, @RequestParam(value = "id_user") String idUser,
+    Model model){
+        if(usuarioRepository.findPermission(Integer.parseInt(idUser)) == 0){
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        }
+        if(id == Long.parseLong(idUser)){
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
         return usuarioRepository.findById(id)
            .map(record -> {
                 usuarioRepository.deleteById(id);
