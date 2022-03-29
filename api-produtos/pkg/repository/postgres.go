@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"fmt"
+
 	"github.com/SavioAraujoPagung/les/pkg/produtos"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -20,7 +22,9 @@ func (r *Repository) Listar() error {
 }
 
 func (r *Repository) Buscar(id int) error {
-	var err error
+	var produto produtos.Produto
+	err:= r.db.Find(id, &produto).Error
+	fmt.Println(produto)
 	return err
 }
 
