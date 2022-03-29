@@ -5,13 +5,13 @@ import (
 )
 
 type Db interface {
-	Inserir(produto produtos.Produto)
-	Listar()
-	Buscar(id int)
-	Vender(id int)
-	conectar(dsn string)
+	Inserir(produto produtos.Produto) error
+	Listar() error
+	Buscar(id int) error
+	Vender(id int) error
+	conectar(dsn string) error
 }
 
-func Conectar(repo Db, strC string) {
-	repo.conectar(strC)
+func Conectar(repo Db, strC string) error {
+	return repo.conectar(strC)
 }

@@ -1,37 +1,36 @@
 package repository
 
 import (
-	"log"
-
 	"github.com/SavioAraujoPagung/les/pkg/produtos"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 type Repository struct {
-	Db *gorm.DB
+	db *gorm.DB
 }
 
-func (r *Repository) Inserir(produto produtos.Produto) {
-	r.Db.Create(produto)
+func (r *Repository) Inserir(produto produtos.Produto) error {
+	return r.db.Create(produto).Error
 }
 
-func (r *Repository) Listar() {
-
-}
-
-func (r *Repository) Buscar(id int) {
-
-}
-
-func (r *Repository) Vender(id int) {
-
-}
-
-func (r *Repository) conectar(dsn string) {
+func (r *Repository) Listar() error {
 	var err error
-	r.Db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Println(err)
-	}
+	return err
+}
+
+func (r *Repository) Buscar(id int) error {
+	var err error
+	return err
+}
+
+func (r *Repository) Vender(id int) error {
+	var err error
+	return err
+}
+
+func (r *Repository) conectar(dsn string) error {
+	var err error
+	r.db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	return err
 }

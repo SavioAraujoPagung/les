@@ -2,7 +2,6 @@ package server
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -10,7 +9,7 @@ import (
 	"github.com/SavioAraujoPagung/les/pkg/repository"
 )
 
-const dsn = "host=localhost user=postgres password=root dbname=tosleep_db_dev port=5412 sslmode=disable"
+const dsn = "host=localhost user=root password=root dbname=pulini_supermercado_db port=5432 sslmode=disable"
 
 func inserir(writer http.ResponseWriter, request *http.Request) {
 	body, err := io.ReadAll(request.Body)
@@ -28,8 +27,13 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 
 	var repo repository.Repository
 	repository.Conectar(&repo, dsn)
-	fmt.Println(produto)
-	
+
+	err = repo.Inserir(produto)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	writer.WriteHeader(http.StatusCreated)
 	return
 }
 
