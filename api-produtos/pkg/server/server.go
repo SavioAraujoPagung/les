@@ -27,8 +27,10 @@ func Run (){
 	PORT := ":6666"
 	muxRoute := mux.NewRouter()
 	
-	muxRoute.HandleFunc("/account", cadastrarProdutos).Methods("POST")
-
+	muxRoute.HandleFunc("/produtos", inserir).Methods(http.MethodPost)
+	muxRoute.HandleFunc("/produtos", listar).Methods(http.MethodGet)
+	muxRoute.HandleFunc("/produtos/{id}", buscar).Methods(http.MethodGet)
+	muxRoute.HandleFunc("/produtos/{id}", vender).Methods(http.MethodPost)
 
 	srv := &http.Server{
 		Handler:      CORSMiddleware(muxRoute),
@@ -40,9 +42,4 @@ func Run (){
 	log.Println("API is online ", PORT)
 	log.Fatal(srv.ListenAndServe())
 
-}
-
-func cadastrarProdutos(writer http.ResponseWriter, request *http.Request){
-	
-	return
 }
