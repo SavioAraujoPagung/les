@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.util.Date;
 //import java.sql.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.*;
 
@@ -25,6 +26,8 @@ public class Usuario {
     private Long id;
     private String nome;
 	private String cpf;
+	private String senha;
+	private Boolean loggedin;
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date datacriacao;
 
@@ -61,11 +64,36 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+    public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public Date getDataCriacao(){
 		return datacriacao;
 	}
     public void setDataCriacao(Date datacriacao) {
 		this.datacriacao = datacriacao;
 	}
+
+	public boolean isLoggedIn() {
+        return loggedin;
+    }
+	public void setLoggedIn(boolean loggedin) {
+        this.loggedin = loggedin;
+    }
+
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        Usuario user = (Usuario) o;
+        return Objects.equals(nome, user.nome) && Objects.equals(senha, user.senha);
+    }
+
+	
+
 
 }
