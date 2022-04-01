@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
+//import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +46,17 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
+    public List<Usuario> loginUser(@RequestBody Usuario user) {
+        List<Usuario> usuario = this.usuarioRepository.autenticacaoUsuario(user.getCPF(), user.getSenha());
+        if(!usuario.isEmpty()){
+            System.out.println("tem no banco");
+            return usuario;
+        }
+        System.out.println("nao tem no banco");
+        return null;
+    }
+
+    /*@PostMapping("/login")
     public ResponseEntity <?> loginUser(@RequestBody Usuario user) {
         List<Usuario> users = usuarioRepository.findByCpfIgnoreCase(user.getCPF());
         for (Usuario other : users) {
@@ -56,9 +67,9 @@ public class UsuarioController {
             }
         }
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
-    }
+    }*/
 
-    @PostMapping("/logout")
+    /*@PostMapping("/logout")
     public ResponseEntity <?> logUserOut(@Validated @RequestBody Usuario user) {
         List<Usuario> users = usuarioRepository.findAll();
         for (Usuario other : users) {
@@ -69,7 +80,7 @@ public class UsuarioController {
             }
         }
         return new ResponseEntity<>(null, HttpStatus.BAD_GATEWAY);
-    }
+    }*/
     
 
     @GetMapping("/get/id/{id}")
