@@ -67,6 +67,3 @@ create table funcionalidades_usuarios (
 	FOREIGN KEY (id_usuario) REFERENCES public.usuarios (id)
 )
 
-
-
-
