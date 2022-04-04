@@ -15,7 +15,7 @@ type Funcionalidade struct {
 
 type Db interface {
 	Inserir(produto produtos.Produto) error
-	Listar() error
+	Listar(categoria int) ([]produtos.Produto, error)
 	Buscar(id int) (produtos.Produto, error)
 	Vender(id int) error
 	conectar(dsn string) error

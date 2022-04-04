@@ -64,8 +64,41 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 }
 
 func listar(writer http.ResponseWriter, request *http.Request) {
+	usuario := request.URL.Query().Get("idUsuario")
+	categoria := request.URL.Query().Get("categoria")
+	
+	idUsuario, err := strconv.Atoi(usuario)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+	
+	id_categoria, err := strconv.Atoi(categoria)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
 
-	// return
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	if permitido := permitido(repo, idUsuario, BUSCAR); !permitido {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+	
+	produtos, err := repo.Listar(id_categoria)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+	body, err := json.Marshal(produtos)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+	
+	writer.Write(body)
 }
 
 func buscar(writer http.ResponseWriter, request *http.Request) {

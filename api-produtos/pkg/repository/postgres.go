@@ -16,9 +16,13 @@ func (r *Repository) Inserir(produto produtos.Produto) error {
 	return r.db.Create(produto).Error
 }
 
-func (r *Repository) Listar() error {
+func (r *Repository) Listar(categoria int) ([]produtos.Produto, error) {
 	var err error
-	return err
+	var produtos []produtos.Produto
+
+	err = r.db.Where("id_categoria = ?", categoria).Find(&produtos).Error
+	
+	return produtos, err
 }
 
 func (r *Repository) Buscar(id int) (produtos.Produto, error) {
