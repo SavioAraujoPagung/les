@@ -30,7 +30,7 @@ func Run (){
 	muxRoute.HandleFunc("/produtos", inserir).Methods(http.MethodPost)
 	muxRoute.HandleFunc("/produtos", listar).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/produtos/{id}", buscar).Methods(http.MethodGet)
-	muxRoute.HandleFunc("/produtos/{id}", vender).Methods(http.MethodPost)
+	muxRoute.HandleFunc("/produtos/vender", vender).Methods(http.MethodPost)
 
 	srv := &http.Server{
 		Handler:      CORSMiddleware(muxRoute),
