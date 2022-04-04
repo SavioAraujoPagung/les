@@ -16,10 +16,10 @@ type Funcionalidade struct {
 type Db interface {
 	Inserir(produto produtos.Produto) error
 	Listar() error
-	Buscar(id int) error
+	Buscar(id int) (produtos.Produto, error)
 	Vender(id int) error
 	conectar(dsn string) error
-	Permissao(idUsuario int) (bool, error)
+	Permissao(idUsuario int, idFuncionalidade int) (bool, error)
 }
 
 func Conectar(repo Db, strC string) error {

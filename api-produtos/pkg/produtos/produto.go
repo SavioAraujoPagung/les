@@ -7,6 +7,7 @@ type Categoria struct {
 }
 
 type Produto struct {
+	Id            int     `gorm:"column:id"`
 	CategoriaId   int     `json:"categoria" gorm:"column:id_categoria"`
 	CodigoBarra   string  `json:"codigo_barras" gorm:"column:codigo_barra"`
 	Rfid          string  `json:"rfid" gorm:"column:rfid"`

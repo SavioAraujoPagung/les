@@ -13,6 +13,14 @@ import (
 
 const dsn = "host=localhost user=root password=root dbname=pulini_supermercado_db port=5432 sslmode=disable"
 
+//id das permissão que para cada funcionalidade
+const (
+	INSERIR = 1
+	BUSCAR  = 1
+	LISTA   = 6
+	VENDER  = 2
+)
+
 func inserir(writer http.ResponseWriter, request *http.Request) {
 	body, err := io.ReadAll(request.Body)
 	if err != nil {
@@ -22,20 +30,19 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 
 	var repo repository.Repository
 	repository.Conectar(&repo, dsn)
+
 	idUsuario := request.URL.Query().Get("idUsuario")
 	id, err := strconv.Atoi(idUsuario)
-	if err != nil{
-		writer.WriteHeader(http.StatusBadGateway)
-		return
-	}
-	
-	permitido, err := repo.Permissao(id)
-	
-	if err != nil{
+	if err != nil {
 		writer.WriteHeader(http.StatusBadGateway)
 		return
 	}
 
+	permitido, err := repo.Permissao(id, INSERIR)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
 	if !permitido {
 		writer.WriteHeader(http.StatusUnauthorized)
 		return
@@ -68,18 +75,39 @@ func buscar(writer http.ResponseWriter, request *http.Request) {
 	var repo repository.Repository
 	repository.Conectar(&repo, dsn)
 
-	par, _ := strconv.Atoi(id)
-	err := repo.Buscar(par)
+	par, err := strconv.Atoi(id)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+
+	usuario := request.URL.Query().Get("idUsuario")
+	idUsuario, err := strconv.Atoi(usuario)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+
+	if permitido := permitido(repo, idUsuario, BUSCAR); !permitido {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	produto, err := repo.Buscar(par)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
-
-	//TODO: validar se o usuário tem permissão buscar um produto busca-lo por id
-	// return
+	body, err := json.Marshal(produto)
+	writer.Write(body)
 }
 
 func vender(writer http.ResponseWriter, request *http.Request) {
 
 	// return
+}
+
+func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool {
+	permitido, _ := repo.Permissao(idUsuario, idPermissao)
+	return permitido
 }
