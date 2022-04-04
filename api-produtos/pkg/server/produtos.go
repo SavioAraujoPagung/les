@@ -132,6 +132,10 @@ func buscar(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 	body, err := json.Marshal(produto)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
 	writer.Write(body)
 }
 
