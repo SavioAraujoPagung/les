@@ -16,3 +16,8 @@ type Produto struct {
 	UnidadeMedida string  `json:"unidade_medida" gorm:"column:unidademedida"`
 	Quantidade    int32   `json:"quantidade" gorm:"column:quantidade"`
 }
+
+type ProdutoVendido struct {
+	IdProduto  int     `json:"id"`
+	Quantidade float64 `json:"quantidade"`
+}

@@ -17,8 +17,8 @@ const dsn = "host=localhost user=root password=root dbname=pulini_supermercado_d
 const (
 	INSERIR = 1
 	BUSCAR  = 1
-	LISTA   = 6
-	VENDER  = 2
+	LISTA   = 1
+	VENDER  = 1
 )
 
 func inserir(writer http.ResponseWriter, request *http.Request) {
@@ -66,13 +66,13 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 func listar(writer http.ResponseWriter, request *http.Request) {
 	usuario := request.URL.Query().Get("idUsuario")
 	categoria := request.URL.Query().Get("categoria")
-	
+
 	idUsuario, err := strconv.Atoi(usuario)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadGateway)
 		return
 	}
-	
+
 	id_categoria, err := strconv.Atoi(categoria)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadGateway)
@@ -86,7 +86,7 @@ func listar(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusUnauthorized)
 		return
 	}
-	
+
 	produtos, err := repo.Listar(id_categoria)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadGateway)
@@ -97,14 +97,13 @@ func listar(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusBadGateway)
 		return
 	}
-	
+
 	writer.Write(body)
 }
 
 func buscar(writer http.ResponseWriter, request *http.Request) {
 	vars := mux.Vars(request)
 	id := vars["id"]
-	//fmt.Println(id)
 	var repo repository.Repository
 	repository.Conectar(&repo, dsn)
 
@@ -140,8 +139,35 @@ func buscar(writer http.ResponseWriter, request *http.Request) {
 }
 
 func vender(writer http.ResponseWriter, request *http.Request) {
+	usuario := request.URL.Query().Get("idUsuario")
+	idUsuario, err := strconv.Atoi(usuario)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
 
-	// return
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	if permitido := permitido(repo, idUsuario, VENDER); !permitido {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	var produtosVendidos[] produtos.ProdutoVendido
+
+	body, err := io.ReadAll(request.Body)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	err = json.Unmarshal(body, &produtosVendidos)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	
 }
 
 func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool {
