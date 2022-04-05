@@ -1,4 +1,4 @@
-package produtos
+package models
 
 import "time"
 

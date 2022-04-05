@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/SavioAraujoPagung/les/pkg/produtos"
+	"github.com/SavioAraujoPagung/les/pkg/models"
 )
 
 type funcionalidadeUsuario struct {
@@ -14,10 +14,10 @@ type Funcionalidade struct {
 }
 
 type Db interface {
-	Inserir(produto *produtos.Produto) error
-	Listar(categoria int) ([]produtos.Produto, error)
-	Buscar(id int) (*produtos.Produto, error)
-	Vender(produtoVendido produtos.ProdutoVendido) error
+	Inserir(produto *models.Produto) error
+	Listar(categoria int) ([]models.Produto, error)
+	Buscar(id int) (*models.Produto, error)
+	Vender(produtoVendido models.ProdutoVendido) error
 	conectar(dsn string) error
 	Permissao(idUsuario int, idFuncionalidade int) (bool, error)
 }

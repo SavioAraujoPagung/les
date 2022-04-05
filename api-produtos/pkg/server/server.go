@@ -32,6 +32,9 @@ func Run (){
 	muxRoute.HandleFunc("/produtos/{id}", buscar).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/produtos/vender", vender).Methods(http.MethodPost)
 
+	muxRoute.HandleFunc("/cliente", inserirCliente).Methods(http.MethodPost)
+	muxRoute.HandleFunc("/cliente", buscarCliente).Methods(http.MethodGet)
+
 	srv := &http.Server{
 		Handler:      CORSMiddleware(muxRoute),
 		Addr:         fmt.Sprintf("0.0.0.0%s", PORT),

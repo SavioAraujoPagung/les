@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/SavioAraujoPagung/les/pkg/produtos"
+	"github.com/SavioAraujoPagung/les/pkg/models"
 	"github.com/SavioAraujoPagung/les/pkg/repository"
 	"github.com/gorilla/mux"
 )
@@ -48,7 +48,7 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	var produto produtos.Produto
+	var produto models.Produto
 	err = json.Unmarshal(body, &produto)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
@@ -142,7 +142,7 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 	usuario := request.URL.Query().Get("idUsuario")
 	idUsuario, err := strconv.Atoi(usuario)
 	if err != nil {
-		writer.WriteHeader(http.StatusBadGateway)
+		writer.WriteHeader(http.StatusUnauthorized)
 		return
 	}
 
@@ -154,24 +154,24 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	var venda produtos.Venda
-
+	//var venda models.Venda
+	var produtosVendidos[] models.ProdutoVendido
 	body, err := io.ReadAll(request.Body)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	err = json.Unmarshal(body, &venda)
+	err = json.Unmarshal(body, &produtosVendidos)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	// for _, produtoVendido := range produtosVendidos{
-	// 	repo.Vender(produtoVendido)
-	// }
-	
+	for _, produtoVendido := range produtosVendidos {
+		repo.Vender(produtoVendido)
+	}
+
 }
 
 func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool {

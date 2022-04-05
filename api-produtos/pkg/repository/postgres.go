@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/SavioAraujoPagung/les/pkg/produtos"
+	"github.com/SavioAraujoPagung/les/pkg/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -10,26 +10,26 @@ type Repository struct {
 	db *gorm.DB
 }
 
-func (r *Repository) Inserir(produto *produtos.Produto) error {
+func (r *Repository) Inserir(produto *models.Produto) error {
 	return r.db.Create(produto).Error
 }
 
-func (r *Repository) Listar(categoria int) ([]produtos.Produto, error) {
+func (r *Repository) Listar(categoria int) ([]models.Produto, error) {
 	var err error
-	var produtos []produtos.Produto
+	var produtos []models.Produto
 
 	err = r.db.Where("id_categoria = ?", categoria).Find(&produtos).Error
 
 	return produtos, err
 }
 
-func (r *Repository) Buscar(id int) (*produtos.Produto, error) {
-	var produto produtos.Produto
-	err := r.db.Where(&produtos.Produto{Id: id}).First(&produto).Error
+func (r *Repository) Buscar(id int) (*models.Produto, error) {
+	var produto models.Produto
+	err := r.db.Where(&models.Produto{Id: id}).First(&produto).Error
 	return &produto, err
 }
 
-func (r *Repository) Vender(produtoVendido produtos.ProdutoVendido) error {
+func (r *Repository) Vender(produtoVendido models.ProdutoVendido) error {
 	produto, err := r.Buscar(produtoVendido.IdProduto)
 	if err != nil {
 		return err
@@ -38,7 +38,7 @@ func (r *Repository) Vender(produtoVendido produtos.ProdutoVendido) error {
 	qtdVendido := produtoVendido.Quantidade
 	quantidade := qtd - qtdVendido
 
-	err = r.db.Where("id = ?", produtoVendido.IdProduto).Updates(&produtos.Produto{Quantidade: quantidade}).Error
+	err = r.db.Where("id = ?", produtoVendido.IdProduto).Updates(&models.Produto{Quantidade: quantidade}).Error
 	return err
 }
 
