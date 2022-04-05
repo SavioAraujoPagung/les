@@ -1,9 +1,10 @@
 ## Gerencimento de produtos
 
-Api reponsável por gerenciar os produtos
+Api reponsável por gerenciar os produtos.
+Porta: ":6666"
 
 #### Rotas
-- Inserir
+- Inserir:
 POST - /produtos?idUsuario=[id_usuario]
 
 ```json
@@ -19,7 +20,7 @@ POST - /produtos?idUsuario=[id_usuario]
 }
 ```
 
-- Vender
+- Vender:
 POST - /produtos/vender?idUsuario=[id_usuario]
 
 ```json
@@ -38,7 +39,7 @@ POST - /produtos/vender?idUsuario=[id_usuario]
 }	
 ```
 
-- Buscar por id
+- Buscar por id:
 GET - /produtos/[id_produto]?idUsuario=[id_usuario]
 
 **Retorno**
@@ -55,7 +56,7 @@ GET - /produtos/[id_produto]?idUsuario=[id_usuario]
 }
 ```
 
-- Listar 
+- Listar: 
 GET - /produtos?idUsuario=[id_usuario]&categoria=[id_categoria]
 
 **Retorno**
