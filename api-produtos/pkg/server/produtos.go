@@ -55,7 +55,7 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	err = repo.Inserir(produto)
+	err = repo.Inserir(&produto)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
@@ -154,7 +154,7 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	var produtosVendidos[] produtos.ProdutoVendido
+	var venda produtos.Venda
 
 	body, err := io.ReadAll(request.Body)
 	if err != nil {
@@ -162,11 +162,15 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	err = json.Unmarshal(body, &produtosVendidos)
+	err = json.Unmarshal(body, &venda)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
+	// for _, produtoVendido := range produtosVendidos{
+	// 	repo.Vender(produtoVendido)
+	// }
 	
 }
 

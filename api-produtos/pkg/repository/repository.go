@@ -14,10 +14,10 @@ type Funcionalidade struct {
 }
 
 type Db interface {
-	Inserir(produto produtos.Produto) error
+	Inserir(produto *produtos.Produto) error
 	Listar(categoria int) ([]produtos.Produto, error)
-	Buscar(id int) (produtos.Produto, error)
-	Vender(id int) error
+	Buscar(id int) (*produtos.Produto, error)
+	Vender(produtoVendido produtos.ProdutoVendido) error
 	conectar(dsn string) error
 	Permissao(idUsuario int, idFuncionalidade int) (bool, error)
 }
