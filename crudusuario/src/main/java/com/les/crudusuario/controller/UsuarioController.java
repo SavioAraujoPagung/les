@@ -40,20 +40,28 @@ public class UsuarioController {
             return new ResponseEntity<>(inserted, HttpStatus.CREATED);
         }else{
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
-        }
-
-        
+        }  
     }
 
     @PostMapping("/login")
-    public List<Usuario> loginUser(@RequestBody Usuario user) {
-        List<Usuario> usuario = this.usuarioRepository.autenticacaoUsuario(user.getCPF(), user.getSenha());
-        if(!usuario.isEmpty()){
-            System.out.println("tem no banco");
+    public ResponseEntity<Usuario> loginUser(@RequestBody Usuario user) {
+        Usuario usuario;
+        try {
+            usuario =  this.usuarioRepository.autenticacaoUsuario(user.getCPF(), user.getSenha());
+            if (usuario != null) {
+                return ResponseEntity.ok(usuario);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        /*if(!usuario.isEmpty()){
             return usuario;
         }
-        System.out.println("nao tem no banco");
-        return null;
+        
+        return null;*/
     }
 
     /*@PostMapping("/login")

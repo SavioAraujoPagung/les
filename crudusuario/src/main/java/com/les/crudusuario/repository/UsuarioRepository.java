@@ -22,7 +22,7 @@ public interface UsuarioRepository extends JpaRepository <Usuario, Long > {
     public List<Usuario> findByCpfIgnoreCase(String cpf);
 
     @Query(value ="SELECT * FROM usuarios WHERE cpf=:cpf and senha=:senha",nativeQuery = true)
-    public List<Usuario> autenticacaoUsuario(@Param("cpf") String cpf, @Param("senha") String senha);
+    public Usuario autenticacaoUsuario(@Param("cpf") String cpf, @Param("senha") String senha);
     
 }
 
