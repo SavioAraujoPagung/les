@@ -41,5 +41,6 @@ public class Funcionalidade {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+		
 	}
 }
