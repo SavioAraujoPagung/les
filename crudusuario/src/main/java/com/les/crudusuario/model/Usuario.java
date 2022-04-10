@@ -9,6 +9,7 @@ import java.util.Date;
 //import java.sql.Date;
 import java.util.List;
 
+
 import javax.persistence.*;
 
 
@@ -25,7 +26,9 @@ public class Usuario {
     private Long id;
     private String nome;
 	private String cpf;
-	@Temporal(value = TemporalType.TIMESTAMP)
+	private String senha;
+	@Basic
+	@Temporal(TemporalType.DATE)
 	private Date datacriacao;
 
 	@ManyToMany
@@ -61,11 +64,18 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+    public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public Date getDataCriacao(){
 		return datacriacao;
 	}
     public void setDataCriacao(Date datacriacao) {
 		this.datacriacao = datacriacao;
 	}
-
+	
 }
