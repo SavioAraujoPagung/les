@@ -1,24 +1,27 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
 type Venda struct {
-	Id               int              `json:"-" gorm:"column:id"`
+	ID               int              `json:"-" gorm:"column:id"`
 	Quantidade       int              `json:"-" gorm:"column:quantidade"`
 	Criacao          time.Time        `json:"-" gorm:"column:datacriacao"`
-	IdCliente        int              `json:"cliente" gorm:"-"`
-	ProdutosVendidos []ProdutoVendido `json:"produtos"`
+	ClienteID        int              `json:"cliente" gorm:"-"`
+	ProdutosVendidos []ProdutoVendido `json:"produtos" gorm:"foreignKey:VendaID"`
 }
+
 type Categoria struct {
-	Id        int    `json:"id" gorm:"column:id"`
+	ID        int    `json:"id" gorm:"column:id"`
 	Nome      string `json:"nome" gorm:"column:nome"`
 	Descricao string `json:"descricao" gorm:"column:descricao"`
 }
 
 type Produto struct {
-	Id            int     `json:"-" gorm:"column:id"`
+	ID            int     `json:"-" gorm:"column:id"`
 	Nome          string  `json:"nome" gorm:"column:nome"`
-	CategoriaId   int     `json:"categoria" gorm:"column:id_categoria"`
+	CategoriaID   int     `json:"categoria" gorm:"column:id_categoria"`
 	CodigoBarra   string  `json:"codigo_barras" gorm:"column:codigo_barra"`
 	Rfid          string  `json:"rfid" gorm:"column:rfid"`
 	PrecoCusto    float64 `json:"preco_custo" gorm:"column:precocusto"`
@@ -28,6 +31,8 @@ type Produto struct {
 }
 
 type ProdutoVendido struct {
-	IdProduto  int `json:"idProduto"`
-	Quantidade int `json:"quantidade"`
+	// VendaID    int     `json:"-" gorm:"foreignKey:id_venda;references:vendas"`
+	ProdutoID  int     `json:"idProduto"`
+	Quantidade int     `json:"quantidade"`
+	Preco      float64 `json:"preco"`
 }

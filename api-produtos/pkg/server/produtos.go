@@ -154,27 +154,29 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	//var venda models.Venda
-	var produtosVendidos[] models.ProdutoVendido
+	var venda models.Venda
 	body, err := io.ReadAll(request.Body)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
-
-	err = json.Unmarshal(body, &produtosVendidos)
+	
+	err = json.Unmarshal(body, &venda)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	for _, produtoVendido := range produtosVendidos {
-		repo.Vender(produtoVendido)
-	}
-
+	err = executarVendas(repo, venda)
 }
 
 func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool {
 	permitido, _ := repo.Permissao(idUsuario, idPermissao)
 	return permitido
+}
+
+func executarVendas(repo repository.Repository, venda models.Venda) error{
+	err := repo.Vendas(venda.ProdutosVendidos, venda.ID)
+	err = repo.Vender(venda)
+	return err
 }

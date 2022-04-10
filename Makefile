@@ -1,5 +1,4 @@
+default: run
+
 run:
-
-
-database:
-	@docker-compose up -d
+	@docker-compose up --remove-orphans --build

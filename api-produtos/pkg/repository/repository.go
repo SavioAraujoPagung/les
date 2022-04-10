@@ -17,7 +17,8 @@ type Db interface {
 	Inserir(produto *models.Produto) error
 	Listar(categoria int) ([]models.Produto, error)
 	Buscar(id int) (*models.Produto, error)
-	Vender(produtoVendido models.ProdutoVendido) error
+	Vender(venda models.Venda) error
+	Vendas(produto[] models.ProdutoVendido, id int) error
 	conectar(dsn string) error
 	Permissao(idUsuario int, idFuncionalidade int) (bool, error)
 }
