@@ -9,6 +9,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
+const dsn = "host=172.17.0.1 user=root password=root dbname=pulini_supermercado_db port=5432 sslmode=disable"
+
 func CORSMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -20,20 +22,20 @@ func CORSMiddleware(next http.Handler) http.Handler {
 		}
 
 		next.ServeHTTP(w, r)
-	}) 
+	})
 }
 
-func Run (){
+func Run() {
 	PORT := ":6666"
 	muxRoute := mux.NewRouter()
-	
+
 	muxRoute.HandleFunc("/produtos", inserir).Methods(http.MethodPost)
 	muxRoute.HandleFunc("/produtos", listar).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/produtos/{id}", buscar).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/produtos/vender", vender).Methods(http.MethodPost)
 
 	muxRoute.HandleFunc("/cliente", inserirCliente).Methods(http.MethodPost)
-	muxRoute.HandleFunc("/cliente", buscarCliente).Methods(http.MethodGet)
+	muxRoute.HandleFunc("/cliente/{id}", buscarCliente).Methods(http.MethodGet)
 
 	srv := &http.Server{
 		Handler:      CORSMiddleware(muxRoute),
@@ -41,7 +43,7 @@ func Run (){
 		WriteTimeout: 120 * time.Second,
 		ReadTimeout:  120 * time.Second,
 	}
-	
+
 	log.Println("API is online ", PORT)
 	log.Fatal(srv.ListenAndServe())
 
