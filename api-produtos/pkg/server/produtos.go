@@ -11,9 +11,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
-const dsn = "host=localhost user=root password=root dbname=pulini_supermercado_db port=5432 sslmode=disable"
 
-//id das permissão que para cada funcionalidade
+
+// Id das permissão que para cada funcionalidade
 const (
 	INSERIR = 1
 	BUSCAR  = 1
@@ -107,7 +107,7 @@ func buscar(writer http.ResponseWriter, request *http.Request) {
 	var repo repository.Repository
 	repository.Conectar(&repo, dsn)
 
-	par, err := strconv.Atoi(id)
+	idProduto, err := strconv.Atoi(id)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadGateway)
 		return
@@ -125,7 +125,7 @@ func buscar(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	produto, err := repo.Buscar(par)
+	produto, err := repo.Buscar(idProduto)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return

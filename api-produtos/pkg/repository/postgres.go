@@ -66,11 +66,21 @@ func (r *Repository) Vender(venda models.Venda) error {
 
 func (r *Repository) Vendas(produto []models.ProdutoVendido, id int) error {
 	venda := &models.Venda{
-		Quantidade:       len(produto),
-		Criacao:          time.Now(),
+		Quantidade: len(produto),
+		Criacao:    time.Now(),
 		//ProdutosVendidos: produto,
 	}
 
 	return r.db.Create(venda).Error
 
+}
+
+func (r *Repository) InserirCliente(cliente *models.Cliente) error {
+	return r.db.Create(cliente).Error
+}
+
+func (r *Repository) BuscarCliente(id int) (*models.Cliente, error) {
+	var cliente models.Cliente
+	err := r.db.Where(&models.Produto{ID: id}).First(&cliente).Error
+	return &cliente, err
 }
