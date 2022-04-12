@@ -168,6 +168,10 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	err = executarVendas(repo, venda)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
 }
 
 func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool {
@@ -177,6 +181,6 @@ func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool 
 
 func executarVendas(repo repository.Repository, venda models.Venda) error{
 	err := repo.Vendas(venda.ProdutosVendidos, venda.ID)
-	err = repo.Vender(venda)
+	//err = repo.Vender(venda)
 	return err
 }

@@ -56,6 +56,7 @@ func (r *Repository) Vender(venda models.Venda) error {
 	if err != nil {
 		return err
 	}
+	
 	qtd := produto.Quantidade
 	qtdVendido := venda.ProdutosVendidos[0].Quantidade
 	quantidade := qtd - qtdVendido
@@ -68,7 +69,6 @@ func (r *Repository) Vendas(produto []models.ProdutoVendido, id int) error {
 	venda := &models.Venda{
 		Quantidade: len(produto),
 		Criacao:    time.Now(),
-		//ProdutosVendidos: produto,
 	}
 
 	return r.db.Create(venda).Error
