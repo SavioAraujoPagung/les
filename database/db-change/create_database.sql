@@ -60,10 +60,9 @@ create table usuarios (
 	dataCriacao Date
 );
 
-create table funcionalidades_usuarios (
+create table funcionalidade_usuarios (
 	id_funcionalidade int,
 	id_usuario int,
 	FOREIGN KEY (id_funcionalidade) REFERENCES public.funcionalidades (id),
 	FOREIGN KEY (id_usuario) REFERENCES public.usuarios (id)
 )
-
