@@ -57,6 +57,7 @@ func (r *Repository) Vender(venda models.Venda) error {
 		return err
 	}
 	
+	
 	qtd := produto.Quantidade
 	qtdVendido := venda.ProdutosVendidos[0].Quantidade
 	quantidade := qtd - qtdVendido
