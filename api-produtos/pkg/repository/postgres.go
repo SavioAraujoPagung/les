@@ -1,8 +1,6 @@
 package repository
 
 import (
-	"time"
-
 	"github.com/SavioAraujoPagung/les/pkg/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -51,29 +49,14 @@ func (r *Repository) Permissao(idUsuario int, idFuncionalidade int) (bool, error
 	return false, err
 }
 
-func (r *Repository) Vender(venda models.Venda) error {
-	produto, err := r.Buscar(venda.ProdutosVendidos[0].ProdutoID)
-	if err != nil {
-		return err
-	}
-	
-	
-	qtd := produto.Quantidade
-	qtdVendido := venda.ProdutosVendidos[0].Quantidade
-	quantidade := qtd - qtdVendido
-
-	err = r.db.Where("id = ?", venda.ProdutosVendidos[0].ProdutoID).Updates(&models.Produto{Quantidade: quantidade}).Error
+func (r *Repository) Vender(venda *models.Venda) error {
+	err := r.db.Create(venda).Error
 	return err
 }
 
-func (r *Repository) Vendas(produto []models.ProdutoVendido, id int) error {
-	venda := &models.Venda{
-		Quantidade: len(produto),
-		Criacao:    time.Now(),
-	}
-
-	return r.db.Create(venda).Error
-
+func (r *Repository) Vendas(produto []models.ProdutoVenda) error {
+	err := r.db.Create(produto).Error
+	return err
 }
 
 func (r *Repository) InserirCliente(cliente *models.Cliente) error {

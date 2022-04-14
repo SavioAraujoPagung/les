@@ -5,11 +5,11 @@ import (
 )
 
 type Venda struct {
-	ID               int              `json:"-" gorm:"column:id"`
-	Quantidade       int              `json:"-" gorm:"column:quantidade"`
-	Criacao          time.Time        `json:"-" gorm:"column:datacriacao"`
-	ClienteID        int              `json:"cliente" gorm:"-"`
-	ProdutosVendidos []ProdutoVendido `json:"produtos" gorm:"foreignKey:VendaID"`
+	ID               int            `json:"-" gorm:"column:id"`
+	Quantidade       int            `json:"-" gorm:"column:quantidade"`
+	Criacao          time.Time      `json:"-" gorm:"column:datacriacao"`
+	ClienteID        int            `json:"cliente" gorm:"column:id_cliente"`
+	ProdutosVendidos []ProdutoVenda `json:"produtos" gorm:"-"` //``
 }
 
 type Categoria struct {
@@ -30,9 +30,9 @@ type Produto struct {
 	Quantidade    int     `json:"quantidade" gorm:"column:quantidade"`
 }
 
-type ProdutoVendido struct {
-	// VendaID    int     `json:"-" gorm:"foreignKey:id_venda;references:vendas"`
-	ProdutoID  int     `json:"idProduto"`
-	Quantidade int     `json:"quantidade"`
-	Preco      float64 `json:"preco"`
+type ProdutoVenda struct {
+	VendaID    int     `json:"-" gorm:"column:id_venda;foreignKey:id_venda;references:vendas"`
+	ProdutoID  int     `json:"idProduto" gorm:"column:id_produto"`
+	Quantidade int     `json:"quantidade" gorm:"column:quantidade_item"`
+	Preco      float64 `json:"preco" gorm:"column:preco"`
 }
