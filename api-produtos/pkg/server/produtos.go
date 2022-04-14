@@ -5,13 +5,12 @@ import (
 	"io"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/SavioAraujoPagung/les/pkg/models"
 	"github.com/SavioAraujoPagung/les/pkg/repository"
 	"github.com/gorilla/mux"
 )
-
-
 
 // Id das permissão que para cada funcionalidade
 const (
@@ -160,18 +159,21 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	
+
 	err = json.Unmarshal(body, &venda)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	err = executarVendas(repo, venda)
+	venda.Quantidade = len(venda.ProdutosVendidos)
+	venda.Criacao = time.Now()
+	err = executarVendas(repo, &venda)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
 }
 
 func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool {
@@ -179,8 +181,25 @@ func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool 
 	return permitido
 }
 
-func executarVendas(repo repository.Repository, venda models.Venda) error{
-	err := repo.Vendas(venda.ProdutosVendidos, venda.ID)
-	//err = repo.Vender(venda)
+func executarVendas(repo repository.Repository, venda *models.Venda) error {
+	err := repo.Vender(venda)
+	if err != nil {
+		return err
+	}
+
+	//todo:: preciso deixar o id do produto igual ao igual ao id da venda
+	amount := 2
+
+	for i := 0; i > amount; i ++{
+		venda.ProdutosVendidos[i].VendaID = venda.ID
+	}
+	venda.ProdutosVendidos[0].VendaID = 28
+	venda.ProdutosVendidos[1].VendaID = 28
+	// fmt.Println(produtosVendido)
+	for _, produtosVendido := range venda.ProdutosVendidos {
+		produtosVendido.VendaID = venda.ID
+	}
+
+	err = repo.Vendas(venda.ProdutosVendidos)
 	return err
 }
