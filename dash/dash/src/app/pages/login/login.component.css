@@ -1,0 +1,58 @@
+
+.conteudo-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10%;
+
+  .conteudo-form {
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 30px 60px 0 gray;
+    text-align: center;
+    width: 45%;
+    height: 350px;
+  }
+}
+
+.input-login{
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 0px;
+  text-align: center;
+  font-size: 16px;
+  margin: 15px;
+  width: 90%;
+  border: 2px solid #f6f6f6;
+
+}
+
+.input-submit{
+  border-radius:5px;
+  color:black;
+  padding:5px 5px;
+  margin-left: 15px
+
+}
+ /* :host {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+  }
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button {
+    display: flex;
+    justify-content: flex-end;
+  }  */
+
