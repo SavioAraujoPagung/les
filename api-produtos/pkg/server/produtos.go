@@ -168,7 +168,7 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 
 	venda.Quantidade = len(venda.ProdutosVendidos)
 	venda.Criacao = time.Now()
-	err = executarVendas(repo, &venda)
+	err = executarVendas(repo, venda)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
@@ -181,25 +181,21 @@ func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool 
 	return permitido
 }
 
-func executarVendas(repo repository.Repository, venda *models.Venda) error {
-	err := repo.Vender(venda)
+func executarVendas(repo repository.Repository, venda models.Venda) error {
+	err := repo.Vendas(&venda)
 	if err != nil {
 		return err
 	}
-
-	//todo:: preciso deixar o id do produto igual ao igual ao id da venda
-	amount := 2
-
-	for i := 0; i > amount; i ++{
+	
+	amount := venda.Quantidade
+	for i := 0; i < amount; i++ {
 		venda.ProdutosVendidos[i].VendaID = venda.ID
-	}
-	venda.ProdutosVendidos[0].VendaID = 28
-	venda.ProdutosVendidos[1].VendaID = 28
-	// fmt.Println(produtosVendido)
-	for _, produtosVendido := range venda.ProdutosVendidos {
-		produtosVendido.VendaID = venda.ID
+		err := repo.Vender(venda.ProdutosVendidos[i])
+		if err != nil {
+			return err
+		}
 	}
 
-	err = repo.Vendas(venda.ProdutosVendidos)
+	err = repo.ProdutoVenda(venda.ProdutosVendidos)
 	return err
 }
