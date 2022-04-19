@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './modules/shared/shared.module';
 import { HeaderComponent } from './pages/header/header.component';
 import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usuario.component';
-import { TelaPrincipalComponent } from './pages/tela-principal/tela-principal.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,8 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HeaderComponent,
     CadastroUsuarioComponent,
-    TelaPrincipalComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
