@@ -40,7 +40,7 @@ loginForm!:FormGroup;
     //   )
     
     this.router.navigate(["/cadastro-usuario"]);
-    //debugger
+    debugger
     
 
   }

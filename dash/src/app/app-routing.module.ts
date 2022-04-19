@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
     //loadChildren: () => import('./pages/login/login.component').then(m => m.LoginComponent)
   },
-  { path: 'cadastro-usuario', loadChildren: () => import('./pages/cadastro-usuario/cadastro-usuario.component').then(m => m.CadastroUsuarioComponent) }
+  { path: 'cadastro-usuario', component: CadastroUsuarioComponent }
   
 ];
 
