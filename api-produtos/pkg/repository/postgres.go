@@ -4,6 +4,7 @@ import (
 	"github.com/SavioAraujoPagung/les/pkg/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 )
 
 type Repository struct {
@@ -49,12 +50,25 @@ func (r *Repository) Permissao(idUsuario int, idFuncionalidade int) (bool, error
 	return false, err
 }
 
-func (r *Repository) Vender(venda *models.Venda) error {
-	err := r.db.Create(venda).Error
+func (r *Repository) Vender(produtoVenda models.ProdutoVenda) error {
+	produto, err := r.Buscar(produtoVenda.ProdutoID)
+	if err != nil {
+		return err
+	}
+	qtd := produto.Quantidade
+	qtdVendido := produtoVenda.Quantidade
+	quantidade := qtd - qtdVendido
+
+	err = r.db.Where("id = ?", produtoVenda.ProdutoID).Updates(&models.Produto{Quantidade: quantidade}).Error
 	return err
 }
 
-func (r *Repository) Vendas(produto []models.ProdutoVenda) error {
+func (r *Repository) Vendas(venda* models.Venda) error {
+	err := r.db.Clauses(clause.OnConflict{DoNothing: true, UpdateAll: true}).Create(venda).Error
+	return err
+}
+
+func (r *Repository) ProdutoVenda(produto []models.ProdutoVenda) error {
 	err := r.db.Create(produto).Error
 	return err
 }
