@@ -1,0 +1,59 @@
+<style>
+</style>
+<div>
+  <h1 style="border:1; text-align:center;"><small>Cadastro do Usuário</small></h1>
+  <mat-card>
+
+    <mat-card-content>
+      <form>
+
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Nome completo" formControlName="nome">
+          </mat-form-field>
+        </p>
+
+
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="CPF" formControlName="password">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </p>
+
+        <p>
+
+          <small><label>Data de cadastro</label></small><br>
+          <input type="date" matInput placeholder="Data de cadastro" formControlName="dt_cad">
+        </p>
+
+
+        <div style="padding-top: 20px;">
+
+          <input type="checkbox"/> <label>Cadastro de Usuário</label><br>
+          <input type="checkbox"/> <label>Cadastro de Categoria</label><br>
+          <input type="checkbox"/> <label>Cadastro de Clientes</label><br>
+          <input type="checkbox"/> <label>Caixa</label><br>
+          <input type="checkbox"/> <label>Check Out</label><br>
+          <input type="checkbox"/> <label>Cafeteria</label><br>
+          <input type="checkbox"/> <label>Estoque</label><br>
+          <input type="checkbox"/> <label>Consultar Preco</label><br>
+          <input type="checkbox"/> <label>Relatórios</label><br>
+
+        </div>
+
+
+        <div class="buttons" style="text-align: center;">
+            <button type="submit" mat-button>Salvar</button>
+            <button type="reset" mat-button>Cancelar</button>
+            <button type="submit" mat-button>Novo</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

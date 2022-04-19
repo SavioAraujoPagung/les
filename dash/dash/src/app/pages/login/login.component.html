@@ -1,0 +1,23 @@
+<div class="conteudo-login">    
+  <form class="conteudo-form" [formGroup]="loginForm" (submit)="submitLogin()">
+    <h1><small>Login do Sistema 2.0</small></h1>
+    <div>
+      <div>
+        <input class="input-login" type="text" placeholder="cpf" formControlName="cpf"/>
+      </div>
+    </div>
+    
+    <div>
+      <div>
+        <input class="input-login" type="password" placeholder="senha" formControlName="senha"/>
+      </div>
+    </div>
+
+    <div >
+        <button class="input-submit" type="submit">Login</button>
+        <button class="input-submit" type="reset">Limpar</button>
+    </div>
+  </form>
+     
+</div>
+  
