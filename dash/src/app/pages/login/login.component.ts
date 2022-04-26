@@ -16,6 +16,7 @@ loginForm!:FormGroup;
   constructor(private formBuilder: FormBuilder, private router: Router, public loginService: LoginService) { }
 
   ngOnInit(): void {
+    console.log("teste")
     this.loginForm = this.formBuilder.group(
       {
         cpf:['',[Validators.required]],
@@ -40,7 +41,7 @@ loginForm!:FormGroup;
     //   )
     
     this.router.navigate(["/cadastro-usuario"]);
-    debugger
+    //debugger
     
 
   }

@@ -5,18 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './modules/shared/shared.module';
-import { HeaderComponent } from './pages/header/header.component';
 import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usuario.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MenuLateralComponent } from './pages/menu-lateral/menu-lateral.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     CadastroUsuarioComponent,
+    DashboardComponent,
+    MenuLateralComponent,
     LoginComponent
   ],
   imports: [

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usuario.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
@@ -10,7 +11,7 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
     //loadChildren: () => import('./pages/login/login.component').then(m => m.LoginComponent)
   },
-  { path: 'cadastro-usuario', component: CadastroUsuarioComponent }
+  { path: 'dash', component: DashboardComponent }
   
 ];
 
