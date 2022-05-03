@@ -1,0 +1,15 @@
+{
+    "nome":"Danilo Pereira",
+    "cpf":"17022871736",
+    "dataCriacao":"",
+    "funcionalidades": [
+        {
+            "id": 1,
+            "nome": "Adminstrador"
+        },
+        {
+            "id": 2,
+            "nome": "Fiscal de Entreda"
+        }
+    ]
+}

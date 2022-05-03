@@ -1,1 +1,11 @@
-<p-tabMenu [model]="items"></p-tabMenu>
+<img src="/assets/igor.jpg" width=160 height=160>
+<div class="flex-container">
+  <mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let shoes of typesOfShoes" [value]="shoes">
+      {{shoes}}
+    </mat-list-option>
+  </mat-selection-list>
+  <p>
+    Option selected: {{shoes.selectedOptions.selected[0]?.value}}
+  </p>
+</div>

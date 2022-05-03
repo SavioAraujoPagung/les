@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 //import {TabMenuModule} from 'primeng/tabmenu';
 //import { MenuItem } from '@material-ui/core';
-import {MenuItem} from 'primeng/api';
-
 
 @Component({
   selector: 'app-menu-lateral',
@@ -10,18 +9,10 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./menu-lateral.component.scss']
 })
 export class MenuLateralComponent implements OnInit {
-  items: MenuItem[] = [];
-  constructor() { }
+  typesOfShoes: string[] = ['Caixa', 'Fiscal Saída', 'Fiscal Entrada', 'Cliente', 'Funcionario Cafeteria', 'Entrada de Estoque', 'Administrador'];
+  constructor(private router: Router) { }
 
   ngOnInit(){
-    this.items = [
-      {label: 'Administrador', icon: 'pi pi-fw pi-home', routerLink: ['/']},
-      {label: 'Caixa', icon: 'pi pi-fw pi-calendar'},
-      {label: 'Fiscal Entrada', icon: 'pi pi-fw pi-pencil'},
-      {label: 'Fiscal Saída', icon: 'pi pi-fw pi-file'},
-      {label: 'Cafeteria', icon: 'pi pi-fw pi-calendar'},
-      {label: 'Estoque', icon: 'pi pi-fw pi-calendar'}
-    ];
-  }
 
+  }
 }

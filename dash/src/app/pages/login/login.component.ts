@@ -11,12 +11,12 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class LoginComponent implements OnInit {
 
-loginForm!:FormGroup; 
+  hide = true;
+  loginForm!:FormGroup; 
 
   constructor(private formBuilder: FormBuilder, private router: Router, public loginService: LoginService) { }
 
   ngOnInit(): void {
-    console.log("teste")
     this.loginForm = this.formBuilder.group(
       {
         cpf:['',[Validators.required]],
@@ -27,22 +27,20 @@ loginForm!:FormGroup;
 
   submitLogin(){
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    
-    // this.loginService.loginUsuario(dadosLogin).
-    //   subscribe(
-    //     data => 
-    //     {
-    //       var dados = data
-    //       debugger
-    //     },
-    //     error => {
-    //       console.log("deu error")
-    //     }
-    //   )
-    
-    this.router.navigate(["/cadastro-usuario"]);
-    //debugger
-    
+    console.log(dadosLogin)
+    this.loginService.loginUsuario().
+    subscribe(
+        data => 
+        {
+          var usuario = data
+          debugger
+        },
+        error => {
+          console.log("deu error")
+        }
+    )
+    console.log(dadosLogin)
+    this.router.navigate(["/dash"]);
 
   }
 
