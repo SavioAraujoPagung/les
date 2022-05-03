@@ -36,7 +36,7 @@ public class Usuario {
 		joinColumns=@JoinColumn(name="id_usuario"),
 		inverseJoinColumns=@JoinColumn(name="id_funcionalidade")	
 	)
-    private List<Funcionalidade> funcionalidadeList;
+    private List<Funcionalidade> funcionalidades;
     //private String email;
     //private String telefone;
     //private Long codRFID;
