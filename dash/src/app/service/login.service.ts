@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Usuario } from '../models/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,7 @@ export class LoginService {
 
   }
 
-  loginUsuario(obj: any){
-    return this.httpClient.post<any>
-      (`${this.baseUrl}/users/login`, obj);
+  loginUsuario(){
+    return this.httpClient.get<Usuario>('/assets/login.json');
   }
-
 }

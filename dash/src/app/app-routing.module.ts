@@ -5,18 +5,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  {path:'', pathMatch: 'full' ,redirectTo: 'login'},
-  
-  {
-    path: 'login', component: LoginComponent
-    //loadChildren: () => import('./pages/login/login.component').then(m => m.LoginComponent)
-  },
+  { path:'', pathMatch: 'full' ,redirectTo: 'login' },
+  { path: 'login', component: LoginComponent },
   { path: 'dash', component: DashboardComponent }
-  
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
