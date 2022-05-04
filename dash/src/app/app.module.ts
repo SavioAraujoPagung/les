@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './modules/shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usuario.component';
 
 import { HttpClientModule } from '@angular/common/http';
