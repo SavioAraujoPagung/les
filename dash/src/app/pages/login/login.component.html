@@ -18,8 +18,15 @@
     </div>
 
     <div>
-      <button mat-raised-button color="primary" class="input-submit" type="submit">Login</button>
+      <button mat-raised-button color="primary" class="input-submit" type="submit" (click)="submitLogin()">Login</button>
       <button mat-stroked-button color="primary" class="input-submit" type="reset">Limpar</button>
     </div>
   </form>
+</div>
+
+<div class="conteudo-login">
+  <button mat-stroked-button color="primary" 
+          class="input-submit" 
+          type="reset" 
+          (click)="buscarProdutos()"> Buscar Produto </button>
 </div>
