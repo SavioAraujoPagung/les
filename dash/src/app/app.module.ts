@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MenuLateralComponent } from './pages/menu-lateral/menu-lateral.component';
 import { BuscarProdutoComponent } from './pages/buscar-produto/buscar-produto.component';
+import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BuscarProdutoComponent } from './pages/buscar-produto/buscar-produto.co
     DashboardComponent,
     MenuLateralComponent,
     LoginComponent,
-    BuscarProdutoComponent
+    BuscarProdutoComponent,
+    CadastroProdutoComponent
   ],
   imports: [
     BrowserModule,
