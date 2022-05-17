@@ -9,10 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-lateral.component.scss']
 })
 export class MenuLateralComponent implements OnInit {
-  typesOfShoes: string[] = ['Caixa', 'Fiscal Saída', 'Fiscal Entrada', 'Cliente', 'Funcionario Cafeteria', 'Entrada de Estoque', 'Administrador'];
+  categorias: string[] = ['Caixa', 'Fiscal Saída', 'Fiscal Entrada', 'Cliente', 'Funcionario Cafeteria', 'Entrada de Estoque', 'Administrador'];
+  categoria: string = "Adm";
   constructor(private router: Router) { }
 
-  ngOnInit(){
+  ngOnInit(): void{
+    
+  }
 
+  caixa(): void {
+
+  }
+
+  fiscalSaida(): void {
+
+  }
+  fiscalEntrada(): void {
+
+  }
+
+  funcionarioCafeteria(): void {
+
+  }
+  entradaEstoque(): void {
+    this.router.navigate(["/cadastrar-produtos"])
+  }
+  administrador(): void {
+    this.router.navigate(["/cadastrar-usuario"])
   }
 }
