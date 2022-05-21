@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
         data => 
         {
           usuario = data
-          console.log('aqui' + usuario)
           //debugger
           if (dadosLogin.cpf == usuario.cpf && dadosLogin.senha == usuario.senha){
             this.router.navigate(["/dash"]);
