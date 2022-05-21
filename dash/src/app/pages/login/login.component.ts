@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/LoginModel';
+import { Usuario } from 'src/app/models/Usuario';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -26,22 +27,29 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(){
-    var usuario;
-    var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    this.loginService.loginUsuario().
+    var dadosLogin: LoginModel;
+    var usuario: Usuario;
+    dadosLogin = this.loginForm.getRawValue() as LoginModel;
+    this.loginService.loginUsuario(dadosLogin).
     subscribe(
         data => 
         {
           usuario = data
-          console.log(usuario)
+          console.log('aqui' + usuario)
           //debugger
+          if (dadosLogin.cpf == usuario.cpf && dadosLogin.senha == usuario.senha){
+            this.router.navigate(["/dash"]);
+            return
+          }
         },
         error => {
           console.log("deu error")
         }
     )
     console.log(dadosLogin)
-    this.router.navigate(["/dash"]);
+    // if (dadosLogin.cpf != usuario.cpf){
+    //   this.router.navigate(["/dash"]);
+    // }
 
   }
 

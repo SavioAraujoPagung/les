@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { LoginModel } from '../models/LoginModel';
 import { Usuario } from '../models/Usuario';
 
 @Injectable({
@@ -13,7 +14,15 @@ export class LoginService {
 
   }
 
-  loginUsuario(){
-    return this.httpClient.get<Usuario>('/assets/login.json');
+  // Headers
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }
+
+  loginUsuario(login:LoginModel){
+    const user = this.httpClient.post<Usuario>('/api/users/login', login);
+    console.log(user);
+    return user;
+    debugger
   }
 }

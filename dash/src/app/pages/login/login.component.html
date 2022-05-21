@@ -4,7 +4,7 @@
       <h3>Login</h3>
       <mat-form-field hintLabel="Max 14 characters" appearance="fill">
         <mat-label>CPF</mat-label>
-        <input matInput #input maxlength="14" placeholder="Ex. 111.111.111/11" formControlName="cpf">
+        <input matInput #input maxlength="14" placeholder="Ex. 111.111.111-11" formControlName="cpf">
         <mat-hint align="end">{{input.value?.length || 0}}/14</mat-hint>
       </mat-form-field>
       <br>
