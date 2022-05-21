@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/LoginModel';
@@ -24,6 +24,10 @@ export class LoginComponent implements OnInit {
         senha:['',[Validators.required]]
       }
     );
+
+    this.loginService.emitirLoginEfetuado.subscribe(
+      login => console.log("aiaiaiia" + login)
+    )
   }
 
   submitLogin(){
@@ -45,7 +49,7 @@ export class LoginComponent implements OnInit {
           console.log("deu error")
         }
     )
-    console.log(dadosLogin)
+    //console.log(dadosLogin)
     // if (dadosLogin.cpf != usuario.cpf){
     //   this.router.navigate(["/dash"]);
     // }
