@@ -26,14 +26,15 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(){
+    var usuario;
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    console.log(dadosLogin)
     this.loginService.loginUsuario().
     subscribe(
         data => 
         {
-          var usuario = data
-          debugger
+          usuario = data
+          console.log(usuario)
+          //debugger
         },
         error => {
           console.log("deu error")
@@ -42,6 +43,10 @@ export class LoginComponent implements OnInit {
     console.log(dadosLogin)
     this.router.navigate(["/dash"]);
 
+  }
+
+  buscarProdutos(){
+    this.router.navigate(["/buscar-produto"])
   }
 
 

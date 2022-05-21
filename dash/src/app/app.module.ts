@@ -12,6 +12,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MenuLateralComponent } from './pages/menu-lateral/menu-lateral.component';
+import { BuscarProdutoComponent } from './pages/buscar-produto/buscar-produto.component';
+import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MenuLateralComponent } from './pages/menu-lateral/menu-lateral.componen
     CadastroUsuarioComponent,
     DashboardComponent,
     MenuLateralComponent,
-    LoginComponent
+    LoginComponent,
+    BuscarProdutoComponent,
+    CadastroProdutoComponent
   ],
   imports: [
     BrowserModule,
