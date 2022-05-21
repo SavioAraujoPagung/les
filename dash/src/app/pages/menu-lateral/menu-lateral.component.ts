@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/models/Usuario';
 //import {TabMenuModule} from 'primeng/tabmenu';
 //import { MenuItem } from '@material-ui/core';
 
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class MenuLateralComponent implements OnInit {
   categorias: string[] = ['Caixa', 'Fiscal Saída', 'Fiscal Entrada', 'Cliente', 'Funcionario Cafeteria', 'Entrada de Estoque', 'Administrador'];
   categoria: string = "Adm";
-  constructor(private router: Router) { }
+  constructor(private router: Router, private usuario: Usuario) { }
 
   ngOnInit(): void{
     
