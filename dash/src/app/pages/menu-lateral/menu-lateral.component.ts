@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/models/Usuario';
 //import {TabMenuModule} from 'primeng/tabmenu';
 //import { MenuItem } from '@material-ui/core';
 
@@ -35,6 +36,11 @@ export class MenuLateralComponent implements OnInit {
     this.router.navigate(["/cadastrar-produtos"])
   }
   administrador(): void {
-    this.router.navigate(["/cadastrar-usuario"])
+    // if (this.usuario.funcionalidades[0].nome == 'Administrador') {
+    //   this.router.navigate(["/cadastrar-usuario"])
+    //   return
+    // }
+
+    //mensagem de erro
   }
 }

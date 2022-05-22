@@ -1,3 +1,26 @@
 :host {
     display: flex;
 }
+
+button{
+    margin: 0 10px;
+}
+
+.criar {
+    /* padding: 20px;
+    margin-left: 200px;
+    margin-right: 200px; */
+    display: flex;
+}
+
+.btn {
+    padding: 20px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.example-full-width { 
+    padding: 10px;
+}

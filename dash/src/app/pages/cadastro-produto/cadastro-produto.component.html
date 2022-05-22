@@ -1,41 +1,71 @@
 <app-menu-lateral></app-menu-lateral>
-
 <form class="conteudo-form" [formGroup]="produtoForm" (submit)="criar()">
-    <div>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Nome do Produto</mat-label>
-            <input matInput placeholder="Ex. Biscoito" value="">
-        </mat-form-field>
+    <div class="criar">
+        <div class="titulo">
+            <h1>Cadastrar Produto</h1>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nome do Produto</mat-label>
+                <input formControlName="nome" matInput placeholder="Ex. Biscoito" value="">
+            </mat-form-field>
+        </div>
     
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Codigo de barras</mat-label>
-            <input matInput placeholder="Ex. 11111111" value="">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Codigo de barras</mat-label>
+                <input formControlName="codigo_barras" matInput placeholder="Ex. 11111111" value="">
+            </mat-form-field>
+        </div>
     
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>RDID</mat-label>
-            <input matInput placeholder="Ex. 2222222" value="">
-        </mat-form-field>
-    
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Preço de Custo</mat-label>
-            <input type="number" matInput placeholder="Ex. 25,33" value="">
-        </mat-form-field>
-    
-        <mat-form-field class="example-full-width" appearance="fill">
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>RDID</mat-label>
+                <input formControlName="rfid" matInput placeholder="Ex. 2222222" value="">
+            </mat-form-field>
+        </div>
+        
+        <div>        
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Preço de Custo</mat-label>
+                <input formControlName="preco_custo" type="number" matInput placeholder="Ex. 25,33" value="">
+            </mat-form-field>
+        </div>
+
+        <div>
             <mat-label>Preço de Venda</mat-label>
-            <input type="number" matInput placeholder="Ex. 50,66" value="">
-        </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <input formControlName="preco_venda" type="number" matInput placeholder="Ex. 50,66" value="">
+            </mat-form-field>
+        </div>    
     
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Unidade de Medida</mat-label>
-            <input matInput placeholder="Ex. " value="">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Unidade de Medida</mat-label>
+                <input formControlName="unidade_medida" matInput placeholder="Ex. " value="">
+            </mat-form-field>
+        </div>
     
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Quantidade</mat-label>
-            <input type="number" matInput placeholder="Ex. 400" value="">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Quantidade</mat-label>
+                <input formControlName="quantidade" type="number" matInput placeholder="Ex. 400" value="">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Categoria do Produto</mat-label>
+                <mat-select formControlName="categoria" name="categoria" id="categoria" placeholder="Categoria">
+                    <mat-option value="Cafeteria">Cafeteria</mat-option>
+                    <mat-option value="Supermercado">Supermercado</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
     </div>
-    <button mat-raised-button>Primary</button>
+    <div class="criar">
+        <button mat-raised-button color="primary" click="criar()">Cadastrar</button>
+        <button mat-raised-button>Limpar</button>
+    </div>
 </form>
