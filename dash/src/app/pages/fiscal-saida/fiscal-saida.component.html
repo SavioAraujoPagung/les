@@ -1,0 +1,47 @@
+<app-menu-lateral></app-menu-lateral>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiscal Saída</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <form action="" method="post">
+                <h4 class="bg-light">Check Out</h4>
+                <div class="client-group">
+                    <div>
+                        <label for="codCartao">Código do Cartão: </label>
+                        <input type="text" name="codCartao" id="codCartao"><br>
+                    </div>
+
+                    <div>
+                        <label for="name">Cliente:</label>
+                        <input type="text" name="cliente" id="cliente"><br>
+                    </div>
+
+                    <div>
+                        <label for="name">Valor em aberto:</label>
+                        <input type="text" name="valorAberto" id="valorAberto"><br>
+                    </div>
+
+                    <div>
+                        <label for="liberado">Liberado:</label>
+                        <input type="checkbox" name="true"><label for="true">Sim</label>
+                        <input type="checkbox" name="false"><label for="false">Não</label>
+                    </div>
+                </div>
+
+                    <div class="client-btn">
+                        <button type="submit">Salvar</button>
+
+                        <button type="submit">Cancelar</button>
+                    </div>
+                </form>
+        </div>
+    </main>
+</body>
+</html>
