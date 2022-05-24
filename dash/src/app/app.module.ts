@@ -15,6 +15,9 @@ import { MenuLateralComponent } from './pages/menu-lateral/menu-lateral.componen
 import { BuscarProdutoComponent } from './pages/buscar-produto/buscar-produto.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
 import { CafeteriaComponent } from './pages/cafeteria/cafeteria.component';
+import { FiscalEntradaComponent } from './pages/fiscal-entrada/fiscal-entrada.component';
+import { FiscalSaidaComponent } from './pages/fiscal-saida/fiscal-saida.component';
+import { CaixaComponent } from './pages/caixa/caixa.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { CafeteriaComponent } from './pages/cafeteria/cafeteria.component';
     LoginComponent,
     BuscarProdutoComponent,
     CadastroProdutoComponent,
-    CafeteriaComponent
+    CafeteriaComponent,
+    FiscalEntradaComponent,
+    FiscalSaidaComponent,
+    CaixaComponent
   ],
   imports: [
     BrowserModule,

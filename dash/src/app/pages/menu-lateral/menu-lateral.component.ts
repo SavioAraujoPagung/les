@@ -15,18 +15,19 @@ export class MenuLateralComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void{
-    
+
   }
 
   caixa(): void {
-
+    this.router.navigate(["/caixa"])
   }
 
   fiscalSaida(): void {
+    this.router.navigate(["/fiscal-saida"])
 
   }
   fiscalEntrada(): void {
-
+    this.router.navigate(["/fiscal-entrada"])
   }
 
   funcionarioCafeteria(): void {
