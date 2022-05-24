@@ -26,7 +26,7 @@ func CORSMiddleware(next http.Handler) http.Handler {
 }
 
 func Run() {
-	PORT := ":6666"
+	PORT := ":8000"
 	muxRoute := mux.NewRouter()
 
 	muxRoute.HandleFunc("/produtos", inserir).Methods(http.MethodPost)
