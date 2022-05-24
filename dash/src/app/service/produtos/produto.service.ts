@@ -7,7 +7,8 @@ import { take, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProdutoService {
-  private readonly API = '/assets/produtos.json'
+  private readonly API = 'http://localhost:8000/produtos?idUsuario=1'
+  //private readonly API = 'https://wqefas.free.beeceptor.com'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,5 +18,10 @@ export class ProdutoService {
       take(1),
       tap(produtos => console.log())
     );
+  }
+
+  criar(produto: Produto) {
+    console.log("Realizar query")
+    return this.httpClient.post(this.API, produto);
   }
 }

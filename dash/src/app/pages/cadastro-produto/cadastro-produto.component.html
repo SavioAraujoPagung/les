@@ -1,9 +1,9 @@
 <app-menu-lateral></app-menu-lateral>
 <form class="conteudo-form" [formGroup]="produtoForm" (submit)="criar()">
+    <div class="titulo">
+        <h1>Cadastrar Produto</h1>
+    </div>
     <div class="criar">
-        <div class="titulo">
-            <h1>Cadastrar Produto</h1>
-        </div>
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Nome do Produto</mat-label>
@@ -33,8 +33,8 @@
         </div>
 
         <div>
-            <mat-label>Preço de Venda</mat-label>
             <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Preço de Venda</mat-label>
                 <input formControlName="preco_venda" type="number" matInput placeholder="Ex. 50,66" value="">
             </mat-form-field>
         </div>    
@@ -42,7 +42,10 @@
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Unidade de Medida</mat-label>
-                <input formControlName="unidade_medida" matInput placeholder="Ex. " value="">
+                <mat-select formControlName="unidade_medida" name="unidade_medida" id="unidade_medida" placeholder="Unidade de Medida">
+                    <mat-option value="grama">Grama</mat-option>
+                    <mat-option value="unidade">Unidade</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
     
@@ -57,15 +60,14 @@
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Categoria do Produto</mat-label>
                 <mat-select formControlName="categoria" name="categoria" id="categoria" placeholder="Categoria">
-                    <mat-option value="Cafeteria">Cafeteria</mat-option>
-                    <mat-option value="Supermercado">Supermercado</mat-option>
+                    <mat-option value=1 >Cafeteria</mat-option>
+                    <mat-option value=2 >Supermercado</mat-option>
                 </mat-select>
             </mat-form-field>
-        </div>
-        
+        </div>     
     </div>
     <div class="criar">
         <button mat-raised-button color="primary" click="criar()">Cadastrar</button>
-        <button mat-raised-button>Limpar</button>
+        <button mat-raised-button type="reset">Limpar</button>
     </div>
 </form>
