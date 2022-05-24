@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"io"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
@@ -21,6 +22,7 @@ const (
 )
 
 func inserir(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Inserindo Produto")
 	body, err := io.ReadAll(request.Body)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
@@ -59,6 +61,7 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
+	
 	writer.WriteHeader(http.StatusCreated)
 }
 

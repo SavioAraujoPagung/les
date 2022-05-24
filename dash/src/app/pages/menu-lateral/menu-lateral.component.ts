@@ -30,7 +30,7 @@ export class MenuLateralComponent implements OnInit {
   }
 
   funcionarioCafeteria(): void {
-
+    this.router.navigate(["/cafeteria"])
   }
   entradaEstoque(): void {
     this.router.navigate(["/cadastrar-produtos"])
