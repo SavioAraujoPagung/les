@@ -13,7 +13,7 @@ import { ErrorDialogComponent } from 'src/app/shared/error-dialog/error-dialog.c
 export class CafeteriaComponent implements OnInit {
 
   produtos$!: Observable<Produto[]>;
-  displayedColumns = ['id', 'nome', 'rfid', 'preco_venda', 'unidade_medida', 'quantidade']
+  displayedColumns = ['id', 'nome', 'rfid', 'preco_venda', 'unidade_medida', 'quantidade', 'vender']
   
 
   constructor(private service: ProdutoService,
@@ -38,6 +38,10 @@ export class CafeteriaComponent implements OnInit {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
+  }
+
+  vender() {
+    
   }
 
 }
