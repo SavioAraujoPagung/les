@@ -14,6 +14,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MenuLateralComponent } from './pages/menu-lateral/menu-lateral.component';
 import { BuscarProdutoComponent } from './pages/buscar-produto/buscar-produto.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
+import { CafeteriaComponent } from './pages/cafeteria/cafeteria.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-prod
     MenuLateralComponent,
     LoginComponent,
     BuscarProdutoComponent,
-    CadastroProdutoComponent
+    CadastroProdutoComponent,
+    CafeteriaComponent
   ],
   imports: [
     BrowserModule,
