@@ -1,3 +1,37 @@
 :host {
     display: flex;
 }
+
+button{
+    margin: 0 10px;
+}
+
+.conteudo-form{
+    padding: 20px;
+}
+
+.criar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+@media (max-width: 800px) {
+    .criar {
+      flex-direction: column;
+    }
+}
+
+.btn {
+    padding: 20px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.example-full-width { 
+    padding: 10px;
+}

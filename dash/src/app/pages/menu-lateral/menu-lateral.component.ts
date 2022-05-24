@@ -33,13 +33,17 @@ export class MenuLateralComponent implements OnInit {
   }
 
   funcionarioCafeteria(): void {
-
+    this.router.navigate(["/cafeteria"])
   }
   entradaEstoque(): void {
     this.router.navigate(["/cadastrar-produtos"])
   }
   administrador(): void {
-   
-    this.router.navigate(["/cadastrar-usuario"])
+    // if (this.usuario.funcionalidades[0].nome == 'Administrador') {
+    //   this.router.navigate(["/cadastrar-usuario"])
+    //   return
+    // }
+
+    //mensagem de erro
   }
 }
