@@ -13,13 +13,6 @@
     
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Codigo de barras</mat-label>
-                <input formControlName="codigo_barras" matInput placeholder="Ex. 11111111" value="">
-            </mat-form-field>
-        </div>
-    
-        <div>
-            <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>RDID</mat-label>
                 <input formControlName="rfid" matInput placeholder="Ex. 2222222" value="">
             </mat-form-field>
@@ -37,6 +30,13 @@
                 <mat-label>Preço de Venda</mat-label>
                 <input formControlName="preco_venda" type="number" matInput placeholder="Ex. 50,66" value="">
             </mat-form-field>
+        </div>
+    
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Quantidade</mat-label>
+                <input formControlName="quantidade" type="number" matInput placeholder="Ex. 400" value="">
+            </mat-form-field>
         </div>    
     
         <div>
@@ -48,13 +48,6 @@
                 </mat-select>
             </mat-form-field>
         </div>
-    
-        <div>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Quantidade</mat-label>
-                <input formControlName="quantidade" type="number" matInput placeholder="Ex. 400" value="">
-            </mat-form-field>
-        </div>
 
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
@@ -64,7 +57,14 @@
                     <mat-option value=2 >Supermercado</mat-option>
                 </mat-select>
             </mat-form-field>
-        </div>     
+        </div>
+    
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Codigo de barras</mat-label>
+                <input formControlName="codigo_barras" matInput placeholder="Ex. 11111111" value="">
+            </mat-form-field>
+        </div>
     </div>
     <div class="criar">
         <button mat-raised-button color="primary" click="criar()">Cadastrar</button>
