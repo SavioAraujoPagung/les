@@ -22,7 +22,7 @@ export class LoginService {
 
   loginUsuario(login:LoginModel){
     const user = this.httpClient.post<Usuario>('/api/users/login', login);
-    this.emitirLoginEfetuado.emit(user);
+    //this.emitirLoginEfetuado.emit(user);
     return user;
     
   }

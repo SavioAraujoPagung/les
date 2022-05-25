@@ -17,6 +17,8 @@ export class MenuLateralComponent implements OnInit {
     
   }
 
+
+
   ngOnInit(): void{
     
   }
@@ -40,7 +42,7 @@ export class MenuLateralComponent implements OnInit {
   }
   administrador(): void {
     // if (this.usuario.funcionalidades[0].nome == 'Administrador') {
-    //   this.router.navigate(["/cadastrar-usuario"])
+      this.router.navigate(["/cadastrar-usuario"])
     //   return
     // }
 
