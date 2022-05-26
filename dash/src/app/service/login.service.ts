@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { LoginModel } from '../models/LoginModel';
 import { Usuario } from '../models/Usuario';
@@ -10,7 +10,6 @@ import { Usuario } from '../models/Usuario';
 export class LoginService {
   private readonly baseUrl = environment['endPoint'];
 
-  emitirLoginEfetuado = new EventEmitter();
   constructor(private httpClient: HttpClient) { 
 
   }
