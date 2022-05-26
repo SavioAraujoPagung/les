@@ -1,12 +1,12 @@
 <router-outlet></router-outlet>
 <img src="/assets/igor.jpg" width=160 height=160>
 <div class="buttonMenu">
-    <button class="buttonMenu" mat-raised-button color="primary" (click)="caixa()">Caixa</button><br><br>
-    <button class="buttonMenu" mat-raised-button color="primary" (click)="fiscalSaida()">Fiscal Saída</button><br><br>
-    <button class="buttonMenu" mat-raised-button color="primary" (click)="fiscalEntrada()">Fiscal Entrada</button><br><br>
-    <button class="buttonMenu" mat-raised-button color="primary" (click)="funcionarioCafeteria()">Funcionario Cafeteria</button><br><br>
-    <button class="buttonMenu" mat-raised-button color="primary" (click)="entradaEstoque()">Entrada de Estoque</button><br><br>
-    <button class="buttonMenu" mat-raised-button color="primary" (click)="administrador()">Administrador</button>
+    <button class="buttonMenu" mat-raised-button color="primary" *ngIf="definirVisibilidade(2)" (click)="caixa()">Caixa</button><br><br>
+    <button class="buttonMenu" mat-raised-button color="primary" *ngIf="definirVisibilidade(6)" (click)="fiscalSaida()">Fiscal Saída</button><br><br>
+    <button class="buttonMenu" mat-raised-button color="primary" *ngIf="definirVisibilidade(5)" (click)="fiscalEntrada()">Fiscal Entrada</button><br><br>
+    <button class="buttonMenu" mat-raised-button color="primary" *ngIf="definirVisibilidade(4)" (click)="funcionarioCafeteria()">Funcionario Cafeteria</button><br><br>
+    <button class="buttonMenu" mat-raised-button color="primary" *ngIf="definirVisibilidade(3)" (click)="entradaEstoque()">Entrada de Estoque</button><br><br>
+    <button class="buttonMenu" mat-raised-button color="primary" *ngIf="definirVisibilidade(1)" (click)="administrador()">Administrador</button>
 </div>
 
 <!-- ['Caixa', 'Fiscal Saída', 'Fiscal Entrada', 'Cliente', 'Funcionario Cafeteria', 'Entrada de Estoque', 'Administrador']; -->

@@ -13,14 +13,20 @@ export class MenuLateralComponent implements OnInit {
   
   categorias: string[] = ['Caixa', 'Fiscal Saída', 'Fiscal Entrada', 'Cliente', 'Funcionario Cafeteria', 'Entrada de Estoque', 'Administrador'];
   categoria: string = "Adm";
+
+  @Input() public id_funcs = []
+  
   constructor(private router: Router) { 
-    
+    this.id_funcs = []
+  }
+
+  definirVisibilidade(number : Number){
+    return this.id_funcs.find(item => item == number)
   }
 
 
-
   ngOnInit(): void{
-
+    console.log(this.id_funcs)
   }
 
   caixa(): void {

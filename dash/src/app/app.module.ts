@@ -11,12 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-<<<<<<< HEAD
-import { MenuLateralComponent } from './pages/menu-lateral/menu-lateral.component';
-import { BuscarProdutoComponent } from './pages/buscar-produto/buscar-produto.component';
-import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
-import { CafeteriaComponent } from './pages/cafeteria/cafeteria.component';
-=======
 import { MenuLateralComponent } from './pages/menu-lateral/menu-lateral.component';
 import { BuscarProdutoComponent } from './pages/buscar-produto/buscar-produto.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
@@ -24,7 +18,7 @@ import { CafeteriaComponent } from './pages/cafeteria/cafeteria.component';
 import { FiscalEntradaComponent } from './pages/fiscal-entrada/fiscal-entrada.component';
 import { FiscalSaidaComponent } from './pages/fiscal-saida/fiscal-saida.component';
 import { CaixaComponent } from './pages/caixa/caixa.component';
->>>>>>> 3845f183e4f31adb2177104f6359cd2eec215471
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -46,7 +40,9 @@ import { CaixaComponent } from './pages/caixa/caixa.component';
     BrowserAnimationsModule,
     SharedModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

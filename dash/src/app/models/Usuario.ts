@@ -7,5 +7,5 @@ export class Usuario {
     senha!: string;
     cpf!: string;
     datacriacao!: string;
-    funcionalidades!: Funcionalidade[];
+    funcionalidadeList!: Funcionalidade[];
 }

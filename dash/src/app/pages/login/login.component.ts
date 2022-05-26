@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   loginForm!:FormGroup; 
 
-  constructor(private formBuilder: FormBuilder, private router: Router, public loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -35,20 +35,22 @@ export class LoginComponent implements OnInit {
     var usuario: Usuario;
     dadosLogin = this.loginForm.getRawValue() as LoginModel;
     this.loginService.loginUsuario(dadosLogin).
-    subscribe(
-        data => 
+    subscribe({
+        next: data => 
         {
           usuario = data
           //debugger
           if (dadosLogin.cpf == usuario.cpf && dadosLogin.senha == usuario.senha){
-            this.router.navigate(["/dash"]);
+            // this.storage.setItem("usuario",usuario.funcionalidades[0].nome)
+            let id_funcs = usuario.funcionalidadeList.map(item => item.id) 
+            this.router.navigate(["/dash"], {queryParams:id_funcs});
             return
           }
         },
-        error => {
+        error: error => {
           console.log("deu error")
         }
-    )
+      })
     //console.log(dadosLogin)
     // if (dadosLogin.cpf != usuario.cpf){
     //   this.router.navigate(["/dash"]);

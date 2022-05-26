@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: ActivatedRoute) { }
+
+  public id_funcs: any
 
   ngOnInit(): void {
+    this.router.queryParams.subscribe(query => {
+      this.id_funcs = Object.values(query)
+    })
   }
 
 }
