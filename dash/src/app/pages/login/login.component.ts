@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
       }
     );
 
-    this.loginService.emitirLoginEfetuado.subscribe(
-      login => console.log("aiaiaiia" + login)
-    )
+    // this.loginService.emitirLoginEfetuado.subscribe(
+    //   login => console.log("aiaiaiia" + login)
+    // )
   }
 
   submitLogin(){
