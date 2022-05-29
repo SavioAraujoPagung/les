@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/Usuario';
 //import {TabMenuModule} from 'primeng/tabmenu';
@@ -10,12 +10,23 @@ import { Usuario } from 'src/app/models/Usuario';
   styleUrls: ['./menu-lateral.component.scss']
 })
 export class MenuLateralComponent implements OnInit {
+  
   categorias: string[] = ['Caixa', 'Fiscal Saída', 'Fiscal Entrada', 'Cliente', 'Funcionario Cafeteria', 'Entrada de Estoque', 'Administrador'];
   categoria: string = "Adm";
-  constructor(private router: Router) { }
+
+  @Input() public id_funcs = []
+  
+  constructor(private router: Router) { 
+    this.id_funcs = []
+  }
+
+  definirVisibilidade(number : Number){
+    return this.id_funcs.find(item => item == number)
+  }
+
 
   ngOnInit(): void{
-
+    console.log(this.id_funcs)
   }
 
   caixa(): void {
@@ -38,7 +49,7 @@ export class MenuLateralComponent implements OnInit {
   }
   administrador(): void {
     // if (this.usuario.funcionalidades[0].nome == 'Administrador') {
-    //   this.router.navigate(["/cadastrar-usuario"])
+      this.router.navigate(["/cadastrar-usuario"])
     //   return
     // }
 

@@ -1,7 +1,11 @@
+
 import { Funcionalidade } from "./Funcionalidade";
 
 export class Usuario {
+    //id !: number;
     nome!: string;
+    senha!: string;
     cpf!: string;
-    funcionalidades!: Funcionalidade[];
+    datacriacao!: string;
+    funcionalidadeList!: Funcionalidade[];
 }

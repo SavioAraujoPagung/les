@@ -19,6 +19,7 @@ import { FiscalEntradaComponent } from './pages/fiscal-entrada/fiscal-entrada.co
 import { FiscalSaidaComponent } from './pages/fiscal-saida/fiscal-saida.component';
 import { CaixaComponent } from './pages/caixa/caixa.component';
 import { EntradaEstoqueComponent } from './pages/entrada-estoque/entrada-estoque.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { EntradaEstoqueComponent } from './pages/entrada-estoque/entrada-estoque
     BrowserAnimationsModule,
     SharedModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
