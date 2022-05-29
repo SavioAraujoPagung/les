@@ -20,6 +20,8 @@ type Db interface {
 	Vender(produto models.ProdutoVenda) error
 	Vendas(venda* models.Venda) error
 	ProdutoVenda(produto []models.ProdutoVenda) error
+	Atualizar(produto *models.Produto) (*models.Produto, error)
+	BuscarBarras(barras string) (*models.Produto, error)
 
 	InserirCliente(cliente *models.Cliente) error
 	BuscarCliente(id int) (*models.Cliente, error)
@@ -29,5 +31,6 @@ type Db interface {
 }
 
 func Conectar(repo Db, strC string) error {
+
 	return repo.conectar(strC)
 }

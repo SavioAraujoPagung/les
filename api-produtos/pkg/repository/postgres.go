@@ -82,3 +82,14 @@ func (r *Repository) BuscarCliente(id int) (*models.Cliente, error) {
 	err := r.db.Where(&models.Produto{ID: id}).First(&cliente).Error
 	return &cliente, err
 }
+
+func (r *Repository) Atualizar(produto *models.Produto) (*models.Produto, error) {
+	if err := r.db.Save(produto).Error; err != nil {return nil, err}
+	return produto, nil
+}
+
+func (r *Repository) BuscarBarras(barras string) (*models.Produto, error) {
+	var produto models.Produto	
+	if err := r.db.Where(&models.Produto{CodigoBarra: barras}).First(&produto).Error; err != nil { return nil, err }
+	return &produto, nil
+}

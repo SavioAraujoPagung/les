@@ -176,7 +176,46 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
+}
 
+func adicionar(writer http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	barrasVar := vars["barras"]
+
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	usuario := request.URL.Query().Get("idUsuario")
+	idUsuario, err := strconv.Atoi(usuario)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+
+	if permitido := permitido(repo, idUsuario, BUSCAR); !permitido {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	produto, err := repo.BuscarBarras(barrasVar)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	produto.Quantidade = produto.Quantidade + 1
+	produto, err = repo.Atualizar(produto)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	body, err := json.Marshal(produto)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	writer.Write(body)
 }
 
 func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool {
