@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { startWith, map, catchError } from 'rxjs/operators';
 import { Produto } from 'src/app/models/Produto';
@@ -20,7 +21,8 @@ export class CadastroProdutoComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, 
               private service: ProdutoService,
-              public dialog: MatDialog ) {}
+              public dialog: MatDialog,
+              private router: Router ) {}
 
   ngOnInit(): void {
     this.produtoForm = this.formBuilder.group(
@@ -66,6 +68,10 @@ export class CadastroProdutoComponent implements OnInit {
     this.produtoForm.reset();
   }
 
+  entradaEstoque() {
+    this.router.navigate(["/entrada-estoque"])
+  }
+
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
@@ -77,5 +83,7 @@ export class CadastroProdutoComponent implements OnInit {
       data: successMsg
     })
   }
+
+  
 
 }

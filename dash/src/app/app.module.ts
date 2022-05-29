@@ -18,6 +18,7 @@ import { CafeteriaComponent } from './pages/cafeteria/cafeteria.component';
 import { FiscalEntradaComponent } from './pages/fiscal-entrada/fiscal-entrada.component';
 import { FiscalSaidaComponent } from './pages/fiscal-saida/fiscal-saida.component';
 import { CaixaComponent } from './pages/caixa/caixa.component';
+import { EntradaEstoqueComponent } from './pages/entrada-estoque/entrada-estoque.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CaixaComponent } from './pages/caixa/caixa.component';
     CafeteriaComponent,
     FiscalEntradaComponent,
     FiscalSaidaComponent,
-    CaixaComponent
+    CaixaComponent,
+    EntradaEstoqueComponent
   ],
   imports: [
     BrowserModule,

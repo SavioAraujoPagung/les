@@ -6,6 +6,7 @@ import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usua
 import { CafeteriaComponent } from './pages/cafeteria/cafeteria.component';
 import { CaixaComponent } from './pages/caixa/caixa.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EntradaEstoqueComponent } from './pages/entrada-estoque/entrada-estoque.component';
 import { FiscalEntradaComponent } from './pages/fiscal-entrada/fiscal-entrada.component';
 import { FiscalSaidaComponent } from './pages/fiscal-saida/fiscal-saida.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'buscar-produtos', component: BuscarProdutoComponent },
   { path: 'cadastrar-usuario', component:  CadastroUsuarioComponent },
   { path: 'cadastrar-produtos', component:  CadastroProdutoComponent },
+  { path: 'entrada-estoque', component:  EntradaEstoqueComponent },
   { path: 'cafeteria', component:  CafeteriaComponent },
   { path: 'fiscal-entrada', component:  FiscalEntradaComponent },
   { path: 'fiscal-saida', component:  FiscalSaidaComponent },
