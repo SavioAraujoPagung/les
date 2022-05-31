@@ -19,7 +19,7 @@ export class CadastroProdutoComponent implements OnInit {
   categorias: string[] = ['Champs-Élysées', 'Lombard Street', 'Abbey Road', 'Fifth Avenue'];
   categoriaFiltrada!: Observable<string[]>;
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(private formBuilder: FormBuilder,
               private service: ProdutoService,
               public dialog: MatDialog,
               private router: Router ) {}
@@ -69,6 +69,7 @@ export class CadastroProdutoComponent implements OnInit {
   }
 
   entradaEstoque() {
+    console.log("entradaEstoque()")
     this.router.navigate(["/entrada-estoque"])
   }
 
@@ -83,7 +84,4 @@ export class CadastroProdutoComponent implements OnInit {
       data: successMsg
     })
   }
-
-  
-
 }

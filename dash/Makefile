@@ -1,7 +1,7 @@
 default: run
 
 run: 
-	@ng serve
+	@npm run start
 
 start-angular:
 	@npm install -g @angular/cli;

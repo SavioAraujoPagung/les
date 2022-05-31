@@ -210,7 +210,11 @@ func adicionar(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	body, err := json.Marshal(produto)
+	produtos := []*models.Produto{}
+
+	produtos = append(produtos, produto)
+	
+	body, err := json.Marshal(produtos)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return

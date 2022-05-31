@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 21 15:05:01 2022
+# Make data base, printed on Tue May 31 09:16:20 2022
 
 # Variables
 
@@ -32,6 +32,8 @@ XDG_SESSION_TYPE = x11
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+PLATFORMIO_IDE = 2.4.3
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -51,7 +53,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"74ce6549a467d1dfaba55fb5394742c9.pt-br","_translationsConfigFile":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/tcf.json","_cacheRoot":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br","_resolvedLanguagePackCoreLocation":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:49647
+JOURNAL_STREAM = 8:56326
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -65,6 +67,8 @@ MAKEFILE_LIST :=  Makefile
 # environment
 IM_CONFIG_PHASE = 1
 # environment
+QT_IM_MODULE = ibus
+# environment
 USERNAME = savio
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
@@ -75,7 +79,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1846
+MANAGERPID = 2285
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -87,11 +91,11 @@ GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/savio/.dotnet/tools:/home/savio/node-v16.15.0/bin:/usr/local/go/bin:/home/savio/jdk-17.0.3+7/bin
+NO_PROXY = 127.0.0.1
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2141,unix/savio-pc:/tmp/.ICE-unix/2141
+SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2520,unix/savio-pc:/tmp/.ICE-unix/2520
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -111,7 +115,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 0b39adb6c5bd49afb756e468421fbefe
+INVOCATION_ID = 5ec1d8ee2811454d90e76bbce9704bc0
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -135,7 +139,7 @@ PWD = /home/savio/projects/les
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2105
+SSH_AGENT_PID = 2483
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -173,13 +177,15 @@ MAKELEVEL := 0
 # environment
 SNAP_REAL_HOME = /home/savio
 # environment
+PLATFORMIO_PATH = /home/savio/.platformio/python3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/savio/.dotnet/tools:/home/savio/node-v16.15.0/bin:/usr/local/go/bin:/home/savio/jdk-17.0.3+7/bin
+# environment
 COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-QT_IM_MODULE = ibus
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/savio/.dotnet/tools:/home/savio/node-v16.15.0/bin:/usr/local/go/bin:/home/savio/jdk-17.0.3+7/bin
 # environment
 SNAP_USER_DATA = /home/savio/snap/code/97
 # environment
@@ -187,7 +193,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-95358651-e48d-4d20-8f82-d22732560a8c.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7e6e3374-4377-4899-9270-890edc0efb29.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -235,17 +241,19 @@ SNAP_COOKIE = 40wN2SmBrDeghuK338ZUam0dVRFk28nUYjazV4UDUBq3BjdM-X-P
 # automatic
 <F = $(notdir $<)
 # environment
+PLATFORMIO_CALLER = vscode
+# environment
 SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/839d11e7_8e02_4a37_8647_ae73a7da6aab
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/d766ceaa_0a05_4843_a82a_3ccb9e173ef0
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.293
+GNOME_TERMINAL_SERVICE = :1.118
 # default
 SUFFIXES := 
 # environment
@@ -265,9 +273,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3745
+VSCODE_PID = 3900
 # variable set hash-table stats:
-# Load=127/1024=12%, Rehash=0, Collisions=16/152=11%
+# Load=131/1024=13%, Rehash=0, Collisions=18/156=12%
 
 # Pattern-specific Variable Values
 
@@ -286,6 +294,7 @@ VSCODE_PID = 3745
 # Files
 
 # Not a target:
+ 
 all:
 #  Command line target.
 #  Implicit rule search has been done.
@@ -295,8 +304,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-05-17 12:38:28.826481996
+#  Last modified 2022-05-21 15:11:54.822412561
 #  File has been updated.
 #  Successfully updated.
 
@@ -316,7 +324,7 @@ run:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 4):
-	@docker-compose up --remove-orphans --build
+	@docker-compose up --remove-orphans --build -d
 
 # files hash-table stats:
 # Load=6/1024=1%, Rehash=0, Collisions=0/18=0%
@@ -332,6 +340,6 @@ run:
 # strcache performance: lookups = 28 / hit rate = 25%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Sat May 21 15:05:01 2022
+# Finished Make data base on Tue May 31 09:16:20 2022
 
  

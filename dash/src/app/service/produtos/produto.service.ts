@@ -2,15 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Produto } from 'src/app/models/Produto';
 import { take, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutoService {
-  private readonly API = 'http://localhost:8000/produtos?idUsuario=1'
+  private readonly API = 'http://localhost:8000/produtos/'
+  private readonly USUARIO = '?idUsuario=1'
   private readonly API_CAFETERIA = 'http://localhost:8000/produtos?idUsuario=1&categoria=1'
-  //private readonly API = 'https://wqefas.free.beeceptor.com'
-
+  
   constructor(private httpClient: HttpClient) { }
 
   list() {
@@ -21,8 +22,17 @@ export class ProdutoService {
     );
   }
 
+  adicionar(produto: Produto) {
+    var api = this.API + produto.codigo_barras + this.USUARIO
+    return this.httpClient.post<Produto[]>(api, null)
+    .pipe(
+      take(1),
+      tap(produtos => console.log())
+    );
+  }
+
   criar(produto: Produto) {
     console.log("Realizar query")
-    return this.httpClient.post(this.API, produto);
+    return this.httpClient.post(this.API + this.USUARIO, produto);
   }
 }

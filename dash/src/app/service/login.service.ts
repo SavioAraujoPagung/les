@@ -9,6 +9,7 @@ import { Usuario } from '../models/Usuario';
 })
 export class LoginService {
   private readonly baseUrl = environment['endPoint'];
+  private readonly api = '/src/assets/login.json';
 
   constructor(private httpClient: HttpClient) { 
 

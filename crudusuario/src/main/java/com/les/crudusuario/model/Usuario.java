@@ -32,16 +32,15 @@ public class Usuario {
 	private Date datacriacao;
 
 	@ManyToMany
-    @JoinTable(name="funcionalidades_usuarios",
+    @JoinTable(name="funcionalidade_usuarios",
 		joinColumns=@JoinColumn(name="id_usuario"),
 		inverseJoinColumns=@JoinColumn(name="id_funcionalidade")	
 	)
     private List<Funcionalidade> funcionalidadeList;
-    //private String email;
-    //private String telefone;
-    //private Long codRFID;
 
-	
+	public List<Funcionalidade> getfuncionalidadeList(){
+		return this.funcionalidadeList;
+	}
 
     public Long getId() {
 		return id;

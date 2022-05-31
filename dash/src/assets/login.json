@@ -1,11 +1,11 @@
 {
-    "nome":"Danilo Pereira",
-    "cpf":"17022871736",
+    "nome":"Savio",
+    "cpf":"11111111111",
     "dataCriacao":"",
     "funcionalidades": [
         {
             "id": 1,
-            "nome": "Adminstrador"
+            "nome": "administrador"
         },
         {
             "id": 2,

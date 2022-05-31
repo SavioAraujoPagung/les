@@ -48,8 +48,6 @@ public class FuncionalidadeController {
         return this.funcRepository.findAll();
     }
 
-    
-
     @PutMapping(value="/upd/{id}")
     public ResponseEntity <?> updateFunc(@PathVariable("id") long id, @RequestBody Funcionalidade func) {
         return funcRepository.findById(id)

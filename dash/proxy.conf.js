@@ -7,11 +7,7 @@ const PROXY_CONFIG = [
         secure: false,
         logLevel: 'debug',
         pathRewrite: {'^/api': ''}
-    },
-    // {
-    //     target: 'http://localhost:6666/',
-    //     secure: false,
-    // }
+    }
 ]
 
 module.exports = PROXY_CONFIG;
