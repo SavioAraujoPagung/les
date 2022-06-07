@@ -51,7 +51,18 @@ export class CadastroUsuarioComponent implements OnInit {
   salvarUsuario(){
     var dadosUsuario : Usuario
     dadosUsuario = this.usuarioForm.getRawValue() as Usuario;
-    console.log(this.permissoesSelecionadas())
+    dadosUsuario.funcionalidadeList = this.permissoesSelecionadas()
+    console.log(dadosUsuario)
+    // this.usuarioService.saveUsuario(dadosUsuario).
+    // subscribe({
+    //     next: data => 
+    //     {
+    //       console.log(data)
+    //     },
+    //     error: error => {
+    //       console.log("deu error")
+    //     }
+    //   })
   }
 
   permissoesSelecionadas(){
