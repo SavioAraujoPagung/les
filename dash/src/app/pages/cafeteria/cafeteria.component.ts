@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { Produto } from 'src/app/models/Produto';
 import { ProdutoService } from 'src/app/service/produtos/produto.service';
@@ -13,11 +14,13 @@ import { ErrorDialogComponent } from 'src/app/shared/error-dialog/error-dialog.c
 export class CafeteriaComponent implements OnInit {
 
   produtos$!: Observable<Produto[]>;
+  id!: string;
   displayedColumns = ['id', 'nome', 'rfid', 'preco_venda', 'unidade_medida', 'quantidade', 'vender']
   
 
   constructor(private service: ProdutoService,
-              public dialog: MatDialog){ }
+              public dialog: MatDialog,
+              private router: Router){ }
 
   ngOnInit(): void {
     this.list();
@@ -41,7 +44,8 @@ export class CafeteriaComponent implements OnInit {
   }
 
   vender() {
-    
+    debugger
+    this.router.navigate(["/caixa"])
   }
 
 }

@@ -24,10 +24,6 @@ export class LoginComponent implements OnInit {
         senha:['',[Validators.required]]
       }
     );
-
-    // this.loginService.emitirLoginEfetuado.subscribe(
-    //   login => console.log("aiaiaiia" + login)
-    // )
   }
 
   submitLogin(){
@@ -39,9 +35,7 @@ export class LoginComponent implements OnInit {
         next: data => 
         {
           usuario = data
-          //debugger
           if (dadosLogin.cpf == usuario.cpf && dadosLogin.senha == usuario.senha){
-            // this.storage.setItem("usuario",usuario.funcionalidades[0].nome)
             let id_funcs = usuario.funcionalidadeList.map(item => item.id) 
             this.router.navigate(["/dash"], {queryParams:id_funcs});
             return
@@ -51,10 +45,6 @@ export class LoginComponent implements OnInit {
           console.log("deu error")
         }
       })
-    //console.log(dadosLogin)
-    // if (dadosLogin.cpf != usuario.cpf){
-    //   this.router.navigate(["/dash"]);
-    // }
 
   }
 

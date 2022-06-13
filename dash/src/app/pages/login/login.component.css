@@ -3,7 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10%;
+  padding: 50px;
+}
+
+.conteudo-form{
+  width: 250px;
 }
 
 .input-login{
@@ -25,24 +29,3 @@
   margin-left: 15px
 
 }
- /* :host {
-    display: flex;
-    justify-content: center;
-    margin: 100px 0px;
-  }
-  .mat-form-field {
-    width: 100%;
-    min-width: 300px;
-  }
-
-  mat-card-title,
-  mat-card-content {
-    display: flex;
-    justify-content: center;
-  }
-
-  .button {
-    display: flex;
-    justify-content: flex-end;
-  }  */
-

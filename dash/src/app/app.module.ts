@@ -20,6 +20,7 @@ import { FiscalSaidaComponent } from './pages/fiscal-saida/fiscal-saida.componen
 import { CaixaComponent } from './pages/caixa/caixa.component';
 import { EntradaEstoqueComponent } from './pages/entrada-estoque/entrada-estoque.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ClientesAtivosComponent } from './pages/clientes-ativos/clientes-ativos.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FiscalEntradaComponent,
     FiscalSaidaComponent,
     CaixaComponent,
-    EntradaEstoqueComponent
+    EntradaEstoqueComponent,
+    ClientesAtivosComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ReactiveFormsModule,
     HttpClientModule,
     MatCheckboxModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

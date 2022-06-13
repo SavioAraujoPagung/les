@@ -1,17 +1,17 @@
 <div class="conteudo-login">    
-  <form class="conteudo-form" [formGroup]="loginForm" (submit)="submitLogin()">
-    <div class="conteudo-form">
+  <form [formGroup]="loginForm" (submit)="submitLogin()" autocomplete="off">
+    <div>
       <h3>Login</h3>
-      <mat-form-field hintLabel="Max 14 characters" appearance="fill">
+      <mat-form-field class="conteudo-form" hintLabel="Max 14 characters" appearance="fill">
         <mat-label>CPF</mat-label>
-        <input matInput #input maxlength="14" placeholder="Ex. 111.111.111-11" formControlName="cpf">
+        <input matInput #input maxlength="14" placeholder="Ex. 111.111.111-11" formControlName="cpf" autocomplete="off">
         <mat-hint align="end">{{input.value?.length || 0}}/14</mat-hint>
       </mat-form-field>
       <br>
-      <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
+      <mat-form-field class="conteudo-form" appearance="fill">
+        <mat-label>Senha</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha"/>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" autocomplete="off">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
