@@ -1,3 +1,11 @@
 :host {
   display: flex;
 }
+
+.tabela-cliente{
+  padding: 29px;
+}
+
+table {
+  width: 125%;
+}

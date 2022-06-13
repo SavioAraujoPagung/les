@@ -66,6 +66,7 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 }
 
 func listar(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Listar produtos")
 	usuario := request.URL.Query().Get("idUsuario")
 	categoria := request.URL.Query().Get("categoria")
 
@@ -104,6 +105,7 @@ func listar(writer http.ResponseWriter, request *http.Request) {
 }
 
 func buscar(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Buscar produto")
 	vars := mux.Vars(request)
 	id := vars["id"]
 	var repo repository.Repository
@@ -168,7 +170,6 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
-
 	venda.Quantidade = len(venda.ProdutosVendidos)
 	venda.Criacao = time.Now()
 	err = executarVendas(repo, venda)
@@ -179,6 +180,7 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 }
 
 func adicionar(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Adicionar")
 	vars := mux.Vars(request)
 	barrasVar := vars["barras"]
 
@@ -228,7 +230,9 @@ func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool 
 }
 
 func executarVendas(repo repository.Repository, venda models.Venda) error {
-	err := repo.Vendas(&venda)
+	log.Println("venda: ", venda)
+
+	err := repo.Vendas(&venda) 
 	if err != nil {
 		return err
 	}
@@ -242,6 +246,9 @@ func executarVendas(repo repository.Repository, venda models.Venda) error {
 		}
 	}
 
-	err = repo.ProdutoVenda(venda.ProdutosVendidos)
+	if len(venda.ProdutosVendidos) > 0 {
+		err = repo.ProdutoVenda(venda.ProdutosVendidos)
+	}
+
 	return err
 }

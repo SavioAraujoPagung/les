@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 09:16:20 2022
+# Make data base, printed on Tue Jun  7 14:36:27 2022
 
 # Variables
 
@@ -53,7 +53,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"74ce6549a467d1dfaba55fb5394742c9.pt-br","_translationsConfigFile":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/tcf.json","_cacheRoot":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br","_resolvedLanguagePackCoreLocation":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:56326
+JOURNAL_STREAM = 8:51671
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -79,7 +79,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 2285
+MANAGERPID = 2342
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -95,7 +95,7 @@ NO_PROXY = 127.0.0.1
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2520,unix/savio-pc:/tmp/.ICE-unix/2520
+SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2617,unix/savio-pc:/tmp/.ICE-unix/2617
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -115,7 +115,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 5ec1d8ee2811454d90e76bbce9704bc0
+INVOCATION_ID = 5f3a85acbfa04bd5b4b816c9969fabe9
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -139,7 +139,7 @@ PWD = /home/savio/projects/les
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2483
+SSH_AGENT_PID = 2573
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -161,7 +161,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
-SNAP_CONTEXT = 40wN2SmBrDeghuK338ZUam0dVRFk28nUYjazV4UDUBq3BjdM-X-P
+SNAP_CONTEXT = AqMTxtlsKH7tP_mtujtWp0QtTMjlu7-v-ifZSITgBwT93fDZFBSc
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
@@ -193,7 +193,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7e6e3374-4377-4899-9270-890edc0efb29.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-13c147ac-085b-4f29-ac09-9784d585382a.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -209,7 +209,7 @@ XDG_CURRENT_DESKTOP = Unity
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/savio/projects
+OLDPWD = /home/savio/projects/les/dash
 # default
 .VARIABLES := 
 # automatic
@@ -237,7 +237,7 @@ QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
 # environment
-SNAP_COOKIE = 40wN2SmBrDeghuK338ZUam0dVRFk28nUYjazV4UDUBq3BjdM-X-P
+SNAP_COOKIE = AqMTxtlsKH7tP_mtujtWp0QtTMjlu7-v-ifZSITgBwT93fDZFBSc
 # automatic
 <F = $(notdir $<)
 # environment
@@ -249,11 +249,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/d766ceaa_0a05_4843_a82a_3ccb9e173ef0
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/c71ab292_f351_4c41_b56f_013127c94258
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.118
+GNOME_TERMINAL_SERVICE = :1.123
 # default
 SUFFIXES := 
 # environment
@@ -273,7 +273,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3900
+VSCODE_PID = 4221
 # variable set hash-table stats:
 # Load=131/1024=13%, Rehash=0, Collisions=18/156=12%
 
@@ -292,9 +292,9 @@ VSCODE_PID = 3900
 # No implicit rules.
 
 # Files
+ 
 
 # Not a target:
- 
 all:
 #  Command line target.
 #  Implicit rule search has been done.
@@ -340,6 +340,6 @@ run:
 # strcache performance: lookups = 28 / hit rate = 25%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Tue May 31 09:16:20 2022
+# Finished Make data base on Tue Jun  7 14:36:27 2022
 
  

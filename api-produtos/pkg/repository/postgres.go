@@ -63,7 +63,7 @@ func (r *Repository) Vender(produtoVenda models.ProdutoVenda) error {
 	return err
 }
 
-func (r *Repository) Vendas(venda* models.Venda) error {
+func (r *Repository) Vendas(venda *models.Venda) error {
 	err := r.db.Clauses(clause.OnConflict{DoNothing: true, UpdateAll: true}).Create(venda).Error
 	return err
 }
@@ -77,19 +77,23 @@ func (r *Repository) InserirCliente(cliente *models.Cliente) error {
 	return r.db.Create(cliente).Error
 }
 
-func (r *Repository) BuscarCliente(id int) (*models.Cliente, error) {
+func (r *Repository) BuscarCliente(cpf string) (*models.Cliente, error) {
 	var cliente models.Cliente
-	err := r.db.Where(&models.Produto{ID: id}).First(&cliente).Error
+	err := r.db.Where("cpf = ?", cpf).First(&cliente).Error
 	return &cliente, err
 }
 
 func (r *Repository) Atualizar(produto *models.Produto) (*models.Produto, error) {
-	if err := r.db.Save(produto).Error; err != nil {return nil, err}
+	if err := r.db.Save(produto).Error; err != nil {
+		return nil, err
+	}
 	return produto, nil
 }
 
 func (r *Repository) BuscarBarras(barras string) (*models.Produto, error) {
-	var produto models.Produto	
-	if err := r.db.Where(&models.Produto{CodigoBarra: barras}).First(&produto).Error; err != nil { return nil, err }
+	var produto models.Produto
+	if err := r.db.Where(&models.Produto{CodigoBarra: barras}).First(&produto).Error; err != nil {
+		return nil, err
+	}
 	return &produto, nil
 }

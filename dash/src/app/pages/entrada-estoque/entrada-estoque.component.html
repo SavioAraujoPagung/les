@@ -4,11 +4,10 @@
 
     <div class="entrada">
         <form class="conteudo-form" [formGroup]="entradaForm" (submit)="entrar()">
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Código de Barras / EAN</mat-label>
-                    <input formControlName="codigo_barras" matInput placeholder="UTILIZE O LEITOR" value="">
-                </mat-form-field>
-            
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Código de Barras / EAN</mat-label>
+                <input formControlName="codigo_barras" matInput placeholder="UTILIZE O LEITOR" value="">
+            </mat-form-field>
         </form>
     </div>
     
@@ -51,6 +50,4 @@
     </div>
 </div>
 
-<form class="conteudo-form" [formGroup]="entradaForm" (submit)="entrar()">
-
-</form>
+<form class="conteudo-form" [formGroup]="entradaForm" (submit)="entrar()"></form>

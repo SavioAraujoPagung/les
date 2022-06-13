@@ -74,3 +74,15 @@ GET - /produtos?idUsuario=[id_usuario]&categoria=[id_categoria]
 	}
 ]
 ```
+
+- Adicionar cliente
+POST - /inserirCliente?idUsuario=[idUsuario]
+
+```json
+{
+	"nome": "savio",
+	"cpf": "12345",
+	"rfid": "12345"
+}
+
+```

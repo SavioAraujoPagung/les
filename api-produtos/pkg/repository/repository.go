@@ -24,7 +24,7 @@ type Db interface {
 	BuscarBarras(barras string) (*models.Produto, error)
 
 	InserirCliente(cliente *models.Cliente) error
-	BuscarCliente(id int) (*models.Cliente, error)
+	BuscarCliente(cpf string) (*models.Cliente, error)
 
 	conectar(dsn string) error
 	Permissao(idUsuario int, idFuncionalidade int) (bool, error)
