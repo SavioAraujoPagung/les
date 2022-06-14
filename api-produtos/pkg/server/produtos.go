@@ -158,15 +158,14 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusUnauthorized)
 		return
 	}
-
+	//encontra a venda em aberto
 	venda, err := repo.BuscarVendaClienteAtivoCPF(rfid)
 	if err != nil {
-		fmt.Println(venda)
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	fmt.Println(venda)
 
+	//atualiza adiciona os produtos nas vendas
 	body, err := io.ReadAll(request.Body)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
@@ -178,17 +177,11 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
+	
+	//todo: falta preencher a tabela produtosvendas
+	venda, err = executarVendas(repo, venda)
+	fmt.Println(venda)
 
-	venda, err = repo.AtualizarVenda(venda)
-
-
-	// venda.Quantidade = len(venda.ProdutosVendidos)
-	// venda.Criacao = time.Now()
-	// err = executarVendas(repo, *venda)
-	// if err != nil {
-	// 	writer.WriteHeader(http.StatusBadRequest)
-	// 	return
-	// }
 }
 
 func adicionar(writer http.ResponseWriter, request *http.Request) {
@@ -241,21 +234,20 @@ func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool 
 	return permitido
 }
 
-
 //responsável por diminuir o estoque dos produtos 
-func executarVendas(repo repository.Repository, venda models.Venda) error {
+func executarVendas(repo repository.Repository, venda *models.Venda) (*models.Venda,  error) {
 	log.Println("venda: ", venda)
 
-	amount := venda.Quantidade
-	for i := 0; i < amount; i++ {
-		venda.ProdutosVendidos[i].VendaID = venda.ID
-		err := repo.Vender(venda.ProdutosVendidos[i])
+	for _, produtoVenda := range venda.ProdutosVendidos {
+		produtoVenda.VendaID = venda.ID
+		err := repo.Vender(produtoVenda)
 		if err != nil {
-			return err
+			return nil, err
 		}
+		venda.Quantidade += produtoVenda.Quantidade
 	}
-	
-	return nil
+
+	return venda, nil
 }
 
 func novaVenda(repo repository.Repository, venda models.Venda) error {
