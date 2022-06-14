@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 13 11:01:13 2022
+# Make data base, printed on Tue Jun 14 13:23:56 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"f21b5a1399e4b57b69c8e2cd957b5453.pt-br","_translationsConfigFile":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/tcf.json","_cacheRoot":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br","_resolvedLanguagePackCoreLocation":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:55143
+JOURNAL_STREAM = 8:55013
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -77,7 +77,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 2696
+MANAGERPID = 2330
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -93,7 +93,7 @@ NO_PROXY = 127.0.0.1
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2936,unix/savio-pc:/tmp/.ICE-unix/2936
+SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2676,unix/savio-pc:/tmp/.ICE-unix/2676
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 670136a08a38451d95cc59dae2c165a5
+INVOCATION_ID = 889211dcc20340e49164395456e8404f
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/98/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -137,7 +137,7 @@ PWD = /home/savio/projects/les/api-produtos
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2900
+SSH_AGENT_PID = 2619
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -191,7 +191,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-0fbcd856-9ce7-4fd8-bcf3-273bba8eccd0.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4a4f2b3d-307c-4a1c-a946-5216b6f1b044.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -247,11 +247,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/9b0a2390_d624_49ac_a60a_7b0d6ba8aee2
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/e283cd91_3440_40bd_85e0_f5531809d7ff
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.134
+GNOME_TERMINAL_SERVICE = :1.103
 # default
 SUFFIXES := 
 # environment
@@ -263,6 +263,9 @@ WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
@@ -271,12 +274,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 8724
+VSCODE_PID = 3623
 # variable set hash-table stats:
 # Load=131/1024=13%, Rehash=0, Collisions=18/156=12%
- 
-make: *** No rule to make target 'all'.  Stop.
-
 
 # Pattern-specific Variable Values
 
@@ -340,6 +340,6 @@ run:
 # strcache performance: lookups = 25 / hit rate = 28%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/25=4%
-# Finished Make data base on Mon Jun 13 11:01:13 2022
+# Finished Make data base on Tue Jun 14 13:23:56 2022
 
  

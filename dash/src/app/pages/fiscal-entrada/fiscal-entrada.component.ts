@@ -74,7 +74,6 @@ export class FiscalEntradaComponent implements OnInit {
   }
 
   entrar(){
-    debugger
     this.service.entrar(this.cpf).subscribe(
       resultado => {
         console.log(resultado)

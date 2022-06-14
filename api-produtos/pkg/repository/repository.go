@@ -19,12 +19,16 @@ type Db interface {
 	Buscar(id int) (*models.Produto, error)
 	Vender(produto models.ProdutoVenda) error
 	Vendas(venda* models.Venda) error
+	AtualizarVenda(venda* models.Venda)(*models.Venda, error)
 	ProdutoVenda(produto []models.ProdutoVenda) error
 	Atualizar(produto *models.Produto) (*models.Produto, error)
 	BuscarBarras(barras string) (*models.Produto, error)
 
 	InserirCliente(cliente *models.Cliente) error
 	BuscarCliente(cpf string) (*models.Cliente, error)
+	BuscarTodosClientesAtivos() (*[]models.Cliente, error)
+	BuscarClienteAtivo(rfid string) (*[]models.Cliente, error)
+	BuscarVendaClienteAtivoCPF(cpf string) (*models.Venda, error)
 
 	conectar(dsn string) error
 	Permissao(idUsuario int, idFuncionalidade int) (bool, error)

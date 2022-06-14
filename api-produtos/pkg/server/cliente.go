@@ -18,6 +18,7 @@ const (
 	INSERIRCLIENTE = 1
 	BUSCARCLIENTE  = 1
 	ENTRADACLIENTE = 1
+	CAFETERIA      = 1
 )
 
 func inserirCliente(writer http.ResponseWriter, request *http.Request) {
@@ -28,6 +29,7 @@ func inserirCliente(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	var repo repository.Repository
+	
 	repository.Conectar(&repo, dsn)
 
 	idUsuario := request.URL.Query().Get("idUsuario")
@@ -131,9 +133,74 @@ func entrada(writer http.ResponseWriter, request *http.Request) {
 	venda.ClienteID = cliente.ID
 	venda.Criacao = time.Now()
 
-	err = executarVendas(repo, venda)
+	err = novaVenda(repo, venda)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
+}
+
+func dentro(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Cliente Ativos")
+	usuario := request.URL.Query().Get("idUsuario")
+	idUsuario, err := strconv.Atoi(usuario)
+	if err != nil {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	if permitido := permitido(repo, idUsuario, CAFETERIA); !permitido {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	clientes, err := repo.BuscarTodosClientesAtivos()
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+
+	body, err := json.Marshal(clientes)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+	writer.Write(body)
+}
+
+
+func clienteAtivo(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Cliente Ativos")
+	usuario := request.URL.Query().Get("idUsuario")
+	idUsuario, err := strconv.Atoi(usuario)
+	if err != nil {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	if permitido := permitido(repo, idUsuario, CAFETERIA); !permitido {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+	vars := mux.Vars(request)
+	rfid := vars["rfid"]
+
+	clientes, err := repo.BuscarClienteAtivo(rfid)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+
+	body, err := json.Marshal(clientes)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+	writer.Write(body)
 }

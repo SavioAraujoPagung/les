@@ -1,1 +1,47 @@
-<p>clientes-ativos works!</p>
+<app-menu-lateral></app-menu-lateral>
+
+<div class="tabela-cliente">
+    <br>
+    <h1>Clientes com venda em aberto</h1>
+    <div class="entrada">
+        <form class="conteudo-form" [formGroup]="buscarCliente" (submit)="buscar()">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>RFID</mat-label>
+                <input formControlName="rfid" matInput placeholder="122333" value="">
+            </mat-form-field>
+            <button mat-raised-button color="primary">Buscar</button>
+        </form>
+    </div>
+    
+    <div *ngIf="clientes$ | async as clientes;">
+        <table mat-table [dataSource]="clientes$" class="mat-elevation-z8">
+    
+        <ng-container class="coluna" matColumnDef="cpf">
+            <th mat-header-cell *matHeaderCellDef> CPF </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.cpf }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.nome }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="rfid">
+            <th mat-header-cell *matHeaderCellDef> RFID </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.rfid }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="entrar">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let produto">
+                <form class="conteudo-form" (submit)="vender()">
+                    <button mat-raised-button >Vender</button>
+                </form>
+            </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

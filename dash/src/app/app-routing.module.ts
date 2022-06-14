@@ -14,7 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 
 
 const routes: Routes = [
-  { path:'', pathMatch: 'full' ,redirectTo: 'login' },
+  { path: '', pathMatch: 'full' ,redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   { path: 'dash', component: DashboardComponent },
   { path: 'buscar-produtos', component: BuscarProdutoComponent },
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'fiscal-entrada', component:  FiscalEntradaComponent },
   { path: 'fiscal-saida', component:  FiscalSaidaComponent },
   { path: 'caixa', component:  CaixaComponent },
-  { path: 'vender-cafeteria/:id', component: ClientesAtivosComponent }
+  { path: 'cafeteria/vender-cafeteria/:id', component: ClientesAtivosComponent }
 
 ];
 

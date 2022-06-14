@@ -48,9 +48,4 @@ export class LoginComponent implements OnInit {
 
   }
 
-  buscarProdutos(){
-    this.router.navigate(["/buscar-produto"])
-  }
-
-
 }

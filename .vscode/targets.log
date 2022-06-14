@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun  7 14:36:27 2022
+# Make data base, printed on Mon Jun 13 15:57:10 2022
 
 # Variables
 
@@ -47,13 +47,13 @@ CURDIR := /home/savio/projects/les
 # makefile
 SHELL = /bin/sh
 # environment
-SNAP_DATA = /var/snap/code/97
+SNAP_DATA = /var/snap/code/98
 # environment
 VTE_VERSION = 6003
 # environment
-VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"74ce6549a467d1dfaba55fb5394742c9.pt-br","_translationsConfigFile":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/tcf.json","_cacheRoot":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br","_resolvedLanguagePackCoreLocation":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/savio/.config/Code/clp/74ce6549a467d1dfaba55fb5394742c9.pt-br/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"f21b5a1399e4b57b69c8e2cd957b5453.pt-br","_translationsConfigFile":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/tcf.json","_cacheRoot":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br","_resolvedLanguagePackCoreLocation":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:51671
+JOURNAL_STREAM = 8:50140
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -79,7 +79,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 2342
+MANAGERPID = 2450
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -87,7 +87,7 @@ VSCODE_CWD = /home/savio/projects/les
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/98/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -95,17 +95,17 @@ NO_PROXY = 127.0.0.1
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2617,unix/savio-pc:/tmp/.ICE-unix/2617
+SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2684,unix/savio-pc:/tmp/.ICE-unix/2684
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/savio/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-SNAP = /snap/code/97
+SNAP = /snap/code/98
 # environment
 GOPATH = /home/savio/go
 # environment
-SNAP_VERSION = c3511e6c
+SNAP_VERSION = 4af164ea
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -115,9 +115,9 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 5f3a85acbfa04bd5b4b816c9969fabe9
+INVOCATION_ID = ba92ddade04e41d98c2534c0b7207634
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/98/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -139,7 +139,7 @@ PWD = /home/savio/projects/les
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2573
+SSH_AGENT_PID = 2648
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -153,7 +153,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/savio/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /home/savio/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
 # environment
 LOGNAME = savio
 # environment
@@ -187,19 +187,19 @@ MAKECMDGOALS := all
 # environment
 PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/savio/.dotnet/tools:/home/savio/node-v16.15.0/bin:/usr/local/go/bin:/home/savio/jdk-17.0.3+7/bin
 # environment
-SNAP_USER_DATA = /home/savio/snap/code/97
+SNAP_USER_DATA = /home/savio/snap/code/98
 # environment
 SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-13c147ac-085b-4f29-ac09-9784d585382a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c9d41eb6-8184-48aa-96cb-5149e736ca5b.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = savio
 # environment
-SNAP_REVISION = 97
+SNAP_REVISION = 98
 # makefile
 .DEFAULT_GOAL := default
 # environment
@@ -209,7 +209,7 @@ XDG_CURRENT_DESKTOP = Unity
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/savio/projects/les/dash
+OLDPWD = /home/savio/projects
 # default
 .VARIABLES := 
 # automatic
@@ -217,7 +217,7 @@ OLDPWD = /home/savio/projects/les/dash
 # environment
 LANGUAGE = pt_BR:pt:en
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-851e99ed-1.67.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-851e99ed-1.68.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -230,8 +230,6 @@ MFLAGS = -pqrR
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
-# environment
-NO_AT_BRIDGE = 1
 # environment
 QT_ACCESSIBILITY = 1
 # default
@@ -249,11 +247,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/c71ab292_f351_4c41_b56f_013127c94258
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/278764c7_9baa_46db_af6b_664050f0b542
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.123
+GNOME_TERMINAL_SERVICE = :1.101
 # default
 SUFFIXES := 
 # environment
@@ -273,9 +271,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 4221
+VSCODE_PID = 4006
 # variable set hash-table stats:
-# Load=131/1024=13%, Rehash=0, Collisions=18/156=12%
+# Load=130/1024=13%, Rehash=0, Collisions=18/155=12%
 
 # Pattern-specific Variable Values
 
@@ -292,9 +290,9 @@ VSCODE_PID = 4221
 # No implicit rules.
 
 # Files
- 
 
 # Not a target:
+ 
 all:
 #  Command line target.
 #  Implicit rule search has been done.
@@ -340,6 +338,6 @@ run:
 # strcache performance: lookups = 28 / hit rate = 25%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Tue Jun  7 14:36:27 2022
+# Finished Make data base on Mon Jun 13 15:57:10 2022
 
  

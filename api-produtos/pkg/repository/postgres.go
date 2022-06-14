@@ -97,3 +97,27 @@ func (r *Repository) BuscarBarras(barras string) (*models.Produto, error) {
 	}
 	return &produto, nil
 }
+
+func (r *Repository)BuscarTodosClientesAtivos() (*[]models.Cliente, error) {
+	clientes := &[]models.Cliente{}
+	err := r.db.Model(&models.Cliente{}).Select("*").Joins("left join vendas v on v.id_cliente = clientes.id where v.status = ?", false).Scan(clientes).Error
+	return clientes, err
+}
+
+func (r *Repository) BuscarClienteAtivo(rfid string) (*[]models.Cliente, error) {
+	
+	cliente := &[]models.Cliente{}
+	err := r.db.Model(&models.Cliente{}).Select("*").Joins("left join vendas v on v.id_cliente = clientes.id where v.status = ? and clientes.rfid = ?", false, rfid).Scan(cliente).Error
+	return cliente, err
+}
+
+func (r *Repository) BuscarVendaClienteAtivoCPF(cpf string) (*models.Venda, error) {
+	venda := &models.Venda{}
+	err := r.db.Model(&models.Cliente{}).Select("*").Joins("left join vendas v on v.id_cliente = clientes.id where v.status = ? and clientes.rfid = ?", false, cpf).Scan(venda).Error
+	return venda, err
+}
+
+func (r * Repository) AtualizarVenda(venda* models.Venda)(*models.Venda, error) {
+	if err := r.db.Save(venda).Error; err != nil { return nil, err }
+	return venda, nil
+}

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { Produto } from 'src/app/models/Produto';
 import { ProdutoService } from 'src/app/service/produtos/produto.service';
+import { ElementDialogComponent } from 'src/app/shared/element-dialog/element-dialog.component';
 import { ErrorDialogComponent } from 'src/app/shared/error-dialog/error-dialog.component';
 
 @Component({
@@ -19,8 +20,7 @@ export class CafeteriaComponent implements OnInit {
   
 
   constructor(private service: ProdutoService,
-              public dialog: MatDialog,
-              private router: Router){ }
+              public dialog: MatDialog){ }
 
   ngOnInit(): void {
     this.list();
@@ -37,15 +37,23 @@ export class CafeteriaComponent implements OnInit {
     console.log(this.produtos$)
   }
 
+  vender(produto: Produto) {
+    console.log(produto)
+    const dialogRef = this.dialog.open(ElementDialogComponent, {
+      width: '250px',
+      data: produto
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if ( result !== undefined ) {
+        console.log(result)
+      }
+    });
+  }
+
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
   }
-
-  vender() {
-    debugger
-    this.router.navigate(["/caixa"])
-  }
-
 }

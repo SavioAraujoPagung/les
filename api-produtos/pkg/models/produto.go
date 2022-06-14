@@ -10,7 +10,7 @@ type Venda struct {
 	Criacao          time.Time      `json:"-" gorm:"column:datacriacao"`
 	ClienteID        int            `json:"cliente" gorm:"column:id_cliente"`
 	Finalizado       bool           `json:"finalizado" gorm:"column:status"`
-	ProdutosVendidos []ProdutoVenda `json:"produtos"gorm:"-"`
+	ProdutosVendidos []ProdutoVenda `json:"produtos" gorm:"-"`
 }
 
 type Categoria struct {

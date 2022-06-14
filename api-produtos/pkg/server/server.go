@@ -38,6 +38,8 @@ func Run() {
 	muxRoute.HandleFunc("/cliente", inserirCliente).Methods(http.MethodPost)
 	muxRoute.HandleFunc("/cliente/{cpf}", buscarCliente).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/cliente/entrada", entrada).Methods(http.MethodPost)
+	muxRoute.HandleFunc("/clientes-ativos", dentro).Methods(http.MethodGet)
+	muxRoute.HandleFunc("/cliente-ativo/{rfid}", clienteAtivo).Methods(http.MethodGet)
 
 	srv := &http.Server{
 		Handler:      CORSMiddleware(muxRoute),

@@ -2,11 +2,11 @@ package server
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/SavioAraujoPagung/les/pkg/models"
 	"github.com/SavioAraujoPagung/les/pkg/repository"
@@ -61,7 +61,7 @@ func inserir(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	
+
 	writer.WriteHeader(http.StatusCreated)
 }
 
@@ -144,6 +144,7 @@ func buscar(writer http.ResponseWriter, request *http.Request) {
 
 func vender(writer http.ResponseWriter, request *http.Request) {
 	usuario := request.URL.Query().Get("idUsuario")
+	rfid := request.URL.Query().Get("rfid")
 	idUsuario, err := strconv.Atoi(usuario)
 	if err != nil {
 		writer.WriteHeader(http.StatusUnauthorized)
@@ -158,25 +159,36 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	var venda models.Venda
+	venda, err := repo.BuscarVendaClienteAtivoCPF(rfid)
+	if err != nil {
+		fmt.Println(venda)
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	fmt.Println(venda)
+
 	body, err := io.ReadAll(request.Body)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	err = json.Unmarshal(body, &venda)
+	err = json.Unmarshal(body, venda)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	venda.Quantidade = len(venda.ProdutosVendidos)
-	venda.Criacao = time.Now()
-	err = executarVendas(repo, venda)
-	if err != nil {
-		writer.WriteHeader(http.StatusBadRequest)
-		return
-	}
+
+	venda, err = repo.AtualizarVenda(venda)
+
+
+	// venda.Quantidade = len(venda.ProdutosVendidos)
+	// venda.Criacao = time.Now()
+	// err = executarVendas(repo, *venda)
+	// if err != nil {
+	// 	writer.WriteHeader(http.StatusBadRequest)
+	// 	return
+	// }
 }
 
 func adicionar(writer http.ResponseWriter, request *http.Request) {
@@ -215,7 +227,7 @@ func adicionar(writer http.ResponseWriter, request *http.Request) {
 	produtos := []*models.Produto{}
 
 	produtos = append(produtos, produto)
-	
+
 	body, err := json.Marshal(produtos)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
@@ -229,14 +241,11 @@ func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool 
 	return permitido
 }
 
+
+//responsável por diminuir o estoque dos produtos 
 func executarVendas(repo repository.Repository, venda models.Venda) error {
 	log.Println("venda: ", venda)
 
-	err := repo.Vendas(&venda) 
-	if err != nil {
-		return err
-	}
-	
 	amount := venda.Quantidade
 	for i := 0; i < amount; i++ {
 		venda.ProdutosVendidos[i].VendaID = venda.ID
@@ -245,10 +254,20 @@ func executarVendas(repo repository.Repository, venda models.Venda) error {
 			return err
 		}
 	}
+	
+	return nil
+}
 
-	if len(venda.ProdutosVendidos) > 0 {
-		err = repo.ProdutoVenda(venda.ProdutosVendidos)
+func novaVenda(repo repository.Repository, venda models.Venda) error {
+	err := repo.Vendas(&venda) 
+	if err != nil {
+		return err
 	}
 
-	return err
+	if len(venda.ProdutosVendidos) > 0 {
+		err := repo.ProdutoVenda(venda.ProdutosVendidos)
+		return err
+	}
+
+	return nil
 }

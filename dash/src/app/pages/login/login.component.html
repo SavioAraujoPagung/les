@@ -5,7 +5,7 @@
       <mat-form-field class="conteudo-form" hintLabel="Max 14 characters" appearance="fill">
         <mat-label>CPF</mat-label>
         <input matInput #input maxlength="14" placeholder="Ex. 111.111.111-11" formControlName="cpf" autocomplete="off">
-        <mat-hint align="end">{{input.value?.length || 0}}/14</mat-hint>
+        <mat-hint>{{input.value?.length || 0}}/14</mat-hint>
       </mat-form-field>
       <br>
       <mat-form-field class="conteudo-form" appearance="fill">
@@ -24,9 +24,3 @@
   </form>
 </div>
 
-<div class="conteudo-login">
-  <button mat-stroked-button color="primary" 
-          class="input-submit" 
-          type="reset" 
-          (click)="buscarProdutos()"> Buscar Produto </button>
-</div>

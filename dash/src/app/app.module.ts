@@ -21,6 +21,9 @@ import { CaixaComponent } from './pages/caixa/caixa.component';
 import { EntradaEstoqueComponent } from './pages/entrada-estoque/entrada-estoque.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ClientesAtivosComponent } from './pages/clientes-ativos/clientes-ativos.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,7 @@ import { ClientesAtivosComponent } from './pages/clientes-ativos/clientes-ativos
     FiscalSaidaComponent,
     CaixaComponent,
     EntradaEstoqueComponent,
-    ClientesAtivosComponent
+    ClientesAtivosComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,10 @@ import { ClientesAtivosComponent } from './pages/clientes-ativos/clientes-ativos
     SharedModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

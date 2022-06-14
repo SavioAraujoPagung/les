@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { take, tap } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
 import { Cliente } from 'src/app/models/Cliente';
 
 @Injectable({
@@ -18,15 +18,34 @@ export class ClienteService {
       );
   }
 
+  buscarClienteAtivo(rfid: string): Observable<Cliente[]>{
+    if (rfid == "") {
+      return this.clienteAtivos();
+    } else {
+      var url: string = "http://localhost:8000/cliente-ativo/" + rfid
+      return this.httpClient.get<Cliente[]>(url + "?idUsuario=1")
+      .pipe(
+        take(1),
+        tap(produtos => console.log())
+      );
+    }
+  }
+
   adicionar(cliente: Cliente){
     return this.httpClient.post(this.API + "?idUsuario=1", cliente)
   }
 
   entrar(cpf: string) {
     var url: string
-    url = this.API + "/entrada" + "?idUsuario=1&cpf="+ cpf
-    debugger
+    url = this.API + "/entrada" + "?idUsuario=1&cpf=" + cpf
     return this.httpClient.post(url , null)
+  }
+
+  clienteAtivos(): Observable<Cliente[]>{
+    var url: string = "http://localhost:8000/clientes-ativos"
+    return this.httpClient.get<Cliente[]>(url + "?idUsuario=1").pipe(
+      take(1),
+    )
   }
 }
 

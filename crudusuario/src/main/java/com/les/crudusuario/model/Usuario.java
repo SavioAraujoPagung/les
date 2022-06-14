@@ -32,7 +32,7 @@ public class Usuario {
 	private Date datacriacao;
 
 	@ManyToMany
-    @JoinTable(name="funcionalidades_usuarios",
+    @JoinTable(name="funcionalidade_usuarios",
 		joinColumns=@JoinColumn(name="id_usuario"),
 		inverseJoinColumns=@JoinColumn(name="id_funcionalidade")	
 	)
