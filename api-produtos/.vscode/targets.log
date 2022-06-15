@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun 14 19:00:49 2022
+# Make data base, printed on Wed Jun 15 12:05:24 2022
 
 # Variables
 
@@ -51,9 +51,9 @@ SNAP_DATA = /var/snap/code/98
 # environment
 VTE_VERSION = 6003
 # environment
-VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"f21b5a1399e4b57b69c8e2cd957b5453.pt-br","_translationsConfigFile":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/tcf.json","_cacheRoot":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br","_resolvedLanguagePackCoreLocation":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/savio/.config/Code/clp/f21b5a1399e4b57b69c8e2cd957b5453.pt-br/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"195456cb6bc5e7dd989215cd334fb359.pt-br","_translationsConfigFile":"/home/savio/.config/Code/clp/195456cb6bc5e7dd989215cd334fb359.pt-br/tcf.json","_cacheRoot":"/home/savio/.config/Code/clp/195456cb6bc5e7dd989215cd334fb359.pt-br","_resolvedLanguagePackCoreLocation":"/home/savio/.config/Code/clp/195456cb6bc5e7dd989215cd334fb359.pt-br/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/savio/.config/Code/clp/195456cb6bc5e7dd989215cd334fb359.pt-br/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:55687
+JOURNAL_STREAM = 8:54207
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -79,7 +79,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 2440
+MANAGERPID = 2492
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -95,7 +95,7 @@ NO_PROXY = 127.0.0.1
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2674,unix/savio-pc:/tmp/.ICE-unix/2674
+SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2725,unix/savio-pc:/tmp/.ICE-unix/2725
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -115,7 +115,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = a3afbbb3a9b64040abfa4ac5f1d9136c
+INVOCATION_ID = e8876cb7cc454f3f88ce384feba42800
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/98/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -139,7 +139,7 @@ PWD = /home/savio/projects/les/api-produtos
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2638
+SSH_AGENT_PID = 2689
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -193,7 +193,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5189d571-0086-4700-a7d2-ea33944ce555.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-dd61d5b1-9839-4995-8634-5f476c1928c5.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -249,11 +249,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/818cb389_70a5_4612_bbd0_0b4d25edf901
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/9e95726d_fb8a_4d0b_8cd8_021cf32822c5
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.101
+GNOME_TERMINAL_SERVICE = :1.116
 # default
 SUFFIXES := 
 # environment
@@ -273,7 +273,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3119
+VSCODE_PID = 3836
 # variable set hash-table stats:
 # Load=131/1024=13%, Rehash=0, Collisions=18/156=12%
 
@@ -301,9 +301,9 @@ all:
 #  File has not been updated.
 
 # Not a target:
+ 
 Makefile:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-05-24 19:01:30.095325329
 #  File has been updated.
 #  Successfully updated.
@@ -340,6 +340,6 @@ run:
 # strcache performance: lookups = 25 / hit rate = 28%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/25=4%
-# Finished Make data base on Tue Jun 14 19:00:49 2022
+# Finished Make data base on Wed Jun 15 12:05:24 2022
 
  

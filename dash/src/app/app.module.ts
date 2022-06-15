@@ -20,7 +20,6 @@ import { FiscalSaidaComponent } from './pages/fiscal-saida/fiscal-saida.componen
 import { CaixaComponent } from './pages/caixa/caixa.component';
 import { EntradaEstoqueComponent } from './pages/entrada-estoque/entrada-estoque.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ClientesAtivosComponent } from './pages/clientes-ativos/clientes-ativos.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -38,8 +37,7 @@ import { FormsModule } from '@angular/forms';
     FiscalEntradaComponent,
     FiscalSaidaComponent,
     CaixaComponent,
-    EntradaEstoqueComponent,
-    ClientesAtivosComponent,
+    EntradaEstoqueComponent
   ],
   imports: [
     BrowserModule,

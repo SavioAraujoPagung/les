@@ -13,3 +13,10 @@ export interface FormDialog{
     qtd: number,
     rfid: string
 }
+
+export interface IVendaList {
+    id_cliente: string,
+    rfid_cliente: string,
+    quantidade: number,
+
+}
