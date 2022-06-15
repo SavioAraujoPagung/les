@@ -1,5 +1,7 @@
 <app-menu-lateral></app-menu-lateral>
 <div class="tabela-produto">
+    <h1>Cafeteria</h1>
+    <h3>Selecione o produtos para vender</h3>
     <div *ngIf="produtos$ | async as produtos;">
         <table mat-table [dataSource]="produtos$" class="mat-elevation-z8">
     

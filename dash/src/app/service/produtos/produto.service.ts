@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Produto } from 'src/app/models/Produto';
 import { take, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { IVenda } from 'src/app/interfaces/IVenda';
 
 @Injectable({
   providedIn: 'root'
@@ -32,11 +33,12 @@ export class ProdutoService {
   }
 
   criar(produto: Produto) {
-    console.log("Realizar query")
     return this.httpClient.post(this.API + this.USUARIO, produto);
   }
 
-  vender() {
-    
+  vender(rfid: string, venda: IVenda) {
+    let url  = this.API + "vender" + this.USUARIO + "&rfid=" + rfid
+    debugger
+    return this.httpClient.post(url, venda)
   }
 }

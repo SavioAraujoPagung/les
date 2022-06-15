@@ -1,14 +1,15 @@
 export interface IProdutoVenda {
-    id: number,
-    quantidade: number
+    idProduto: number,
+    quantidade: number,
+    preco: number
 }
 
 export interface IVenda {
-    finalizado: boolean;
+    finalizado: boolean,
     produtos: IProdutoVenda[]
 }
 
 export interface FormDialog{
-    qtd: string,
-    rfid: string,
+    qtd: number,
+    rfid: string
 }

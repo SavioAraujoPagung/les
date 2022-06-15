@@ -203,6 +203,10 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 	}
 	//encontra a venda em aberto
 	venda, err := repo.BuscarVendaClienteAtivoCPF(rfid)
+	if venda.ClienteID == 0 {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
 	if err != nil {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
