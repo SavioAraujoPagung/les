@@ -141,6 +141,49 @@ func buscar(writer http.ResponseWriter, request *http.Request) {
 	}
 	writer.Write(body)
 }
+type terminal struct{
+	Nome string
+	Quantidade int
+}
+
+func buscarPorBarra(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Buscar produto")
+	vars := mux.Vars(request)
+	codigoBarra := vars["codigo_barra"]
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	codigoBarraProduto := string(codigoBarra)
+	
+
+	// usuario := request.URL.Query().Get("idUsuario")
+	// idUsuario, err := strconv.Atoi(usuario)
+	// if err != nil {
+	// 	writer.WriteHeader(http.StatusBadGateway)
+	// 	return
+	// }
+
+	// if permitido := permitido(repo, idUsuario, BUSCAR); !permitido {
+	// 	writer.WriteHeader(http.StatusUnauthorized)
+	// 	return
+	// }
+
+	produto, err := repo.BuscarBarras(codigoBarraProduto)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	terminalBody := terminal{
+		Nome: produto.Nome,
+		Quantidade: produto.Quantidade,
+	}
+	body, err := json.Marshal(terminalBody)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	writer.Write(body)
+}
 
 func vender(writer http.ResponseWriter, request *http.Request) {
 	usuario := request.URL.Query().Get("idUsuario")
