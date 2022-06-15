@@ -35,4 +35,8 @@ export class ProdutoService {
     console.log("Realizar query")
     return this.httpClient.post(this.API + this.USUARIO, produto);
   }
+
+  vender() {
+    
+  }
 }

@@ -1,18 +1,22 @@
 <h1 mat-dialog-title>Vender</h1>
 <div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Quantidade</mat-label>
-    <input matInput type="number">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>RFID do Cliente</mat-label>
-    <input matInput type="number">
-  </mat-form-field>
-
-
+  <form action="">
+    <mat-form-field appearance="fill">
+      <mat-label>Quantidade</mat-label>
+      <input matInput type="number">
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>RFID do Cliente</mat-label>
+      <input matInput type="number">
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-raised-button (click)="cancelar()">Cancelar</button>
+      <button mat-raised-button (click)="vender()">Vender</button>
+    </div>
+  </form>
 </div>
-<div mat-dialog-actions>
+<!-- <div mat-dialog-actions>
   <button mat-raised-button (click)="cancelar()">Cancelar</button>
   <button mat-raised-button (click)="vender()">Vender</button>
-</div>
+</div> -->

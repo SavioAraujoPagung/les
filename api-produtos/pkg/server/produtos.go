@@ -178,8 +178,8 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 	
-	//todo: falta preencher a tabela produtosvendas
 	venda, err = executarVendas(repo, venda)
+	
 	fmt.Println(venda)
 
 }
@@ -236,17 +236,17 @@ func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool 
 
 //responsável por diminuir o estoque dos produtos 
 func executarVendas(repo repository.Repository, venda *models.Venda) (*models.Venda,  error) {
-	log.Println("venda: ", venda)
-
-	for _, produtoVenda := range venda.ProdutosVendidos {
-		produtoVenda.VendaID = venda.ID
-		err := repo.Vender(produtoVenda)
+	tam :=  len(venda.ProdutosVendidos)
+	for i := 0; i < tam; i++ {
+		venda.ProdutosVendidos[i].VendaID = venda.ID
+		err := repo.Vender(venda.ProdutosVendidos[i])
 		if err != nil {
 			return nil, err
 		}
-		venda.Quantidade += produtoVenda.Quantidade
+		venda.Quantidade += venda.ProdutosVendidos[i].Quantidade
 	}
-
+	
+	repo.ProdutoVenda(venda.ProdutosVendidos)
 	return venda, nil
 }
 

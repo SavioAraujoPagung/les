@@ -32,7 +32,7 @@ type Produto struct {
 }
 
 type ProdutoVenda struct {
-	VendaID    int     `json:"-"`
+	VendaID    int     `json:"-" gorm:"column:id_venda"`
 	ProdutoID  int     `json:"idProduto" gorm:"column:id_produto"`
 	Quantidade int     `json:"quantidade" gorm:"column:quantidade_item"`
 	Preco      float64 `json:"preco" gorm:"column:preco"`

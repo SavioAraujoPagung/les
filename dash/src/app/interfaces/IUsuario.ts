@@ -1,5 +1,5 @@
 export interface IUsuario{
-    id: string,
-    cpf: string;
-    senha: string
-  }
+  id: string,
+  cpf: string;
+  senha: string
+}

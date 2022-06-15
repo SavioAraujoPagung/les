@@ -3,8 +3,12 @@ export interface IProdutoVenda {
     quantidade: number
 }
 
-export interface IVenda{
-    cliente: number,
+export interface IVenda {
     finalizado: boolean;
     produtos: IProdutoVenda[]
+}
+
+export interface FormDialog{
+    qtd: string,
+    rfid: string,
 }
