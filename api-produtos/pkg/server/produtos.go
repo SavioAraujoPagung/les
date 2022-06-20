@@ -2,7 +2,6 @@ package server
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -141,8 +140,41 @@ func buscar(writer http.ResponseWriter, request *http.Request) {
 	}
 	writer.Write(body)
 }
-type terminal struct{
-	Nome string
+
+func buscarRfid(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Buscar produto RFID")
+	vars := mux.Vars(request)
+	rfid := vars["rfid"]
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	usuario := request.URL.Query().Get("idUsuario")
+	idUsuario, err := strconv.Atoi(usuario)
+	if err != nil {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	if permitido := permitido(repo, idUsuario, BUSCAR); !permitido {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	produto, err := repo.BuscarRFID(rfid)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	body, err := json.Marshal(produto)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	writer.Write(body)
+}
+
+type terminal struct {
+	Nome       string
 	Quantidade int
 }
 
@@ -154,7 +186,6 @@ func buscarPorBarra(writer http.ResponseWriter, request *http.Request) {
 	repository.Conectar(&repo, dsn)
 
 	codigoBarraProduto := string(codigoBarra)
-	
 
 	// usuario := request.URL.Query().Get("idUsuario")
 	// idUsuario, err := strconv.Atoi(usuario)
@@ -174,7 +205,7 @@ func buscarPorBarra(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 	terminalBody := terminal{
-		Nome: produto.Nome,
+		Nome:       produto.Nome,
 		Quantidade: produto.Quantidade,
 	}
 	body, err := json.Marshal(terminalBody)
@@ -203,7 +234,7 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 	}
 	//encontra a venda em aberto
 	venda, err := repo.BuscarVendaClienteAtivoCPF(rfid)
-	if venda.ClienteID == 0 {
+	if venda.ClienteID == 0 { //caso n tenha venda em aberto (cliente não teve entrada registrada pelo fiscal de entrada)
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
@@ -224,11 +255,8 @@ func vender(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	
-	venda, err = executarVendas(repo, venda)
-	
-	fmt.Println(venda)
 
+	venda, err = executarVendas(repo, venda)
 }
 
 func adicionar(writer http.ResponseWriter, request *http.Request) {
@@ -281,24 +309,37 @@ func permitido(repo repository.Repository, idUsuario int, idPermissao int) bool 
 	return permitido
 }
 
-//responsável por diminuir o estoque dos produtos 
-func executarVendas(repo repository.Repository, venda *models.Venda) (*models.Venda,  error) {
-	tam :=  len(venda.ProdutosVendidos)
+//responsável por diminuir o estoque dos produtos
+func executarVendas(repo repository.Repository, venda *models.Venda) (*models.Venda, error) {
+	tam := len(venda.ProdutosVendidos)
+	precoVenda := venda.ValorTotal
+
 	for i := 0; i < tam; i++ {
 		venda.ProdutosVendidos[i].VendaID = venda.ID
-		err := repo.Vender(venda.ProdutosVendidos[i])
+		err := repo.Vender(&venda.ProdutosVendidos[i])
 		if err != nil {
 			return nil, err
 		}
 		venda.Quantidade += venda.ProdutosVendidos[i].Quantidade
+		precoVenda += venda.ProdutosVendidos[i].Preco
 	}
-	
-	repo.ProdutoVenda(venda.ProdutosVendidos)
+
+	err := repo.ProdutoVenda(venda.ProdutosVendidos)
+	if err != nil {
+		return nil, err
+	}
+
+	venda.ValorTotal = precoVenda
+	_, err = repo.AtualizarVenda(venda)
+	if err != nil {
+		return nil, err
+	}
+
 	return venda, nil
 }
 
 func novaVenda(repo repository.Repository, venda models.Venda) error {
-	err := repo.Vendas(&venda) 
+	err := repo.Vendas(&venda)
 	if err != nil {
 		return err
 	}

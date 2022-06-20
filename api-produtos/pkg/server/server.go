@@ -32,11 +32,13 @@ func Run() {
 	muxRoute.HandleFunc("/produtos", inserir).Methods(http.MethodPost)
 	muxRoute.HandleFunc("/produtos", listar).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/produtos/{id}", buscar).Methods(http.MethodGet)
+	muxRoute.HandleFunc("/produtos/rfid/{rfid}", buscarRfid).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/produtos/terminal/{codigo_barra}", buscarPorBarra).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/produtos/{barras}", adicionar).Methods(http.MethodPut)
 	muxRoute.HandleFunc("/produtos/vender", vender).Methods(http.MethodPost)
 	
 	muxRoute.HandleFunc("/cliente", inserirCliente).Methods(http.MethodPost)
+	muxRoute.HandleFunc("/cliente-vendas/{id}", vendasCliente).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/cliente/{cpf}", buscarCliente).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/cliente/entrada", entrada).Methods(http.MethodPost)
 	muxRoute.HandleFunc("/clientes-ativos", dentro).Methods(http.MethodGet)

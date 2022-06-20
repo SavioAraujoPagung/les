@@ -1,28 +1,29 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DateAdapter } from '@angular/material/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { FormDialog, IProdutoVenda, IVenda } from 'src/app/interfaces/IVenda';
+import { Cliente } from 'src/app/models/Cliente';
 import { Produto } from 'src/app/models/Produto';
 import { ProdutoService } from 'src/app/service/produtos/produto.service';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
-  selector: 'app-element-dialog',
-  templateUrl: './element-dialog.component.html',
-  styleUrls: ['./element-dialog.component.css']
+  selector: 'app-caixa-dialog',
+  templateUrl: './caixa-dialog.component.html',
+  styleUrls: ['./caixa-dialog.component.css']
 })
 
-export class ElementDialogComponent implements OnInit {
+export class CaixaDialogComponent implements OnInit {
   venderForm!: FormGroup;
 
   venda: IVenda = {
     finalizado: false,
     produtos: [
       {
-        rfidProduto: "",
         idProduto: 0,
+        rfidProduto: "",
         quantidade: 0,
         preco: 0
       }
@@ -30,8 +31,8 @@ export class ElementDialogComponent implements OnInit {
   };
 
   constructor(
-    public dialogRef: MatDialogRef<ElementDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Produto,
+    public dialogRef: MatDialogRef<CaixaDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Cliente,
     private service: ProdutoService,
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -51,16 +52,14 @@ export class ElementDialogComponent implements OnInit {
   }
   vender() {
     var cliente = this.venderForm.getRawValue() as FormDialog;
-    if (this.data.quantidade < cliente.qtd) {
-      return
-    }
+    
 
     this.venda.finalizado = false;
     this.venda.produtos[0].quantidade = cliente.qtd
     this.venda.produtos[0].idProduto = this.data.id
-    this.venda.produtos[0].preco = this.data.preco_venda
+    this.venda.produtos[0].preco = 0
     
-    this.service.vender(cliente.rfid, this.venda).subscribe(
+    this.service.vender(this.data.rfid, this.venda).subscribe(
       resultado => {
         console.log(resultado)
         this.success("Produto vendido com sucesso!")
@@ -69,7 +68,6 @@ export class ElementDialogComponent implements OnInit {
         this.onError("ERRO ao vender produtos!")
       }
     );  
-    this.data.quantidade -= cliente.qtd
     this.dialogRef.close();  
   }
 

@@ -171,7 +171,6 @@ func dentro(writer http.ResponseWriter, request *http.Request) {
 	writer.Write(body)
 }
 
-
 func clienteAtivo(writer http.ResponseWriter, request *http.Request) {
 	log.Println("Cliente Ativos")
 	usuario := request.URL.Query().Get("idUsuario")
@@ -198,6 +197,49 @@ func clienteAtivo(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	body, err := json.Marshal(clientes)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+	writer.Write(body)
+}
+
+func vendasCliente(writer http.ResponseWriter, request *http.Request) {
+	log.Println("Todas os produtos de uma venda")
+	usuario := request.URL.Query().Get("idUsuario")
+	idUsuario, err := strconv.Atoi(usuario)
+	if err != nil {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	if permitido := permitido(repo, idUsuario, CAFETERIA); !permitido {
+		writer.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+	vars := mux.Vars(request)
+	id := vars["id"]
+	idCliente, err := strconv.Atoi(id)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+
+	venda, err := repo.ClientesProdutosVenda(idCliente)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadGateway)
+		return
+	}
+	resp := []models.Produto{}
+	
+	for _, produto := range venda.ProdutosVendidos {
+		resp = append(resp, *produto.Produto)
+	}
+
+	body, err := json.Marshal(resp)
 	if err != nil {
 		writer.WriteHeader(http.StatusBadGateway)
 		return

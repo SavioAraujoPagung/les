@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CaixaDialogComponent } from './caixa-dialog/caixa-dialog.component';
 
 
 @NgModule({
@@ -21,8 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MATERIAL_IMPORTS,
   ],
   declarations: [
-  
-    ElementDialogComponent
+    ElementDialogComponent,
+    CaixaDialogComponent
   ],
 })
 export class SharedModule { }

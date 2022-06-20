@@ -4,46 +4,44 @@
     <h3>Selecione o produtos para vender</h3>
     <div *ngIf="produtos$ | async as produtos;">
         <table mat-table [dataSource]="produtos$" class="mat-elevation-z8">
-    
-        <ng-container class="coluna" matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> id </th>
-            <td mat-cell *matCellDef="let produto"> {{ produto.id }} </td>
-        </ng-container>
-    
-        <ng-container class="coluna" matColumnDef="nome">
-            <th mat-header-cell *matHeaderCellDef> Nome </th>
-            <td mat-cell *matCellDef="let produto"> {{ produto.nome }} </td>
-        </ng-container>
-    
-        <ng-container class="coluna" matColumnDef="rfid">
-            <th mat-header-cell *matHeaderCellDef> RFID </th>
-            <td mat-cell *matCellDef="let produto"> {{ produto.rfid }} </td>
-        </ng-container>
-    
-            <ng-container class="coluna" matColumnDef="preco_venda">
-            <th mat-header-cell *matHeaderCellDef> Preço </th>
-            <td mat-cell *matCellDef="let produto"> {{ produto.preco_venda }} </td>
-        </ng-container>
-    
-        <ng-container class="coluna" matColumnDef="unidade_medida">
-            <th mat-header-cell *matHeaderCellDef> Unidade de Medida </th>
-            <td mat-cell *matCellDef="let produto"> {{ produto.unidade_medida }} </td>
-        </ng-container>
-    
-        <ng-container class="coluna" matColumnDef="quantidade">
-            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
-            <td mat-cell *matCellDef="let produto"> {{ produto.quantidade }} </td>
-        </ng-container>
+            <ng-container class="coluna" matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> id </th>
+                <td mat-cell *matCellDef="let produto"> {{ produto.id }} </td>
+            </ng-container>
+        
+            <ng-container class="coluna" matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let produto"> {{ produto.nome }} </td>
+            </ng-container>
+        
+            <ng-container class="coluna" matColumnDef="rfid">
+                <th mat-header-cell *matHeaderCellDef> RFID </th>
+                <td mat-cell *matCellDef="let produto"> {{ produto.rfid }} </td>
+            </ng-container>
+        
+                <ng-container class="coluna" matColumnDef="preco_venda">
+                <th mat-header-cell *matHeaderCellDef> Preço </th>
+                <td mat-cell *matCellDef="let produto"> R${{ produto.preco_venda }} </td>
+            </ng-container>
+        
+            <ng-container class="coluna" matColumnDef="unidade_medida">
+                <th mat-header-cell *matHeaderCellDef> Unidade de Medida </th>
+                <td mat-cell *matCellDef="let produto"> {{ produto.unidade_medida }} </td>
+            </ng-container>
+        
+            <ng-container class="coluna" matColumnDef="quantidade">
+                <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+                <td mat-cell *matCellDef="let produto"> {{ produto.quantidade }} </td>
+            </ng-container>
 
-        <ng-container matColumnDef="vender">
-            <th mat-header-cell *matHeaderCellDef> Ações </th>
-            <td mat-cell *matCellDef="let produto">
-                <button mat-raised-button color="warng" (click)="vender(produto)" >Vender</button>
-            </td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <ng-container matColumnDef="vender">
+                <th mat-header-cell *matHeaderCellDef> Ações </th>
+                <td mat-cell *matCellDef="let produto">
+                    <button mat-raised-button color="warng" (click)="vender(produto)" >Vender</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
 </div>

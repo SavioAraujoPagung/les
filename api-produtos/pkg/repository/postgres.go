@@ -30,11 +30,19 @@ func (r *Repository) Buscar(id int) (*models.Produto, error) {
 	return &produto, err
 }
 
-func (r *Repository) conectar(dsn string) error {
+func (r *Repository) BuscarRFID(rfid string) (*models.Produto, error) {
+	var produto models.Produto
+	err := r.db.Where(&models.Produto{Rfid: rfid}).First(&produto).Error
+	return &produto, err
+}
+
+func (r *Repository) Conectar(dsn string) error {
 	var err error
 	r.db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+
 	return err
 }
+
 func (r *Repository) Permissao(idUsuario int, idFuncionalidade int) (bool, error) {
 	var err error
 	permissao := &funcionalidadeUsuario{}
@@ -50,8 +58,17 @@ func (r *Repository) Permissao(idUsuario int, idFuncionalidade int) (bool, error
 	return false, err
 }
 
-func (r *Repository) Vender(produtoVenda models.ProdutoVenda) error {
-	produto, err := r.Buscar(produtoVenda.ProdutoID)
+func (r *Repository) Vender(produtoVenda *models.ProdutoVenda) error {
+	var produto *models.Produto
+	var err error
+
+	if produtoVenda.ProdutoID > 0 { //se não tiver id irá bucar pelo RFID
+		produto, err = r.Buscar(produtoVenda.ProdutoID)
+	} else {
+		produto, err = r.BuscarRFID(produtoVenda.ProdutoRfid)
+		produtoVenda.ProdutoID = produto.ID
+	}
+
 	if err != nil {
 		return err
 	}
@@ -98,16 +115,15 @@ func (r *Repository) BuscarBarras(barras string) (*models.Produto, error) {
 	return &produto, nil
 }
 
-func (r *Repository)BuscarTodosClientesAtivos() (*[]models.Cliente, error) {
+func (r *Repository) BuscarTodosClientesAtivos() (*[]models.Cliente, error) {
 	clientes := &[]models.Cliente{}
-	err := r.db.Model(&models.Cliente{}).Select("*").Joins("left join vendas v on v.id_cliente = clientes.id where v.status = ?", false).Scan(clientes).Error
+	err := r.db.Model(&models.Cliente{}).Select("clientes.id, clientes.nome, clientes.cpf, clientes.rfid").Joins("left join vendas v on v.id_cliente = clientes.id where v.status = ?", false).Scan(clientes).Error
 	return clientes, err
 }
 
 func (r *Repository) BuscarClienteAtivo(rfid string) (*[]models.Cliente, error) {
-	
 	cliente := &[]models.Cliente{}
-	err := r.db.Model(&models.Cliente{}).Select("*").Joins("left join vendas v on v.id_cliente = clientes.id where v.status = ? and clientes.rfid = ?", false, rfid).Scan(cliente).Error
+	err := r.db.Model(&models.Cliente{}).Select("clientes.id, clientes.nome, clientes.cpf, clientes.rfid").Joins("left join vendas v on v.id_cliente = clientes.id where v.status = ? and clientes.rfid = ?", false, rfid).Scan(cliente).Error
 	return cliente, err
 }
 
@@ -117,7 +133,33 @@ func (r *Repository) BuscarVendaClienteAtivoCPF(cpf string) (*models.Venda, erro
 	return venda, err
 }
 
-func (r * Repository) AtualizarVenda(venda* models.Venda)(*models.Venda, error) {
-	if err := r.db.Save(venda).Error; err != nil { return nil, err }
+func (r *Repository) AtualizarVenda(venda *models.Venda) (*models.Venda, error) {
+	if err := r.db.Save(venda).Error; err != nil {
+		return nil, err
+	}
+	return venda, nil
+}
+
+func (r *Repository) ClientesProdutosVenda(idCliente int) (*models.Venda, error) {
+	var err error
+	venda := &models.Venda{}
+	if err = r.db.Where(&models.Venda{ClienteID: idCliente}).First(venda).Error; err != nil {
+		return nil, err
+	}
+
+	if err = r.db.Where(&models.ProdutoVenda{VendaID: venda.ID}).Find(&venda.ProdutosVendidos).Error; err != nil {
+		return nil, err
+	}
+
+	qtd := len(venda.ProdutosVendidos)
+
+	for i := 0; i < qtd; i++ {
+		venda.ProdutosVendidos[i].Produto, err = r.Buscar(venda.ProdutosVendidos[i].ProdutoID)
+		venda.ProdutosVendidos[i].Produto.Quantidade = venda.ProdutosVendidos[i].Quantidade
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	return venda, nil
 }

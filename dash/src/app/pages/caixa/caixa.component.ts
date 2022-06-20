@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
+import { IVendaCaixa } from 'src/app/interfaces/ICaixa';
 import { Cliente } from 'src/app/models/Cliente';
+import { Produto } from 'src/app/models/Produto';
 import { ClienteService } from 'src/app/service/cliente/cliente.service';
+import { CaixaDialogComponent } from 'src/app/shared/caixa-dialog/caixa-dialog.component';
+import { ElementDialogComponent } from 'src/app/shared/element-dialog/element-dialog.component';
 import { ErrorDialogComponent } from 'src/app/shared/error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 
@@ -17,7 +21,14 @@ export class CaixaComponent implements OnInit {
   buscarCliente!: FormGroup;
   clientes$!: Observable<Cliente[]>;
   client!: Cliente[];
+  clienteAtual!: Cliente;
   displayedColumns = ['cpf', 'nome', 'rfid', 'vender']
+
+  vizualizar: boolean = false;
+  produtos$!: Observable<Produto[]>;
+  prods!: Produto[]
+  prodsValorTotal!: number
+  displayedColumnss = ['id', 'nome', 'rfid', 'preco_venda', 'unidade_medida', 'quantidade', 'vender']
 
   constructor(public service: ClienteService, 
               private formBuilder: FormBuilder,
@@ -32,8 +43,46 @@ export class CaixaComponent implements OnInit {
     );
   }
 
-  vender(){
-    
+  vender(cliente: Cliente){
+    console.log(cliente)
+    const dialogRef = this.dialog.open(CaixaDialogComponent, {
+      width: '300px',
+      height: '300px',
+      data: cliente
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if ( result !== undefined ) {
+        console.log(result)
+      }
+    });
+  }
+
+  buscarProdutos(cliente: Cliente){
+    //this.service.buscarProdutosVendas(cliente.id).pipe(
+          //  {
+    //   next: data => 
+    //     {
+          
+    //       this.prods = data
+    //       this.valorTotal()
+    //     }
+    //   }
+    //);
+    this.produtos$ = this.service.buscarProdutosVendas(cliente.id).pipe(
+      map(
+        pd => this.prods
+      )
+    )
+
+    this.valorTotal()
+    this.clienteAtual = cliente;
+  }
+
+  valorTotal() {
+    this.prods.forEach((prod) => {
+      this.prodsValorTotal += prod.preco_venda
+    })
   }
 
   buscar() {
