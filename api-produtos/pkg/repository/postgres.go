@@ -130,6 +130,7 @@ func (r *Repository) BuscarClienteAtivo(rfid string) (*[]models.Cliente, error) 
 func (r *Repository) BuscarVendaClienteAtivoCPF(cpf string) (*models.Venda, error) {
 	venda := &models.Venda{}
 	err := r.db.Model(&models.Cliente{}).Select("*").Joins("left join vendas v on v.id_cliente = clientes.id where v.status = ? and clientes.rfid = ?", false, cpf).Scan(venda).Error
+	
 	return venda, err
 }
 
@@ -143,7 +144,7 @@ func (r *Repository) AtualizarVenda(venda *models.Venda) (*models.Venda, error) 
 func (r *Repository) ClientesProdutosVenda(idCliente int) (*models.Venda, error) {
 	var err error
 	venda := &models.Venda{}
-	if err = r.db.Where(&models.Venda{ClienteID: idCliente}).First(venda).Error; err != nil {
+	if err = r.db.Where("id_cliente = ? and status = ?", idCliente, false).First(venda).Error; err != nil {
 		return nil, err
 	}
 
