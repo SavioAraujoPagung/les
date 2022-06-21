@@ -1,6 +1,6 @@
 <app-menu-lateral></app-menu-lateral>
 
-<div class="tabela-cliente">
+<div>
     <br>
     <h1>Clientes com venda em aberto</h1>
     <div class="entrada">
@@ -14,7 +14,7 @@
     </div>
     
     <div *ngIf="clientes$ | async as clientes;">
-        <table mat-table [dataSource]="clientes$" class="mat-elevation-z8">
+        <table mat-table [dataSource]="clientes" class="mat-elevation-z8">
     
         <ng-container class="coluna" matColumnDef="cpf">
             <th mat-header-cell *matHeaderCellDef> CPF </th>
@@ -34,12 +34,8 @@
         <ng-container matColumnDef="vender">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let cliente">
-                <form class="conteudo-form" (submit)="vender(cliente)">
-                    <button mat-raised-button >Vender</button>
-                </form>
-                <form class="conteudo-form" (submit)="buscarProdutos(cliente)">
-                    <button mat-raised-button >Visualizar</button>
-                </form>
+                <button mat-raised-button (click)="vender(cliente)" >Vender</button>
+                <button mat-raised-button (click)="buscarProdutos(cliente)">Visualizar</button> 
             </td>
         </ng-container>
         
@@ -52,11 +48,7 @@
 <div class="listaProdutos" *ngIf="produtos$ | async as produtos;">
     <h1> Produtos do Cliente: {{ clienteAtual.nome }}</h1>
     <table mat-table [dataSource]="produtos$" class="mat-elevation-z8">
-        <ng-container class="coluna" matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> id </th>
-            <td mat-cell *matCellDef="let produto"> {{ produto.id }} </td>
-        </ng-container>
-    
+        
         <ng-container class="coluna" matColumnDef="nome">
             <th mat-header-cell *matHeaderCellDef> Nome </th>
             <td mat-cell *matCellDef="let produto"> {{ produto.nome }} </td>
@@ -81,15 +73,9 @@
             <th mat-header-cell *matHeaderCellDef> Quantidade </th>
             <td mat-cell *matCellDef="let produto"> {{ produto.quantidade }} </td>
         </ng-container>
-  
-        <ng-container matColumnDef="vender">
-            <th mat-header-cell *matHeaderCellDef> Ações </th>
-            <td mat-cell *matCellDef="let produto">
-                <button mat-raised-button color="warng">Vender</button>
-            </td>
-        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumnss"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumnss;"></tr>
     </table>
-    <h1>Total: {{ prodsValorTotal }}</h1>
-  </div>
+    <h1>Total: R$ {{ prodsValorTotal }}</h1>
+</div>

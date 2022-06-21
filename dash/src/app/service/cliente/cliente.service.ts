@@ -51,7 +51,7 @@ export class ClienteService {
   }
 
   buscarProdutosVendas(id: number): Observable<Produto[]>{
-    var url: string = "http://localhost:8000/cliente-vendas/" + id + "?idUsuario=1"
+    var url: string = `http://localhost:8000/cliente-vendas/${id}?idUsuario=1`
     return this.httpClient.get<Produto[]>(url).pipe(
       take(1),
     )

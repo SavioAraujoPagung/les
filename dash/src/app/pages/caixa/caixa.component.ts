@@ -6,6 +6,7 @@ import { IVendaCaixa } from 'src/app/interfaces/ICaixa';
 import { Cliente } from 'src/app/models/Cliente';
 import { Produto } from 'src/app/models/Produto';
 import { ClienteService } from 'src/app/service/cliente/cliente.service';
+import { ProdutoService } from 'src/app/service/produtos/produto.service';
 import { CaixaDialogComponent } from 'src/app/shared/caixa-dialog/caixa-dialog.component';
 import { ElementDialogComponent } from 'src/app/shared/element-dialog/element-dialog.component';
 import { ErrorDialogComponent } from 'src/app/shared/error-dialog/error-dialog.component';
@@ -25,10 +26,12 @@ export class CaixaComponent implements OnInit {
   displayedColumns = ['cpf', 'nome', 'rfid', 'vender']
 
   vizualizar: boolean = false;
+  
   produtos$!: Observable<Produto[]>;
+
   prods!: Produto[]
   prodsValorTotal!: number
-  displayedColumnss = ['id', 'nome', 'rfid', 'preco_venda', 'unidade_medida', 'quantidade', 'vender']
+  displayedColumnss = ['nome', 'rfid', 'preco_venda', 'unidade_medida', 'quantidade']
 
   constructor(public service: ClienteService, 
               private formBuilder: FormBuilder,
@@ -43,7 +46,7 @@ export class CaixaComponent implements OnInit {
     );
   }
 
-  vender(cliente: Cliente){
+  vender(cliente: Cliente) {
     console.log(cliente)
     const dialogRef = this.dialog.open(CaixaDialogComponent, {
       width: '300px',
@@ -58,31 +61,21 @@ export class CaixaComponent implements OnInit {
     });
   }
 
-  buscarProdutos(cliente: Cliente){
-    //this.service.buscarProdutosVendas(cliente.id).pipe(
-          //  {
-    //   next: data => 
-    //     {
-          
-    //       this.prods = data
-    //       this.valorTotal()
-    //     }
-    //   }
-    //);
-    this.produtos$ = this.service.buscarProdutosVendas(cliente.id).pipe(
-      map(
-        pd => this.prods
-      )
+  buscarProdutos(cliente: Cliente) {
+    this.produtos$ = this.service.buscarProdutosVendas(cliente.id)
+    this.produtos$.subscribe(
+      (produtos) => {
+        if (produtos.length) {
+          this.prodsValorTotal = produtos
+            .map(produto => produto.preco_venda)
+            .reduce((acc, valor) => acc + valor)
+        } else {
+          this.prodsValorTotal = 0
+        }
+      }
     )
 
-    this.valorTotal()
     this.clienteAtual = cliente;
-  }
-
-  valorTotal() {
-    this.prods.forEach((prod) => {
-      this.prodsValorTotal += prod.preco_venda
-    })
   }
 
   buscar() {
