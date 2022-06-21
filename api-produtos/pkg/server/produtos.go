@@ -316,12 +316,21 @@ func executarVendas(repo repository.Repository, venda *models.Venda) (*models.Ve
 
 	for i := 0; i < tam; i++ {
 		venda.ProdutosVendidos[i].VendaID = venda.ID
+
 		err := repo.Vender(&venda.ProdutosVendidos[i])
 		if err != nil {
 			return nil, err
 		}
 		venda.Quantidade += venda.ProdutosVendidos[i].Quantidade
-		precoVenda += venda.ProdutosVendidos[i].Preco
+		if venda.ProdutosVendidos[i].Preco > 0 {
+			precoVenda += venda.ProdutosVendidos[i].Preco
+		} else {
+			prod, err := repo.BuscarRFID(venda.ProdutosVendidos[i].ProdutoRfid)
+			if err != nil {
+				return nil, err
+			}
+			precoVenda += prod.PrecoVenda
+		}
 	}
 
 	err := repo.ProdutoVenda(venda.ProdutosVendidos)

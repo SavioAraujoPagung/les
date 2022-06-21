@@ -47,7 +47,6 @@ export class CaixaComponent implements OnInit {
   }
 
   vender(cliente: Cliente) {
-    console.log(cliente)
     const dialogRef = this.dialog.open(CaixaDialogComponent, {
       width: '300px',
       height: '300px',

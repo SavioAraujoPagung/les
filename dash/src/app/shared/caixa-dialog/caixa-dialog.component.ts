@@ -53,21 +53,20 @@ export class CaixaDialogComponent implements OnInit {
   vender() {
     var cliente = this.venderForm.getRawValue() as FormDialog;
     
-
     this.venda.finalizado = false;
     this.venda.produtos[0].quantidade = cliente.qtd
     this.venda.produtos[0].idProduto = this.data.id
     this.venda.produtos[0].preco = 0
-    
-    this.service.vender(this.data.rfid, this.venda).subscribe(
-      resultado => {
-        console.log(resultado)
-        this.success("Produto vendido com sucesso!")
-      },
-      err => {
-        this.onError("ERRO ao vender produtos!")
-      }
-    );  
+    debugger
+    // this.service.vender(this.data.rfid, this.venda).subscribe(
+    //   resultado => {
+    //     console.log(resultado)
+    //     this.success("Produto vendido com sucesso!")
+    //   },
+    //   err => {
+    //     this.onError("ERRO ao vender produtos!")
+    //   }
+    // );  
     this.dialogRef.close();  
   }
 
