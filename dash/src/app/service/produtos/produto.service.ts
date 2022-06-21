@@ -24,7 +24,7 @@ export class ProdutoService {
   }
 
   adicionar(produto: Produto) {
-    var api = this.API + produto.codigo_barras + this.USUARIO
+    var api = this.API + "/" + produto.codigo_barras + this.USUARIO
     return this.httpClient.put<Produto[]>(api, null)
     .pipe(
       take(1),
