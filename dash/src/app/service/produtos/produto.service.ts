@@ -9,7 +9,7 @@ import { IVenda } from 'src/app/interfaces/IVenda';
   providedIn: 'root'
 })
 export class ProdutoService {
-  private readonly API = 'http://localhost:8000/produtos/'
+  private readonly API = 'http://localhost:8000/produtos'
   private readonly USUARIO = '?idUsuario=1'
   private readonly API_CAFETERIA = 'http://localhost:8000/produtos?idUsuario=1&categoria=1'
   
@@ -37,7 +37,7 @@ export class ProdutoService {
   }
 
   vender(rfid: string, venda: IVenda) {
-    let url  = this.API + "vender" + this.USUARIO + "&rfid=" + rfid
+    let url  = this.API + "/" + "vender" + this.USUARIO + "&rfid=" + rfid
     debugger
     return this.httpClient.post(url, venda)
   }

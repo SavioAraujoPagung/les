@@ -55,7 +55,6 @@ export class CadastroProdutoComponent implements OnInit {
   criar() {
     var novoProduto = this.produtoForm.getRawValue() as Produto;
     novoProduto.categoria = Number(novoProduto.categoria)
-    debugger
     this.service.criar(novoProduto).subscribe(
       resultado => {
         console.log(resultado)
