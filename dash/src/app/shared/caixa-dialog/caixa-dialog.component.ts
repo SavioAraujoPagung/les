@@ -41,8 +41,8 @@ export class CaixaDialogComponent implements OnInit {
   ngOnInit(): void {
     this.venderForm = this.formBuilder.group(
       {
-        qtd:['', [Validators.required]],
-        rfid:['', [Validators.required]]
+        rfid:['', [Validators.required]],
+        qtd:['1', [Validators.required]]
       }
     );
   }
@@ -51,22 +51,24 @@ export class CaixaDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   vender() {
-    var cliente = this.venderForm.getRawValue() as FormDialog;
+    var produto = this.venderForm.getRawValue() as FormDialog;
     
     this.venda.finalizado = false;
-    this.venda.produtos[0].quantidade = cliente.qtd
-    this.venda.produtos[0].idProduto = this.data.id
-    this.venda.produtos[0].preco = 0
+    this.venda.produtos[0].quantidade = produto.qtd;
+    this.venda.produtos[0].rfidProduto = produto.rfid;
+    this.venda.produtos[0].idProduto = 0;
+    this.venda.produtos[0].preco = 0;
     debugger
-    // this.service.vender(this.data.rfid, this.venda).subscribe(
-    //   resultado => {
-    //     console.log(resultado)
-    //     this.success("Produto vendido com sucesso!")
-    //   },
-    //   err => {
-    //     this.onError("ERRO ao vender produtos!")
-    //   }
-    // );  
+    this.service.vender(this.data.rfid , this.venda).subscribe(
+      resultado => {
+        console.log(resultado)
+        this.success("Produto vendido com sucesso!")
+      },
+      err => {
+        this.onError("ERRO ao vender produtos!")
+      }
+    );
+
     this.dialogRef.close();  
   }
 

@@ -321,7 +321,9 @@ func executarVendas(repo repository.Repository, venda *models.Venda) (*models.Ve
 		if err != nil {
 			return nil, err
 		}
+		
 		venda.Quantidade += venda.ProdutosVendidos[i].Quantidade
+		
 		if venda.ProdutosVendidos[i].Preco > 0 {
 			precoVenda += venda.ProdutosVendidos[i].Preco
 		} else {
