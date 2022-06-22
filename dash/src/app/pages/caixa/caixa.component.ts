@@ -119,7 +119,17 @@ export class CaixaComponent implements OnInit {
   }
   
   finalizar() {
-    
+    this.service.finalizarVenda(this.clienteAtual.rfid)
+    .subscribe(
+      resultado => {
+        console.log(resultado)
+        this.success("Venda finalizada!")
+        this.buscar()
+      },
+      err => {
+        this.onError("Erro ao finalizar venda!")
+      }
+    );
   }
 
   onError(errorMsg: string) {

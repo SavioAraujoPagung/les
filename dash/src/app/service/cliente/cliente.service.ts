@@ -56,6 +56,11 @@ export class ClienteService {
       take(1),
     )
   }
+
+  finalizarVenda(rfid: string){
+    var url: string = `http://localhost:8000/venda/${rfid}`
+    return this.httpClient.put(url, null)
+  }
 }
 
 
