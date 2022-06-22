@@ -47,6 +47,10 @@
 
 <div class="listaProdutos" *ngIf="produtos$ | async as produtos;">
     <h1> Produtos do Cliente: {{ clienteAtual.nome }}</h1>
+    <div class="rela">
+        <h1>Total: R$ {{ prodsValorTotal }}</h1>
+        <button mat-raised-button color="primary" (click)="finalizar()">Finalizar Venda</button>
+    </div>
     <table mat-table [dataSource]="produtos$" class="mat-elevation-z8">
         
         <ng-container class="coluna" matColumnDef="nome">
@@ -77,5 +81,4 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumnss"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumnss;"></tr>
     </table>
-    <h1>Total: R$ {{ prodsValorTotal }}</h1>
 </div>

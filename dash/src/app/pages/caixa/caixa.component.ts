@@ -118,6 +118,10 @@ export class CaixaComponent implements OnInit {
     )
   }
   
+  finalizar() {
+    
+  }
+
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg

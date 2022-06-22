@@ -36,6 +36,8 @@ func Run() {
 	muxRoute.HandleFunc("/produtos/terminal/{codigo_barra}", buscarPorBarra).Methods(http.MethodGet)
 	muxRoute.HandleFunc("/produtos/{barras}", adicionar).Methods(http.MethodPut)
 	muxRoute.HandleFunc("/produtos/vender", vender).Methods(http.MethodPost)
+
+	muxRoute.HandleFunc("/venda/{clienteRFID}", finalizar).Methods(http.MethodPut)
 	
 	muxRoute.HandleFunc("/cliente", inserirCliente).Methods(http.MethodPost)
 	muxRoute.HandleFunc("/cliente-vendas/{id}", vendasCliente).Methods(http.MethodGet)

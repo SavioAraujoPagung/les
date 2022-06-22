@@ -362,3 +362,32 @@ func novaVenda(repo repository.Repository, venda models.Venda) error {
 
 	return nil
 }
+
+func finalizar(writer http.ResponseWriter, request *http.Request) {
+	var repo repository.Repository
+	repository.Conectar(&repo, dsn)
+
+	vars := mux.Vars(request)
+	rfidCliente := vars["clienteRFID"]
+
+	clientes, err := repo.BuscarClienteAtivo(rfidCliente)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	
+	venda := &models.Venda {}
+	for _, cliente := range *clientes {
+		venda, err = repo.BuscarVendaClienteAtivoCPF(cliente.Cpf)
+		if err != nil {
+			writer.WriteHeader(http.StatusBadRequest)
+			return
+		}
+	}
+
+	err = repo.FinalizarVenda(venda)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+}

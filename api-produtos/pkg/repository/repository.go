@@ -31,6 +31,8 @@ type Db interface {
 	BuscarClienteAtivo(rfid string) (*[]models.Cliente, error)
 	BuscarVendaClienteAtivoCPF(cpf string) (*models.Venda, error)
 	ClientesProdutosVenda(idCliente int)(*models.Venda, error)
+	
+	FinalizarVenda(venda *models.Venda) error
 
 	Conectar(dsn string) error
 	Permissao(idUsuario int, idFuncionalidade int) (bool, error)

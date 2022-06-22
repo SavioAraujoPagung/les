@@ -6,6 +6,10 @@ table {
     width: 100%;
 }
 
+.rela{
+    display: flex;
+}
+
 .listaProdutos{
     padding: 10px;
     width: 75%;
