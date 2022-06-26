@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FormDialog, IProdutoVenda, IVenda } from 'src/app/interfaces/IVenda';
 import { Cliente } from 'src/app/models/Cliente';
 import { Produto } from 'src/app/models/Produto';
+import { BalancaService } from 'src/app/service/balanca.service';
 import { ProdutoService } from 'src/app/service/produtos/produto.service';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
@@ -33,6 +34,7 @@ export class CaixaDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CaixaDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Cliente,
+    private balancaService: BalancaService,
     private service: ProdutoService,
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -47,18 +49,28 @@ export class CaixaDialogComponent implements OnInit {
     );
   }
 
+  getPesoBalanca(){
+    var pesoBalanca = this.balancaService.getPesoBalanca().subscribe(
+      resultado => {
+        console.log(resultado)
+        this.success("Peso obtido com sucesso")
+      },
+      err => {
+        this.onError("ERRO ao obter peso da balanca!")
+      }
+    )
+  }
+
   cancelar() {
     this.dialogRef.close();
   }
   vender() {
     var produto = this.venderForm.getRawValue() as FormDialog;
-    
     this.venda.finalizado = false;
     this.venda.produtos[0].quantidade = produto.qtd;
     this.venda.produtos[0].rfidProduto = produto.rfid;
     this.venda.produtos[0].idProduto = 0;
     this.venda.produtos[0].preco = 0;
-    debugger
     this.service.vender(this.data.rfid , this.venda).subscribe(
       resultado => {
         console.log(resultado)

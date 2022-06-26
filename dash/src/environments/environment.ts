@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  endPoint: 'api'
+  endPoint: 'api',
+  balancaUrl: 'http://192.168.43.150:80'
 };
 
 /*
