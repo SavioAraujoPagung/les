@@ -9,7 +9,7 @@ import { BalancaService } from 'src/app/service/balanca.service';
 import { ProdutoService } from 'src/app/service/produtos/produto.service';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
-
+import {MatDividerModule} from '@angular/material/divider';
 @Component({
   selector: 'app-caixa-dialog',
   templateUrl: './caixa-dialog.component.html',
@@ -18,6 +18,7 @@ import { SuccessDialogComponent } from '../success-dialog/success-dialog.compone
 
 export class CaixaDialogComponent implements OnInit {
   venderForm!: FormGroup;
+  peso: number = 0;
 
   venda: IVenda = {
     finalizado: false,
@@ -41,6 +42,7 @@ export class CaixaDialogComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+    this.getPesoBalanca()
     this.venderForm = this.formBuilder.group(
       {
         rfid:['', [Validators.required]],
@@ -50,14 +52,15 @@ export class CaixaDialogComponent implements OnInit {
   }
 
   getPesoBalanca(){
-    var pesoBalanca = this.balancaService.getPesoBalanca().subscribe(
+    this.balancaService.getPesoBalanca().subscribe(
       resultado => {
-        console.log(resultado)
-        this.success("Peso obtido com sucesso")
+        this.peso = resultado
+        //this.success("Peso obtido com sucesso")
       },
       err => {
         this.onError("ERRO ao obter peso da balanca!")
       }
+
     )
   }
 
@@ -65,6 +68,7 @@ export class CaixaDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   vender() {
+    
     var produto = this.venderForm.getRawValue() as FormDialog;
     this.venda.finalizado = false;
     this.venda.produtos[0].quantidade = produto.qtd;

@@ -32,10 +32,12 @@ export class CaixaComponent implements OnInit {
   prods!: Produto[]
   prodsValorTotal!: number
   displayedColumnss = ['nome', 'rfid', 'preco_venda', 'unidade_medida', 'quantidade']
+  balancaService: any;
 
   constructor(public service: ClienteService, 
               private formBuilder: FormBuilder,
-              public dialog: MatDialog){ }
+              public dialog: MatDialog
+              ){ }
 
   ngOnInit(): void {
     this.listar();
@@ -45,14 +47,14 @@ export class CaixaComponent implements OnInit {
       }
     );
   }
-
+  
   vender(cliente: Cliente) {
     const dialogRef = this.dialog.open(CaixaDialogComponent, {
       width: '300px',
       height: '300px',
       data: cliente
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       if ( result !== undefined ) {
         console.log(result)

@@ -3,9 +3,9 @@
   <form [formGroup]="venderForm" action="">
     <mat-form-field appearance="fill">
       <mat-label>Quantidade</mat-label>
-      <input formControlName="qtd" matInput type="number">
+      <input formControlName="qtd" matInput type="number" [(ngModel)]="peso">
     </mat-form-field>
-  
+    
     <mat-form-field appearance="fill">
       <mat-label>RFID do Produto</mat-label>
       <input formControlName="rfid" matInput>
