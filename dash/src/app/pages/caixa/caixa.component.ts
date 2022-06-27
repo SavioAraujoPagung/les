@@ -28,6 +28,7 @@ export class CaixaComponent implements OnInit {
   vizualizar: boolean = false;
   
   produtos$!: Observable<Produto[]>;
+  produtosPrint!: Produto[];
 
   prods!: Produto[]
   prodsValorTotal!: number
@@ -69,13 +70,13 @@ export class CaixaComponent implements OnInit {
         if (produtos.length) {
           this.prodsValorTotal = produtos
             .map(produto => produto.preco_venda)
-            .reduce((acc, valor) => acc + valor)
+            .reduce((acc, valor) => acc + valor);
         } else {
-          this.prodsValorTotal = 0
+          this.prodsValorTotal = 0;
         }
+        this.produtosPrint = produtos;
       }
     )
-
     this.clienteAtual = cliente;
   }
 
@@ -98,8 +99,6 @@ export class CaixaComponent implements OnInit {
           return of([]);
         })
     )
-    console.log("buscar depois : ")
-    console.log(this.client)
   }
 
   listar() {
@@ -132,6 +131,20 @@ export class CaixaComponent implements OnInit {
         this.onError("Erro ao finalizar venda!")
       }
     );
+    
+    if (this.produtosPrint.length > 0) {
+      this.service.imprimir(this.produtosPrint)
+      .subscribe(
+        resultado => {
+          console.log(resultado)
+          this.success("Venda finalizada!")
+          this.buscar()
+        },
+        err => {
+          this.onError(`Erro ao imprimir venda!\nError: ${err}`)
+        }
+      )
+    }
   }
 
   onError(errorMsg: string) {

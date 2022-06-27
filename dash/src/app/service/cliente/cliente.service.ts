@@ -61,6 +61,15 @@ export class ClienteService {
     var url: string = `http://localhost:8000/venda/${rfid}`
     return this.httpClient.put(url, null)
   }
+
+  imprimir(produtos: Produto[]){
+    debugger
+    var url: string = 'http://localhost:9898/impressora/imprimir'
+    debugger
+    console.log("imprimir")
+    console.log(produtos)
+    return this.httpClient.post(url, produtos)
+  }
 }
 
 

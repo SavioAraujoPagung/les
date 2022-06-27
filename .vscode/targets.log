@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 18 22:44:06 2022
+# Make data base, printed on Mon Jun 27 00:10:22 2022
 
 # Variables
 
@@ -33,7 +31,9 @@ VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-PLATFORMIO_IDE = 2.4.3
+IM_CONFIG_PHASE = 1
+# environment
+PLATFORMIO_IDE = 2.5.0
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -53,7 +53,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"195456cb6bc5e7dd989215cd334fb359.pt-br","_translationsConfigFile":"/home/savio/.config/Code/clp/195456cb6bc5e7dd989215cd334fb359.pt-br/tcf.json","_cacheRoot":"/home/savio/.config/Code/clp/195456cb6bc5e7dd989215cd334fb359.pt-br","_resolvedLanguagePackCoreLocation":"/home/savio/.config/Code/clp/195456cb6bc5e7dd989215cd334fb359.pt-br/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/home/savio/.config/Code/clp/195456cb6bc5e7dd989215cd334fb359.pt-br/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:59835
+JOURNAL_STREAM = 8:53099
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -65,21 +65,23 @@ MAKEFILE_LIST :=  Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-IM_CONFIG_PHASE = 1
+GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
 QT_IM_MODULE = ibus
 # environment
 USERNAME = savio
 # environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+# environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=9a733f9bd0305629a187eb3762b90140
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1952
+MANAGERPID = 1799
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -95,7 +97,7 @@ NO_PROXY = 127.0.0.1
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2645,unix/savio-pc:/tmp/.ICE-unix/2645
+SESSION_MANAGER = local/savio-pc:@/tmp/.ICE-unix/2451,unix/savio-pc:/tmp/.ICE-unix/2451
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -115,7 +117,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 236091af3a6a41828e2966a8b6e29277
+INVOCATION_ID = 9108422dde22400a8cdd61e1225d410f
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/99/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -126,6 +128,8 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3480
 # automatic
 %F = $(notdir $%)
 # environment
@@ -139,7 +143,7 @@ PWD = /home/savio/projects/les
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2609
+SSH_AGENT_PID = 2312
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -193,7 +197,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8d142da3-990c-4858-a97f-48975aa0a5c0.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8f5dbd9b-48ef-48e7-84c6-d0d4f4139db2.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -208,8 +212,6 @@ XDG_CURRENT_DESKTOP = Unity
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/savio/projects/les/api-produtos
 # default
 .VARIABLES := 
 # automatic
@@ -218,6 +220,8 @@ OLDPWD = /home/savio/projects/les/api-produtos
 LANGUAGE = pt_BR:pt:en
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-851e99ed-1.68.1-main.sock
+# environment
+BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -234,6 +238,8 @@ GDK_BACKEND = x11
 NO_AT_BRIDGE = 1
 # environment
 QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
 # environment
@@ -247,13 +253,15 @@ SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
+DBUS_STARTER_BUS_TYPE = session
+# environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/ff191d3e_beee_4f5d_b8e0_0e8b969be623
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/57185883_d076_4cc5_bf59_0454502a1cae
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.144
+GNOME_TERMINAL_SERVICE = :1.2832
 # default
 SUFFIXES := 
 # environment
@@ -273,9 +281,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 5897
+VSCODE_PID = 3536
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=9a733f9bd0305629a187eb3762b90140
 # variable set hash-table stats:
-# Load=131/1024=13%, Rehash=0, Collisions=18/156=12%
+# Load=137/1024=13%, Rehash=0, Collisions=20/162=12%
 
 # Pattern-specific Variable Values
 
@@ -283,9 +293,9 @@ VSCODE_PID = 5897
 
 # Directories
 
-# . (device 2066, inode 6562889): 14 files, no impossibilities.
+# . (device 2066, inode 6562889): 15 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -301,9 +311,11 @@ all:
 #  File has not been updated.
 
 # Not a target:
- 
 Makefile:
 #  Implicit rule search has been done.
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 #  Last modified 2022-05-21 15:11:54.822412561
 #  File has been updated.
 #  Successfully updated.
@@ -334,12 +346,12 @@ run:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 192 B / avg = 9 B
-# current buf: size = 8162 B / used = 192 B / count = 21 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 198 B / avg = 9 B
+# current buf: size = 8162 B / used = 198 B / count = 22 / avg = 9 B
 
-# strcache performance: lookups = 28 / hit rate = 25%
+# strcache performance: lookups = 29 / hit rate = 24%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Sat Jun 18 22:44:06 2022
+# Load=22/8192=0%, Rehash=0, Collisions=1/29=3%
+# Finished Make data base on Mon Jun 27 00:10:22 2022
 
  
