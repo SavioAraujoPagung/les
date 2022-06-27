@@ -54,7 +54,7 @@ export class CaixaDialogComponent implements OnInit {
   getPesoBalanca(){
     this.balancaService.getPesoBalanca().subscribe(
       resultado => {
-        this.peso = resultado
+        this.peso = (resultado*1000)
         //this.success("Peso obtido com sucesso")
       },
       err => {
