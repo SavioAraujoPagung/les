@@ -166,6 +166,7 @@ func (r *Repository) ClientesProdutosVenda(idCliente int) (*models.Venda, error)
 }
 
 func (r *Repository) FinalizarVenda(venda *models.Venda) error {
+	
 	venda.Finalizado = true
 	return r.db.Save(venda).Error
 }
