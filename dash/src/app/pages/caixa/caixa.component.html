@@ -49,8 +49,12 @@
     <h1> Produtos do Cliente: {{ clienteAtual.nome }}</h1>
     <div class="rela">
         <h1>Total: R$ {{ prodsValorTotal }}</h1>
+    </div>
+    
+    <div class="botao">
         <button mat-raised-button color="primary" (click)="finalizar()">Finalizar Venda</button>
     </div>
+
     <table mat-table [dataSource]="produtos$" class="mat-elevation-z8">
         
         <ng-container class="coluna" matColumnDef="nome">
