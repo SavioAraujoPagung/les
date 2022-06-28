@@ -1,0 +1,83 @@
+<app-menu-lateral></app-menu-lateral>
+<div>
+    <div>
+        <form class="conteudo-form" [formGroup]="criarCliente" (submit)="criar()">
+            <div class="titulo">
+                <h1>Cadastrar Cliente</h1>
+            </div>
+            <div class="criar">
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nome </mat-label>
+                        <input formControlName="nome" matInput placeholder="Ex. Cleytin" value="">
+                    </mat-form-field>
+                </div>
+            
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>CPF</mat-label>
+                        <input formControlName="cpf" matInput placeholder="Ex. 2222222" value="">
+                    </mat-form-field>
+                </div>
+                
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>RFID</mat-label>
+                        <input formControlName="rfid" matInput placeholder="111.111.111-11" value="">
+                    </mat-form-field>
+                </div>
+                
+            </div>
+            <div class="criar">
+                <button mat-raised-button color="primary" click="criar()">Cadastrar</button>
+                <button mat-raised-button type="reset">Limpar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="tabela-cliente">
+    <br>
+
+    <div class="entrada">
+        <form class="conteudo-form" [formGroup]="buscarCliente" (submit)="buscar()">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>CPF</mat-label>
+                <input formControlName="cpf" matInput placeholder="111.111.111/11" value="">
+            </mat-form-field>
+            <button mat-raised-button color="primary">Buscar</button>
+        </form>
+    </div>
+    
+    <div *ngIf="clientes$ | async as clientes;">
+        <table mat-table [dataSource]="clientes$" class="mat-elevation-z8">
+    
+        <ng-container class="coluna" matColumnDef="cpf">
+            <th mat-header-cell *matHeaderCellDef> CPF </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.cpf }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.nome }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="rfid">
+            <th mat-header-cell *matHeaderCellDef> RFID </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.rfid }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="entrar">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let produto">
+                <form class="conteudo-form" (submit)="entrar()">
+                    <button mat-raised-button >Entrar</button>
+                </form>
+            </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

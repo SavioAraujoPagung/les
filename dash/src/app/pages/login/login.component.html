@@ -1,23 +1,26 @@
 <div class="conteudo-login">    
-  <form class="conteudo-form" [formGroup]="loginForm" (submit)="submitLogin()">
-    <h1><small>Login do Sistema 2.0</small></h1>
+  <form [formGroup]="loginForm" (submit)="submitLogin()" autocomplete="off">
     <div>
-      <div>
-        <input class="input-login" type="text" placeholder="cpf" formControlName="cpf"/>
-      </div>
-    </div>
-    
-    <div>
-      <div>
-        <input class="input-login" type="password" placeholder="senha" formControlName="senha"/>
-      </div>
+      <h3>Login</h3>
+      <mat-form-field class="conteudo-form" hintLabel="Max 14 characters" appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput #input maxlength="14" placeholder="Ex. 111.111.111-11" formControlName="cpf" autocomplete="off">
+        <mat-hint>{{input.value?.length || 0}}/14</mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="conteudo-form" appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha"/>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" autocomplete="off">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
 
-    <div >
-        <button class="input-submit" type="submit">Login</button>
-        <button class="input-submit" type="reset">Limpar</button>
+    <div>
+      <button mat-raised-button color="primary" class="input-submit" type="submit" (click)="submitLogin()">Login</button>
+      <button mat-stroked-button color="primary" class="input-submit" type="reset">Limpar</button>
     </div>
   </form>
-     
 </div>
-  
+

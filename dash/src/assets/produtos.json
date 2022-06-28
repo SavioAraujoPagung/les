@@ -1,0 +1,13 @@
+[
+    {
+        "id": 34,
+        "nome": "ovo",
+        "categoria": 1,
+        "codigo_barras": "111111022",
+        "rfid": "655555555",
+        "preco_custo": 132.25,
+        "preco_venda": 444.5,
+        "unidade_medida": "grama",
+        "quantidade": 100
+    }
+]

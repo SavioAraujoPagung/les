@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+//import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,18 +48,16 @@ public class FuncionalidadeController {
         return this.funcRepository.findAll();
     }
 
-    
-
-    @PutMapping(value="/upd/{id}")
-    public ResponseEntity <?> updateFunc(@PathVariable("id") long id, @RequestBody Funcionalidade func) {
-        return funcRepository.findById(id)
-           .map(record -> {
-               record.setNome(func.getNome());
+    // @PutMapping(value="/upd/{id}")
+    // public ResponseEntity <?> updateFunc(@PathVariable("id") long id, @RequestBody Funcionalidade func) {
+    //     return funcRepository.findById(id)
+    //        .map(record -> {
+    //            record.setNome(func.getNome());
                
-               Funcionalidade updated = funcRepository.save(record);
-               return ResponseEntity.ok().body(updated);
-           }).orElse(ResponseEntity.notFound().build());
-    }
+    //            Funcionalidade updated = funcRepository.save(record);
+    //            return ResponseEntity.ok().body(updated);
+    //        }).orElse(ResponseEntity.notFound().build());
+    // }
 
     @DeleteMapping("/del/{id}")
     public ResponseEntity <?> deleteFunc (@PathVariable("id") Long id){

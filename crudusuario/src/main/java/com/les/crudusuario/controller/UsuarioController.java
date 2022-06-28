@@ -1,6 +1,5 @@
 package com.les.crudusuario.controller;
 
-//import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import com.les.crudusuario.model.Usuario;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-//import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
-
 public class UsuarioController {
     
     @Autowired
@@ -56,40 +53,7 @@ public class UsuarioController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
-
-        /*if(!usuario.isEmpty()){
-            return usuario;
-        }
-        
-        return null;*/
     }
-
-    /*@PostMapping("/login")
-    public ResponseEntity <?> loginUser(@RequestBody Usuario user) {
-        List<Usuario> users = usuarioRepository.findByCpfIgnoreCase(user.getCPF());
-        for (Usuario other : users) {
-            if (other.equals(user)) {
-                user.setLoggedIn(true);
-                usuarioRepository.save(user);
-                return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
-            }
-        }
-        return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
-    }*/
-
-    /*@PostMapping("/logout")
-    public ResponseEntity <?> logUserOut(@Validated @RequestBody Usuario user) {
-        List<Usuario> users = usuarioRepository.findAll();
-        for (Usuario other : users) {
-            if (other.equals(user)) {
-                user.setLoggedIn(false);
-                usuarioRepository.save(user);
-                return new ResponseEntity<>(null, HttpStatus.OK);
-            }
-        }
-        return new ResponseEntity<>(null, HttpStatus.BAD_GATEWAY);
-    }*/
-    
 
     @GetMapping("/get/id/{id}")
     public Usuario getUserId(@PathVariable("id") Long id){
@@ -142,7 +106,6 @@ public class UsuarioController {
                 usuarioRepository.deleteById(id);
                 return ResponseEntity.ok().build();
            }).orElse(ResponseEntity.notFound().build());
-        
     }
     
 }

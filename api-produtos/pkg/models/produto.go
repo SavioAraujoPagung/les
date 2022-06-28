@@ -7,9 +7,11 @@ import (
 type Venda struct {
 	ID               int            `json:"-" gorm:"column:id;primaryKey"`
 	Quantidade       int            `json:"-" gorm:"column:quantidade"`
+	ValorTotal       float64        `json:"-" gorm:"column:valor_total"`
 	Criacao          time.Time      `json:"-" gorm:"column:datacriacao"`
 	ClienteID        int            `json:"cliente" gorm:"column:id_cliente"`
-	ProdutosVendidos []ProdutoVenda `json:"produtos"gorm:"-"`
+	Finalizado       bool           `json:"finalizado" gorm:"column:status"`
+	ProdutosVendidos []ProdutoVenda `json:"produtos" gorm:"-"`
 }
 
 type Categoria struct {
@@ -31,8 +33,10 @@ type Produto struct {
 }
 
 type ProdutoVenda struct {
-	VendaID    int     `json:"-"`//;foreignKey:venda_id;references:vendas"`
-	ProdutoID  int     `json:"idProduto" gorm:"column:id_produto"`
-	Quantidade int     `json:"quantidade" gorm:"column:quantidade_item"`
-	Preco      float64 `json:"preco" gorm:"column:preco"`
+	VendaID     int      `json:"-" gorm:"column:id_venda"`
+	ProdutoID   int      `json:"idProduto" gorm:"column:id_produto"`
+	Produto     *Produto `json:"produto" gorm:"-"`
+	ProdutoRfid string   `json:"rfidProduto" gorm:"-"`
+	Quantidade  int      `json:"quantidade" gorm:"column:quantidade_item"`
+	Preco       float64  `json:"preco" gorm:"column:preco"`
 }

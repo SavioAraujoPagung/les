@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/LoginModel';
+import { Usuario } from 'src/app/models/Usuario';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -11,9 +12,10 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class LoginComponent implements OnInit {
 
-loginForm!:FormGroup; 
+  hide = true;
+  loginForm!:FormGroup; 
 
-  constructor(private formBuilder: FormBuilder, private router: Router, public loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -25,25 +27,25 @@ loginForm!:FormGroup;
   }
 
   submitLogin(){
-    var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    
-    // this.loginService.loginUsuario(dadosLogin).
-    //   subscribe(
-    //     data => 
-    //     {
-    //       var dados = data
-    //       debugger
-    //     },
-    //     error => {
-    //       console.log("deu error")
-    //     }
-    //   )
-    
-    this.router.navigate(["/cadastro-usuario"]);
-    debugger
-    
+    var dadosLogin: LoginModel;
+    var usuario: Usuario;
+    dadosLogin = this.loginForm.getRawValue() as LoginModel;
+    this.loginService.loginUsuario(dadosLogin).
+    subscribe({
+        next: data => 
+        {
+          usuario = data
+          if (dadosLogin.cpf == usuario.cpf && dadosLogin.senha == usuario.senha){
+            let id_funcs = usuario.funcionalidadeList.map(item => item.id) 
+            this.router.navigate(["/dash"], {queryParams:id_funcs});
+            return
+          }
+        },
+        error: error => {
+          console.log("deu error")
+        }
+      })
 
   }
-
 
 }

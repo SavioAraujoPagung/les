@@ -3,16 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10%;
+  padding: 50px;
+}
 
-  .conteudo-form {
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 30px 60px 0 gray;
-    text-align: center;
-    width: 45%;
-    height: 350px;
-  }
+.conteudo-form{
+  width: 250px;
 }
 
 .input-login{
@@ -25,7 +20,6 @@
   margin: 15px;
   width: 90%;
   border: 2px solid #f6f6f6;
-
 }
 
 .input-submit{
@@ -35,24 +29,3 @@
   margin-left: 15px
 
 }
- /* :host {
-    display: flex;
-    justify-content: center;
-    margin: 100px 0px;
-  }
-  .mat-form-field {
-    width: 100%;
-    min-width: 300px;
-  }
-
-  mat-card-title,
-  mat-card-content {
-    display: flex;
-    justify-content: center;
-  }
-
-  .button {
-    display: flex;
-    justify-content: flex-end;
-  }  */
-
