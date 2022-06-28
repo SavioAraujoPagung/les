@@ -1,0 +1,15 @@
+{
+    "nome":"Savio",
+    "cpf":"11111111111",
+    "dataCriacao":"",
+    "funcionalidades": [
+        {
+            "id": 1,
+            "nome": "administrador"
+        },
+        {
+            "id": 2,
+            "nome": "Fiscal de Entreda"
+        }
+    ]
+}

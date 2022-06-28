@@ -1,0 +1,88 @@
+<app-menu-lateral></app-menu-lateral>
+
+<div>
+    <br>
+    <h1>Clientes com venda em aberto</h1>
+    <div class="entrada">
+        <form class="conteudo-form" [formGroup]="buscarCliente" (submit)="buscar()">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>RFID</mat-label>
+                <input formControlName="rfid" matInput placeholder="122333" value="">
+            </mat-form-field>
+            <button mat-raised-button color="primary">Buscar</button>
+        </form>
+    </div>
+    
+    <div *ngIf="clientes$ | async as clientes;">
+        <table mat-table [dataSource]="clientes" class="mat-elevation-z8">
+    
+        <ng-container class="coluna" matColumnDef="cpf">
+            <th mat-header-cell *matHeaderCellDef> CPF </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.cpf }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.nome }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="rfid">
+            <th mat-header-cell *matHeaderCellDef> RFID </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.rfid }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="vender">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let cliente">
+                <button mat-raised-button (click)="vender(cliente)" >Vender</button>
+                <button mat-raised-button (click)="buscarProdutos(cliente)">Visualizar</button> 
+            </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
+
+<div class="listaProdutos" *ngIf="produtos$ | async as produtos;">
+    <h1> Produtos do Cliente: {{ clienteAtual.nome }}</h1>
+    <div class="rela">
+        <h1>Total: R$ {{ prodsValorTotal }}</h1>
+    </div>
+    
+    <div class="botao">
+        <button mat-raised-button color="primary" (click)="finalizar()">Finalizar Venda</button>
+    </div>
+
+    <table mat-table [dataSource]="produtos$" class="mat-elevation-z8">
+        
+        <ng-container class="coluna" matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let produto"> {{ produto.nome }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="rfid">
+            <th mat-header-cell *matHeaderCellDef> RFID </th>
+            <td mat-cell *matCellDef="let produto"> {{ produto.rfid }} </td>
+        </ng-container>
+    
+            <ng-container class="coluna" matColumnDef="preco_venda">
+            <th mat-header-cell *matHeaderCellDef> Preço </th>
+            <td mat-cell *matCellDef="let produto"> R${{ produto.preco_venda }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="unidade_medida">
+            <th mat-header-cell *matHeaderCellDef> Unidade de Medida </th>
+            <td mat-cell *matCellDef="let produto"> {{ produto.unidade_medida }} </td>
+        </ng-container>
+    
+        <ng-container class="coluna" matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+            <td mat-cell *matCellDef="let produto"> {{ produto.quantidade }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnss"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnss;"></tr>
+    </table>
+</div>

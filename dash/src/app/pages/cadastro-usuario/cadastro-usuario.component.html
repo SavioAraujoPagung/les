@@ -1,0 +1,52 @@
+<app-menu-lateral></app-menu-lateral>
+
+<div class="cadastro">
+  <h1><small>Cadastro do Usuário</small></h1>
+  <mat-card>
+    <mat-card-content>
+      <form class="conteudo-form" [formGroup]="usuarioForm" (submit)="salvarUsuario()">
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Nome completo" formControlName="nome">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="CPF" formControlName="cpf">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="senha">
+          </mat-form-field>
+        </p>
+        <p>
+          <small><label>Data de cadastro</label></small><br>
+          <input type="date" matInput placeholder="Data de cadastro" formControlName="datacriacao">
+        </p>
+        <div style="padding-top: 20px;" class="checkbox">
+          <div *ngFor="let permissao of listaCheckbox">
+            <mat-checkbox class="example-margin" [checked]="permissao.checked" 
+              (change)="permissao.checked = $event.checked">
+              {{permissao.nome}}
+            </mat-checkbox>
+          </div>
+          <!-- <input  type="checkbox" formArrayName="funcionalidades"/> <label>Cadastro de Usuário</label><br>
+          <input  type="checkbox" formArrayName="funcionalidades"/> <label>Cadastro de Categoria</label><br>
+          <input  type="checkbox" formArrayName="funcionalidades"/> <label>Cadastro de Clientes</label><br> -->
+          <!-- <input type="checkbox" formArrayName="funcionalidades" /> <label>Caixa</label><br>
+          <input type="checkbox" formArrayName="funcionalidades" /> <label>Fiscal Entrada</label><br>
+          <input type="checkbox" formArrayName="funcionalidades" /> <label>Fiscal Saida</label><br>
+          <input type="checkbox" formArrayName="funcionalidades" /> <label>Cafeteria</label><br>
+          <input type="checkbox" formArrayName="funcionalidades" /> <label>Estoque</label><br>
+          <input type="checkbox" formArrayName="funcionalidades" /> <label>Administrador</label><br> -->
+        </div>
+        <div class="buttons" style="text-align: center;">
+          <button class="input-submit" type="submit" (click)="salvarUsuario()" mat-button>Salvar</button>
+          <button type="reset" mat-button>Cancelar</button>
+          <!-- <button type="submit" mat-button>Novo</button> -->
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
