@@ -32,7 +32,7 @@ public class UsuarioController {
     @PostMapping("/insert")
     public ResponseEntity <?> saveUser(@RequestBody Usuario user, @RequestParam(value = "id_user") String idUser,
     Model model){
-        if(usuarioRepository.findPermission(Integer.parseInt(idUser)) > 0){
+        if(usuarioRepository.findPermission(Integer.parseInt(idUser)) > 0 && idUser != null){
             Usuario inserted = this.usuarioRepository.save(user);
             return new ResponseEntity<>(inserted, HttpStatus.CREATED);
         }else{
